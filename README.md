@@ -12,6 +12,8 @@ I couldn't find another service which was cheap, quick and easy to edit, but the
 
 ## Amazon Transcribe features
 
+*  Solid automatic transcription of audio
+*  Punctuation
 *  Speaker identification
 *  Custom volcabularies 
 *  Custom word removal
@@ -27,11 +29,13 @@ I couldn't find another service which was cheap, quick and easy to edit, but the
 
 ## Workflow
 
-To use the app, you'll run jobs through the Amazon Web Services (AWS), download the output, and run the output through the app. The process could take 15 minutes or so minutes to set up, so it's probably not worth it if you have less than an hour of audio.
+To use the app, you'll run jobs through the Amazon Web Services (AWS), download the output, and run the output through the app. The process could take 15 minutes or so minutes to set up, so it's probably not worth it if you have less than an hour of audio. Right now, the process also requires you to enter a few commands in your computer's terminal.
+
+Amazon Transcribe is not free. It costs $1.44 per hour. So 10 hours costs $14.40. More pricing info [here](https://aws.amazon.com/transcribe/pricing/).
 
 ## Getting started
 
-These instructions will guide you through using the Amazon Transcribe service and getting a copy of the project up and running on your local machine.
+If this all sounds good, the following instructions will guide you through using the Amazon Transcribe and getting a copy of the project up and running.
 
 ### Prerequisites
 
@@ -39,7 +43,7 @@ These instructions will guide you through using the Amazon Transcribe service an
 2. Setup [S3](https://aws.amazon.com/s3/) and [Transcribe](https://aws.amazon.com/transcribe/) on your AWS account
 3. Install [http-server](https://www.npmjs.com/package/http-server)* or use another server
 
-Note: http-server requires node. The recommended way to install node is via the node version manager (nvm):
+Note: http-server requires [node](https://nodejs.org/en/). The recommended way to install node is via the [node version manager](https://github.com/nvm-sh/nvm) (nvm):
 
 1. install nvm
 
@@ -51,36 +55,41 @@ Note: http-server requires node. The recommended way to install node is via the 
 
 ### Transcribing with AWS
 
+#### Cleaning audio
+See bottom of this page for steps to take to clean your audio.
+
 #### Uploading audio to S3
-1. Create a bucket for your audio in S3
-2. Upload the audio file
-3. Set the permissions for the file to 'public access' (read object)
-4. Copy the url link to the file (found in the 'Overview' tab for the file)
+1. Create a bucket for your audio in S3, using the default settings
+2. Upload your audio file to the bucket, using the default settings
+4. Right click the file in S3 and select 'Copy Path'
 
 #### Using Amazon Transcribe
 *note you may have to set your region to US East (Ohio)) for this stage to work*
-*before starting you can also create a 'custom volcabulary' if there are words used in your audio that AWS is likely to misinterpret (e.g. it often hears 'jesus' instead of 'GIS')*
 1. Navigate to the 'Transcription jobs' page
 2. Create new job
-3. Fill out form with name, audio url (from the S3 file), adding custom volcabulary, set speaker identification to 'Enabled', and data source to 'Amazon defalut bucket'
-4. Once the job is finished download the transcription (which shold be json file)
+3. Choose the language and dialect used by most of the speakers
+4. Paste the path location of the audio (should look something like this )
+5. On the next page, enable audio identification and set the number of speakers.
+6. (Optional) add a custom vocabulary or filtering lists (or use mine for non-verbals)
+7. Once the job is finished download the transcription (which shold be json file)
 
 #### Installing the app
 1. Clone the repository:
 ```
 git clone https://github.com/samFredLumley/transcription-buddy
+cd transcription-buddy
 ```
 2. In the "json" folder copy the downloaded json file (suggested name "transcript.json")
-3. Launch the app on a server. E.g. from the folder containing the project directory run
+3. Add your audio file to the "audio" folder
+3. Launch the app
 ```
-cd transcription-buddy
 http-server
 ```
 You should now be able to access the app from your browser via the url: [http://localhost:8080/](http://localhost:8080/)
 
 #### Using the app
-* Enter the url for your audio and the filename for your json file
-* "Load transcript" visualises the json. You can make edits to this text. Changes are autosaved locally but it is recommended to copy and paste out your work regularly.
+* Enter filenames for your audio json files and click "load audio" and "load transcript"
+* Click "hyperaudio" to link the transcript to the audio playback
 * You can control the audio while writing using keyboard shortcuts:
 
 | Task        | Shortcut           |
@@ -101,4 +110,11 @@ To work well, automated transcription services need clear audio. For recording i
 Two steps you can take to clean your audio after recording are noise removal (taking out constant background noise) and normalisation (raising the volume of the audio). Both can be done easily using the open source software [Audacity](https://www.audacityteam.org/).
 
 Here's a [guide](https://opensource.com/life/14/10/how-clean-digital-recordings-using-audacity).
+
+## Future
+
+*  Make it not ugly
+*  Streamline workflow
+*  Move to something more open like Mozilla's [DeepSpeech](https://github.com/mozilla/DeepSpeech)
+
 
