@@ -1,10 +1,33 @@
-# aws-transcription-editor
+# Transcription Buddy
 
-An editor for Amazon Transcribe transcripts!
+Transcription buddy is an interactive transcript editor.
 
-Amazon Transcribe is a (nearly) free way to automate the transcription of audio files. While the output is fairly accurate, the service can make mistakes. Amazon usefully provide an output json file which contains confidence levels for every word, but does not provide a service to make use of this information. 
+## why?
 
-The AWS Transcription Editor takes in Amazon Transcribe's output files, and visualises them in a browser-based editor. Low confidence words are highlighted to make the transcription process more efficient. Audio files can be loaded and controlled through the interface to help correct mistakes present.
+Manual transcription has the advantage of the listener getting close to the material, but it can take a long time. Automated transcription is fast and cheap, but it isn't perfect, and you lose the insights from going through the manual transcription process.
+
+Transcription buddy aims to provide a best of both worlds. It uses the brute force of automated transcription to start things off and provides an interactive editor to easily correct the transcript in real time by listening to the original audio. 
+
+I couldn't find another service which was cheap, quick and easy to edit, but there is lots of other good stuff out there. For completely manual transcription, try [oTranscribe](https://otranscribe.com/). For paid, automatic transcription try [Trint](https://trint.com/). For a deeper overview of options see this [Medium article](https://medium.com/journalism-innovation/the-best-new-ways-to-transcribe-c4c342abf172).
+
+## Amazon Transcribe features
+
+*  Speaker identification
+*  Custom volcabularies 
+*  Custom word removal
+
+## Editor features
+
+*  Linked audio and text
+*  Autoscroll
+*  Visualise confidence score for each word
+*  Autosave
+*  Highlight word on click 
+*  Audio control via keybaord shortcuts
+
+## Workflow
+
+To use the app, you'll run jobs through the Amazon Web Services (AWS), download the output, and run the output through the app. The process could take 15 minutes or so minutes to set up, so it's probably not worth it if you have less than an hour of audio.
 
 ## Getting started
 
@@ -12,14 +35,19 @@ These instructions will guide you through using the Amazon Transcribe service an
 
 ### Prerequisites
 
-1. Have an [Amazon Web Servives](https://aws.amazon.com/) account 
-2. Have [S3](https://aws.amazon.com/s3/) and [Transcribe](https://aws.amazon.com/transcribe/) set up on your AWS account
+1. Get an [Amazon Web Servives](https://aws.amazon.com/) account 
+2. Setup [S3](https://aws.amazon.com/s3/) and [Transcribe](https://aws.amazon.com/transcribe/) on your AWS account
 3. Install [http-server](https://www.npmjs.com/package/http-server)* or use another server
 
 Note: http-server requires node. The recommended way to install node is via the node version manager (nvm):
 
+1. install nvm
+
 `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`
-`nvm install node``
+
+2. use nvm to install node
+
+`nvm install node`
 
 ### Transcribing with AWS
 
@@ -40,15 +68,15 @@ Note: http-server requires node. The recommended way to install node is via the 
 #### Installing the app
 1. Clone the repository:
 ```
-git clone https://github.com/samFredLumley/aws-transcription-editor
+git clone https://github.com/samFredLumley/transcription-buddy
 ```
 2. In the "json" folder copy the downloaded json file (suggested name "transcript.json")
 3. Launch the app on a server. E.g. from the folder containing the project directory run
 ```
-cd aws-transcription-editor
+cd transcription-buddy
 http-server
 ```
-You should now be able to access the app from your browser 
+You should now be able to access the app from your browser via the url: [http://localhost:8080/](http://localhost:8080/)
 
 #### Using the app
 * Enter the url for your audio and the filename for your json file
@@ -66,4 +94,11 @@ You should now be able to access the app from your browser
 
 ### Audio recording
 
+To work well, automated transcription services need clear audio. For recording interviews, it can help for each participant to have a microphone (e.g. the one included on [Apple headphones](https://apple.stackexchange.com/questions/248404/where-is-the-mic-located-in-apple-earphones)).
+
 ### Audio preprocessing
+
+Two steps you can take to clean your audio after recording are noise removal (taking out constant background noise) and normalisation (raising the volume of the audio). Both can be done easily using the open source software [Audacity](https://www.audacityteam.org/).
+
+Here's a [guide](https://opensource.com/life/14/10/how-clean-digital-recordings-using-audacity).
+
