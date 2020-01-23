@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Eric.mp3</title>
+  <link rel="stylesheet" href="css/trint-player.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-arrows-bounce-dark.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+  <!-- <script src="https://platform.twitter.com/widgets.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@0.12.4/dist/hls.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <button onclick="hyper()">Hyperaudio</button>
+  <label for="audioUrl">audio url:</label>
+  <input type="text" id="audioUrl" placeholder="Enter audio url" value="audio.mp3">
+  <button onclick="getAudioUrl()">Load audio</button>
+
+  <label for="user-filename">json:</label>
+  <input type="text" id="user-filename" value="test.json">
+  <button onclick="displayTranscript()">Load Transcript</button>
+
+  <label for="autosave">autosave:</label>
+  <input type="checkbox" name="autosave" id="autosave" value="autosave">
+
+  <label for="user-filename">confidence:</label>
+  <input type="number" id="user-confidence" value="0.95">
+  <button name="confidence" onclick="displayConfidence()">Display Confidence</button>
+
+  <p>
+    <form id="searchForm" style="float:right">
+      Playback Rate <span id="currentPbr">1</span><input id="pbr" type="range" value="1" min="0.5" max="3" step="0.1" style="width:10%">
+      <input id="search" type="text"><input type="submit" value="search">
+    </form>
+  </p>
+
+  <audio id="hyperplayer" style="z-index: 5000000; position:relative;" src="https://media.trint.com/xn--cckb1i8d.trint.com/5dcd8d02b7a5a3447b4f704f/1690963573751/66a5b714-a7bd-4c83-8e86-ecb9575bab2d/30gEG0NjRAq8reA70x7hxw.m4a" type="audio/mpeg" controls></audio>
+  <p>Timecode: <span id="timecodeOffset">00:00:00</span></p>
+  <div id="hypertranscript" style="overflow-y:scroll; height:600px; position:relative; border-style:dashed; border-width: 1px; border-color:#999; padding: 8px">
+    <article contenteditable="true">
+      <section id="content">
+      </section>
+    </article>
+  </div>
+
+  <script>
+    window.offsetMs = 0 || 0;
+  </script>
+
+  <script src="javascript/display.js"></script>
+  <script src="javascript/editor.js"></script>
+  <script src="javascript/save.js"></script>
+
+  <script src="javascript/hyperaudio-lite.js"></script>
+  <script src="javascript/trint-player.js"></script>
+  <script src="javascript/trint-player-share.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
+
+  <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Transcription Buddy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <!-- <script src="save.js"></script> -->
+  <script src="display.js"></script>
+  <script src="audio-control.js"></script>
+</head>
+
+<body>
+
+  <div id="page-content">
+    <div id="header-content">
+    <!-- title sction -->
+    <div class="speaker-transcript">
+      <!-- <h1>AWS Transcription Buddy</h1> -->
+      <!-- <button type="button" name="button" class="toggle-speaker">Toggle</button> -->
+    </div>
+
+    <!-- audio control section -->
+    <div class="audio-box" style="position:relative; float: left">
+      <audio id="audio" controls>
+      <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <p>Playback position: <span id="demo"></span></p>
+    </div>
+
+    <!-- input section -->
+    <div style="position:relative; float: right;">
+    <p>
+    Audio url:
+    <input type="text" id="audioUrl" placeholder="Enter audio url" value="audio.mp3" label="poop">
+    <button onclick="getAudioUrl()">Load audio</button>
+    <p></p>
+    Transcript filename:
+    <input type="text" id="user-filename" value="test.json">
+    <button onclick="displayTranscript()">Load Transcript</button>
+    </p>
+    </div>
+  </div>
+
+    <!-- waveform visualisation -->
+    <!-- <div id="waveform"></div> -->
+
+    <!-- copy to clipboard button -->
+    <!-- <button class="copy-btn" onClick="CopyToClipboard('content')">Copy to clipboard</button>
+    <br><br> -->
+
+
+    <!-- transcript section -->
+    <div id="content" contenteditable="true">
+      <p id="speaker">
+      </p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
