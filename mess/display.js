@@ -37,7 +37,7 @@
 
   // load audio from file or url
   function getAudioUrl() {
-    var audioUrl = document.getElementById("audioUrl").value;
+    var audioUrl = "audio/" + document.getElementById("audioUrl").value;
     document.getElementById("audio").src = audioUrl;
 
   // add waveform visualisation - save for later
@@ -61,7 +61,7 @@
     // document.getElementById("content").innerHTML = "";
 
     // get json transcript filename from user input (default transcript.json)
-    var json = document.getElementById("user-filename").value;
+    var json = "json/" + document.getElementById("user-filename").value;
 
     $.getJSON(json, function(data) {
       // data is the JSON string

@@ -27,7 +27,7 @@ function CreateNewPara(timeOfFirstWord, speaker, paraId) {
 
 // load audio from file or url
 function getAudioUrl() {
-    var audioUrl = document.getElementById("audioUrl").value;
+    var audioUrl = "audio/" + document.getElementById("audioUrl").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
 // displayTranscript()
@@ -40,7 +40,9 @@ var transcriptObject = [];
 function displayTranscript() {
 
     // get json transcript from user input (default transcript.json)
-    var json = document.getElementById("user-filename").value;
+    var json = "json/" + document.getElementById("user-filename").value;
+    console.log(json);
+    
     $.getJSON(json, function(data) {
     var results = data.results;
     var transcript_raw = JSON.stringify(results.transcripts[0].transcript);
