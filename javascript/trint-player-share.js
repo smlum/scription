@@ -2,7 +2,7 @@ var selection = '';
 var params = '';
 var drop;
 
-// twttr.widgets.load();
+twttr.widgets.load();
 
 function addShareTool() {
   if (window.getSelection) {
@@ -91,13 +91,17 @@ function fillShare() {
 
   selection = '&quot;' + selection + '&quot;';
 
+  // document.getElementById('tweet-box').innerHTML =
+  //   '<div class="tweet-btn-hldr"> <a data-size="large" data-url="" data-text="' +
+  //   selection +
+  //   ' ' +
+  //   url +
+  //   params +
+  //   '" href="http://twitter.com/share?url=none&count=none" class="twitter-share-button"></a><span><br/> text+video</span></div>';
+  // drop.position();
+
   document.getElementById('tweet-box').innerHTML =
-    '<div class="tweet-btn-hldr"> <a data-size="large" data-url="" data-text="' +
-    selection +
-    ' ' +
-    url +
-    params +
-    '" href="http://twitter.com/share?url=none&count=none" class="twitter-share-button"></a><span><br/> text+video</span></div>';
+    '<div class="tweet-btn-hldr"> <input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br><input type="radio" name="gender" value="other"> Other</div>';
   drop.position();
 
   twttr.widgets.load();
