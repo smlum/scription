@@ -40,8 +40,7 @@ var transcriptObject = [];
 function displayTranscript() {
 
     // get json transcript from user input (default transcript.json)
-    // var json = document.getElementById("user-filename").value;
-    var json = "test-2.json";
+    var json = document.getElementById("user-filename").value;
     $.getJSON(json, function(data) {
     var results = data.results;
     var transcript_raw = JSON.stringify(results.transcripts[0].transcript);

@@ -1,3 +1,7 @@
 .low-confidence {
     color: rgb(201, 40, 40) !important;
 }
+
+.not-interactive {
+    color: black !important;
+}

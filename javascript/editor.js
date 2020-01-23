@@ -99,6 +99,27 @@ function displayConfidence() {
         
         displayConfidenceToggle = false;
     }
+    
+}
 
+// turn off the interactivity and return text color 
+// TODO this is not a smart way of doing this!
+
+var autoscrollOffToggle = false;
+
+function autoscrollOff() {
+    
+    if (autoscrollOffToggle == false) {
+        // to beat the javascript altering the color each span had to be selected
+        $("[data-m]").addClass("not-interactive")
+        $(".timecode").addClass("not-interactive")
+        autoscrollOffToggle = true
+        console.log('autoscroll off');
+        hyper(false);
+    } else if (autoscrollOffToggle == true) {
+        $(".not-interactive").removeClass("not-interactive");
+        
+        autoscrollOffToggle = false;
+    }
     
 }
