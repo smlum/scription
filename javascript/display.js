@@ -30,7 +30,7 @@ function getAudioUrl() {
     var audioUrl = "audio/" + document.getElementById("audioUrl").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
-// displayTranscript()
+displayTranscript()
   
 
 // for the audio control (possibly to be deleted eventually)

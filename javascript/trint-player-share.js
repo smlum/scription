@@ -1,12 +1,14 @@
 var selection = '';
 var params = '';
 var drop;
+var selectedText;
 
 twttr.widgets.load();
 
 function addShareTool() {
   if (window.getSelection) {
     selection = window.getSelection();
+    
   } else if (document.selection) {
     selection = document.selection.createRange();
   }
@@ -65,7 +67,7 @@ function addShareTool() {
 
 function fillShare() {
   var url = window.location.href;
-  var lastCharPos = url.length - 1;
+  var lastCharPos = url.length - 1;  
 
   if (url.charAt(lastCharPos) == '/') {
     // URL ends with a '/'
@@ -76,6 +78,8 @@ function fillShare() {
 
   var shareText = selection + ' ' + url + params;
 
+  selectedText = selection;
+  
   var overspill = shareText.length - 140;
 
   selection += '';
@@ -101,11 +105,40 @@ function fillShare() {
   // drop.position();
 
   document.getElementById('tweet-box').innerHTML =
-    '<div class="tweet-btn-hldr"> <input type="radio" name="gender" value="male"> Male<br><input type="radio" name="gender" value="female"> Female<br><input type="radio" name="gender" value="other"> Other</div>';
+    '<div class="tweet-btn-hldr"> <button onclick="SelectText()">select</button> <br/> <button onclick="replaceSelectedText()">replaceSelectedText</button> <br/> <button onclick="getAudioUrl()">Load audio</button> </div>';
   drop.position();
 
   twttr.widgets.load();
 }
+
+var $textarea = $('#content');
+
+
+function SelectText() {
+
+  var selection = window.getSelection();
+
+  // Make sure something was selected
+  if (!selection.rangeCount) {
+    return;
+  }
+
+  var range = selection.getRangeAt(0);
+  var $container = document.createElement('span');
+  $container.className = "selected";
+
+  // Move the contents of the selection into the container
+  $container.appendChild(range.extractContents());
+
+  // Move the container into the now empty range
+  range.insertNode($container);
+
+  // console.log(selectedText);
+  // var spn = '<span class="selected">' + selectedText + '</span>';
+  // window.getSelection().html().replace(selectedText, "");
+}
+
+
 
 function closeDrop() {
   if (drop) {

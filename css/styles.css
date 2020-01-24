@@ -5,3 +5,7 @@
 .not-interactive {
     color: black !important;
 }
+
+.selected {
+    background-color: rgb(166, 204, 206);
+}
