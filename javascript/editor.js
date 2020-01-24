@@ -8,7 +8,7 @@ $(document).ready(function () {
     var playbackRate = 1.0;
 
     // select and highlight the clicked word (ready to be edited)
-    $('#content').on("click", "span", function () {
+    $('#content').on("click", "[data-confidence]", function () {
         var range, selection;
         if (window.getSelection) {
             selection = window.getSelection();

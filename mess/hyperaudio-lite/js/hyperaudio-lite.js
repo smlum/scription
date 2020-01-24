@@ -289,7 +289,8 @@ var hyperaudiolite = (function () {
         }
 
         if (textShot.length > 16 || newPara == true) {
-          document.title = textShot;
+          // changes the title
+          // document.title = textShot;
           textShot = "";
           newPara = false;
         }

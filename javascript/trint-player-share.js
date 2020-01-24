@@ -51,7 +51,7 @@ function addShareTool() {
 
     drop = new Drop({
       target: anchorNode,
-      classes: 'drop-theme-arrows-bounce-dark',
+      classes: 'drop-theme-basic',
       position: 'top center',
       constrainToWindow: true,
       constrainToScrollParent: false,
@@ -73,8 +73,6 @@ function fillShare() {
     // URL ends with a '/'
     url = url.substr(0, lastCharPos);
   }
-
-  //use intents http://stackoverflow.com/questions/6320007/how-do-i-add-a-hashtag-to-a-custom-tweet-button
 
   var shareText = selection + ' ' + url + params;
 
@@ -105,7 +103,15 @@ function fillShare() {
   // drop.position();
 
   document.getElementById('tweet-box').innerHTML =
-    '<div class="tweet-btn-hldr"> <button onclick="SelectText()">select</button> <br/> <button onclick="replaceSelectedText()">replaceSelectedText</button> <br/> <button onclick="getAudioUrl()">Load audio</button> </div>';
+    '<div class="tweet-btn-hldr">' + 
+    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' + 
+    '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' + 
+    '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' + 
+    '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' + 
+    '<button class="annotation-button button-5" onclick="SelectText(5)">select</button> <br/>' + 
+    '<button class="annotation-button button-6" onclick="SelectText(6)">select</button> <br/>' + 
+    '<button class="annotation-button button-7" onclick="SelectText(7)">select</button> <br/>' + 
+    '</div>';
   drop.position();
 
   twttr.widgets.load();
@@ -114,7 +120,7 @@ function fillShare() {
 var $textarea = $('#content');
 
 
-function SelectText() {
+function SelectText(n) {
 
   var selection = window.getSelection();
 
@@ -123,9 +129,10 @@ function SelectText() {
     return;
   }
 
+  // class name of the button
   var range = selection.getRangeAt(0);
   var $container = document.createElement('span');
-  $container.className = "selected";
+  $container.className = "selected selected-" + n;
 
   // Move the contents of the selection into the container
   $container.appendChild(range.extractContents());
