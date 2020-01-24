@@ -8,7 +8,8 @@ $(document).ready(function () {
     var playbackRate = 1.0;
 
     // select and highlight the clicked word (ready to be edited)
-    $('#content').on("click", "[data-confidence]", function () {
+    // checks if the element clicked has a data confidence value, which implies it's a word
+    $('#content').on("click", "span", function () {
         var range, selection;
         if (window.getSelection) {
             selection = window.getSelection();
@@ -22,6 +23,8 @@ $(document).ready(function () {
             range.select();
         }
     });
+
+    
 
     // Add keybaord shortcuts
 

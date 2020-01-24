@@ -3,9 +3,12 @@ var params = '';
 var drop;
 var selectedText;
 
-twttr.widgets.load();
+// twttr.widgets.load();
 
-function addShareTool() {
+function addShareTool(a,previousSelection) {
+
+  
+
   if (window.getSelection) {
     selection = window.getSelection();
     
@@ -54,7 +57,7 @@ function addShareTool() {
       classes: 'drop-theme-basic',
       position: 'top center',
       constrainToWindow: true,
-      constrainToScrollParent: false,
+      constrainToScrollParent: true,
       openOn: 'always',
       content: '<div id="tweet-box"></div>',
     });
@@ -102,9 +105,17 @@ function fillShare() {
   //   '" href="http://twitter.com/share?url=none&count=none" class="twitter-share-button"></a><span><br/> text+video</span></div>';
   // drop.position();
 
+  if (!a) {
+    console.log('already selected');
+    // b.contents().unwrap()
+    
+  } else {
+    previousSelection = "";
+  }
+
   document.getElementById('tweet-box').innerHTML =
     '<div class="tweet-btn-hldr">' + 
-    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' + 
+    '<button class="annotation-button button-1" onclick="SelectText(1,' + previousSelection + ')">select</button> <br/>' + 
     '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' + 
     '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' + 
     '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' + 
@@ -120,7 +131,9 @@ function fillShare() {
 var $textarea = $('#content');
 
 
-function SelectText(n) {
+function SelectText(n,previousSelection) {
+
+  previousSelection.contents().unwrap()
 
   var selection = window.getSelection();
 
@@ -145,6 +158,15 @@ function SelectText(n) {
   // window.getSelection().html().replace(selectedText, "");
 }
 
+// highlight annotated sections on clicking them
+$('#content').on("click", ".selected", function () {
+  // true means it's already been highlighted
+  var $this = $(this);
+  addShareTool(false,$this)
+  
+  // console.log($this.contents().unwrap());
+  
+});
 
 
 function closeDrop() {
