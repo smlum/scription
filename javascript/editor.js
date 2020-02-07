@@ -2,10 +2,26 @@
 
 // creates an array of all annotated text
 // ultimately, want to break them down by catogory. a column per category
+
+
+
+// create array of annotations to be exported
 function getAnnotations() {
-     
-    annotationsArray = [[],[]];
     numberOfCategories = 8;
+
+    
+
+    // this would make an n*m matrics
+    // var matrix = [];
+    // for(var i=0; i<7; i++) {
+    //     matrix[i] = [];
+    //     for(var j=0; j<9; j++) {
+    //         matrix[i][j] = ',';
+    //     }
+    // }
+     
+    // create the array
+    var annotationsArray = [[],[]]
     for (let i = 1; i < numberOfCategories; i++) {
         categoryName = 'selected-' + i;
         var items = document.getElementsByClassName(categoryName);
@@ -16,9 +32,6 @@ function getAnnotations() {
         }
         annotationsArray[i-1] = array;
     }
-    
-    console.log(annotationsArray);
-
     return annotationsArray;
 }
 
@@ -26,7 +39,7 @@ function getAnnotations() {
 // set category name as filename, set data to rows
 function exportToCsv() {
 
-    filename = "test";
+    filename = "test.csv";
     // define rows from annotations
     rows = getAnnotations()
 
@@ -41,10 +54,10 @@ function exportToCsv() {
             if (result.search(/("|,|\n)/g) >= 0)
                 result = '"' + result + '"';
             if (j > 0)
-                finalVal += ',';
+                finalVal += '\n';
             finalVal += result;
         }
-        return finalVal + '\n';
+        return finalVal + ',';
     };
 
     let csvFile = 'sep=,' + '\n';
