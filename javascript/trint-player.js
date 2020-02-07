@@ -1,3 +1,5 @@
+
+
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
     seconds = parseInt((duration / 1000) % 60),

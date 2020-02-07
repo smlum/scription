@@ -15,6 +15,10 @@ function fmtMSS(s) {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + Math.round(s)
 }
 
+function clearTranscript() {
+    $('#content').html('')
+}
+
 // creates a new paragraph tag
 function CreateNewPara(timeOfFirstWord, speaker, paraId) {
     var formattedTime = fmtMSS(timeOfFirstWord)
@@ -69,8 +73,6 @@ function displayTranscript() {
 
             jsonLength = results.length
 
-            console.log(results);
-
 
             transcriptObject = results.words;
             var confidence = 1;
@@ -89,7 +91,15 @@ function displayTranscript() {
 
                 word = results[i].word;
                 // word start time is in seconds
-                word_start_time = startTimeLabel;
+
+                // create an manual adjustment to data when there is a playback sync error
+                // word highlighting too early means data time is too low, so make it higher
+                // word highlighting too late means data time is too high, so make it lower
+                var delay = $("#user-delay").val();
+                var adjustment = Number(delay);
+                console.log("adjustment: " + adjustment);
+
+                word_start_time = startTimeLabel + adjustment;
                 word_start_time_ms = word_start_time * 1000
 
                 if (results[i + 1] && results[i + 1].start_time) {
@@ -146,7 +156,6 @@ function displayTranscript() {
                 //console.log(speaker_times[i]);
                 //}
                 paragraphWordCounter++
-                console.log(paragraphWordCounter);
 
                 if (paragraphWordCounter > max_para_length) {
                     // set data for new speaker
