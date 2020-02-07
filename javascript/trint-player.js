@@ -127,7 +127,6 @@ htmlWordsLen = htmlWords.length;
 
 
   function hyper(scrollOn) {
-    console.log(scrollOn);
     
     if (scrollOn == false) {
       // hyperaudiolite.init('plop', 'jns');
@@ -140,9 +139,7 @@ htmlWordsLen = htmlWords.length;
       hyperaudiolite.init('d', 'd');
       
     } else {
-      hyperaudiolite.init('hypertranscript', 'hyperplayer');
-      console.log('ya');
-      
+      hyperaudiolite.init('hypertranscript', 'hyperplayer');      
 
       // playbackRate listener
 
@@ -162,14 +159,15 @@ htmlWordsLen = htmlWords.length;
       var cp = document.getElementById('currentPbr');
       var timecodeOffset = document.getElementById('timecodeOffset');
 
-      p.addEventListener(
-        'input',
-        function() {
-          cp.innerHTML = p.value;
-          hyperplayer.playbackRate = p.value;
-        },
-        false,
-      );
+        // turn on if you make a playback input
+      // p.addEventListener(
+      //   'input',
+      //   function() {
+      //     cp.innerHTML = p.value;
+      //     hyperplayer.playbackRate = p.value;
+      //   },
+      //   false,
+      // );
 
       var updateTimecode = function() {
         var currentTimeMs = v.currentTime * 1000;

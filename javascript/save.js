@@ -7,6 +7,9 @@
 var idleTime = 0;
 $(document).ready(function () {
 
+    // save configuration as cookies
+
+    // save autosave configuration
     $('#autosave').change(function() {
         // store the value of the checkbox when it's changed
         var autosaveCheckbox = document.getElementById("autosave").checked;
@@ -15,6 +18,14 @@ $(document).ready(function () {
         if (autosaveCheckbox == true) {
             startTimer();
         }
+    });
+
+    // save deepspeech configuration
+    $('#deepspeech').change(function() {
+        // store the value of the checkbox when it's changed
+        var deepspeechCheckbox = document.getElementById("deepspeech").checked;
+        window.localStorage.setItem("deepspeech-check", deepspeechCheckbox);
+        console.log("new deepspeech value:" + deepspeechCheckbox);
     });
 
     //Increment the idle time counter every minute.
