@@ -1,5 +1,3 @@
-
-
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
     seconds = parseInt((duration / 1000) % 60),
@@ -119,68 +117,69 @@ htmlWordsLen = htmlWords.length;
 //   }
 // };
 
-
+// if autoscroll disabled then don't make transcript interactive
+var autoScrollCheck = document.getElementById("deepspeech").checked;
+if (!autoScrollCheck) {
   setTimeout(
-    function() {
+    function () {
       hyper(true);
       console.log('transcript now interactive');
-    },2000)
+    }, 2000)
+}
 
 
 
-  function hyper(scrollOn) {
-    
-    if (scrollOn == false) {
-      // hyperaudiolite.init('plop', 'jns');
-      
-      setTimeout(
-        function() {
-          console.log('mess');
-          
-        },1000)
-      hyperaudiolite.init('d', 'd');
-      
-    } else {
-      hyperaudiolite.init('hypertranscript', 'hyperplayer');      
 
-      // playbackRate listener
+function hyper(scrollOn) {
 
-      var v = document.getElementById('hyperplayer');
+  if (scrollOn == false) {
+    // hyperaudiolite.init('plop', 'jns');
 
-      if (v.src && /\.m3u8$/.test(v.src)) {
-        if (Hls.isSupported()) {
-          var hls = new Hls();
-          hls.loadSource(v.src);
-          hls.attachMedia(v);
-        } else {
-          console.log('Unable to load HLS video stream');
-        }
+    setTimeout(
+      function () {
+        console.log('mess');
+
+      }, 1000)
+    hyperaudiolite.init('d', 'd');
+
+  } else {
+    hyperaudiolite.init('hypertranscript', 'hyperplayer');
+
+    // playbackRate listener
+
+    var v = document.getElementById('hyperplayer');
+
+    if (v.src && /\.m3u8$/.test(v.src)) {
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(v.src);
+        hls.attachMedia(v);
+      } else {
+        console.log('Unable to load HLS video stream');
       }
-
-      var p = document.getElementById('pbr');
-      var cp = document.getElementById('currentPbr');
-      var timecodeOffset = document.getElementById('timecodeOffset');
-
-        // turn on if you make a playback input
-      // p.addEventListener(
-      //   'input',
-      //   function() {
-      //     cp.innerHTML = p.value;
-      //     hyperplayer.playbackRate = p.value;
-      //   },
-      //   false,
-      // );
-
-      var updateTimecode = function() {
-        var currentTimeMs = v.currentTime * 1000;
-        var time = currentTimeMs + window.offsetMs;
-        timecodeOffset.innerHTML = msToTime(time);
-      };
-      updateTimecode();
-      v.addEventListener('timeupdate', updateTimecode);
     }
-    
-  };
-  
 
+    var p = document.getElementById('pbr');
+    var cp = document.getElementById('currentPbr');
+    var timecodeOffset = document.getElementById('timecodeOffset');
 
+    // turn on if you make a playback input
+    // p.addEventListener(
+    //   'input',
+    //   function() {
+    //     cp.innerHTML = p.value;
+    //     hyperplayer.playbackRate = p.value;
+    //   },
+    //   false,
+    // );
+
+    var updateTimecode = function () {
+      var currentTimeMs = v.currentTime * 1000;
+      var time = currentTimeMs + window.offsetMs;
+      timecodeOffset.innerHTML = msToTime(time);
+    };
+    updateTimecode();
+    v.addEventListener('timeupdate', updateTimecode);
+  }
+
+};

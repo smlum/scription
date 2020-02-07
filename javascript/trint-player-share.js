@@ -107,7 +107,7 @@ function fillShare() {
   //   '" href="http://twitter.com/share?url=none&count=none" class="twitter-share-button"></a><span><br/> text+video</span></div>';
   // drop.position();
 
-
+  // what was a meant to mean?
   var a = true
   if (!a) {
     console.log('already selected');
@@ -119,7 +119,7 @@ function fillShare() {
 
   document.getElementById('tweet-box').innerHTML =
     '<div class="tweet-btn-hldr">' + 
-    '<button class="annotation-button button-1" onclick="SelectText(1,' + previousSelection + ')">select</button> <br/>' + 
+    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' + 
     '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' + 
     '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' + 
     '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' + 
@@ -135,9 +135,8 @@ function fillShare() {
 var $textarea = $('#content');
 
 
-function SelectText(n,previousSelection) {
+function SelectText(n) {
 
-  previousSelection.contents().unwrap()
 
   var selection = window.getSelection();
 
@@ -161,6 +160,33 @@ function SelectText(n,previousSelection) {
   // var spn = '<span class="selected">' + selectedText + '</span>';
   // window.getSelection().html().replace(selectedText, "");
 }
+
+// function SelectText(n,previousSelection) {
+
+//   previousSelection.contents().unwrap()
+
+//   var selection = window.getSelection();
+
+//   // Make sure something was selected
+//   if (!selection.rangeCount) {
+//     return;
+//   }
+
+//   // class name of the button
+//   var range = selection.getRangeAt(0);
+//   var $container = document.createElement('span');
+//   $container.className = "selected selected-" + n;
+
+//   // Move the contents of the selection into the container
+//   $container.appendChild(range.extractContents());
+
+//   // Move the container into the now empty range
+//   range.insertNode($container);
+
+//   // console.log(selectedText);
+//   // var spn = '<span class="selected">' + selectedText + '</span>';
+//   // window.getSelection().html().replace(selectedText, "");
+// }
 
 // highlight annotated sections on clicking them
 $('#content').on("click", ".selected", function () {

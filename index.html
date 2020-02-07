@@ -18,7 +18,6 @@
 <body>
 
   <button onclick="hyper()">Hyperaudio</button>
-  <button onclick="autoscrollOff()">Autoscrolling off</button>
   <label for="audioUrl">audio url:</label>
   <input type="text" id="audioUrl" placeholder="Enter audio url" value="audio-deep.mp3">
   <button onclick="getAudioUrl()">Load audio</button>
@@ -29,6 +28,10 @@
 
   <label for="deepspeech">DeepSpeech:</label>
   <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech">
+
+  <button onclick="autoscrollOff()">Autoscrolling off</button>
+  <label for="autoscroll-off">Autoscrolling off:</label>
+  <input type="checkbox" name="autoscroll-off" id="autoscroll-off" value="autoscroll-off">
 
   <label for="autosave">autosave:</label>
   <input type="checkbox" name="autosave" id="autosave" value="autosave">
@@ -42,7 +45,9 @@
 
   <button name="clear-transcript" onclick="clearTranscript()">Clear Transcript</button>
 
-  <button name="export-to-csv" onclick="exportToCsv('test',[['name1', 'city1', 'some other info'],['name2', 'city2', 'more info']])">Export to csv</button>
+  <button name="get-annotations" onclick="getAnnotations()">get annotations</button>
+
+  <button name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
 
   <!-- <p>
     <form id="searchForm" style="float:right">

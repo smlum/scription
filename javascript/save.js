@@ -28,6 +28,15 @@ $(document).ready(function () {
         console.log("new deepspeech value:" + deepspeechCheckbox);
     });
 
+    $('#autoscroll-off').change(function() {
+        // store the value of the checkbox when it's changed
+        var autoscrollCheckbox = document.getElementById("autoscroll-off").checked;
+        window.localStorage.setItem("autoscroll-off", autoscrollCheckbox);
+        console.log("new autoscroll value:" + autoscrollCheckbox);
+        autoscrollOff();
+    });
+
+
     //Increment the idle time counter every minute.
 
 });

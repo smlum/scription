@@ -1,8 +1,35 @@
 // adds aditing functionality such as click highlighting and keyboard shortcuts to control audio
 
+// creates an array of all annotated text
+// ultimately, want to break them down by catogory. a column per category
+function getAnnotations() {
+     
+    annotationsArray = [[],[]];
+    numberOfCategories = 8;
+    for (let i = 1; i < numberOfCategories; i++) {
+        categoryName = 'selected-' + i;
+        var items = document.getElementsByClassName(categoryName);
+        var array = [categoryName]
+        // put just the inner text in a new array
+        for (let j = 0; j < items.length; j++) {
+            array[j+1] = items[j].innerText;   
+        }
+        annotationsArray[i-1] = array;
+    }
+    
+    console.log(annotationsArray);
+
+    return annotationsArray;
+}
+
 // export to csv on button click
 // set category name as filename, set data to rows
-function exportToCsv(filename, rows) {
+function exportToCsv() {
+
+    filename = "test";
+    // define rows from annotations
+    rows = getAnnotations()
+
     var processRow = function (row) {
         var finalVal = '';
         for (var j = 0; j < row.length; j++) {
