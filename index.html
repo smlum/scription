@@ -27,6 +27,9 @@
   <input type="text" id="user-filename" value="test.json">
   <button onclick="displayTranscript()">Load Transcript</button>
 
+  <label for="deepspeech">DeepSpeech:</label>
+  <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech">
+
   <label for="autosave">autosave:</label>
   <input type="checkbox" name="autosave" id="autosave" value="autosave">
 
@@ -46,8 +49,8 @@
 
   <p>Timecode: <span id="timecodeOffset">00:00:00</span></p>
   <div id="hypertranscript" style="overflow-y:scroll; height:600px; position:relative; border-style:dashed; border-width: 1px; border-color:#999; padding: 8px">
-    <article contenteditable="true">
-      <section id="content">
+    <article>
+      <section id="content" contenteditable="true">
       </section>
     </article>
   </div>

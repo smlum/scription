@@ -30,6 +30,8 @@ function getAudioUrl() {
     var audioUrl = "audio/" + document.getElementById("audioUrl").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
+
+// load transcript on start
 displayTranscript()
   
 
@@ -41,7 +43,7 @@ function displayTranscript() {
 
     // get json transcript from user input (default transcript.json)
     var json = "json/" + document.getElementById("user-filename").value;
-    console.log(json);
+    console.log("loading: " + json);
     
     $.getJSON(json, function(data) {
     var results = data.results;

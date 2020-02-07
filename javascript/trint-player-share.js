@@ -5,9 +5,8 @@ var selectedText;
 
 // twttr.widgets.load();
 
+// this function is activated on mouseup after user has highlighted text
 function addShareTool(a,previousSelection) {
-
-  
 
   if (window.getSelection) {
     selection = window.getSelection();
@@ -69,6 +68,9 @@ function addShareTool(a,previousSelection) {
 }
 
 function fillShare() {
+  // think can get rid of some of this function, since some of it was used to generate the tweet
+
+
   var url = window.location.href;
   var lastCharPos = url.length - 1;  
 
@@ -105,6 +107,8 @@ function fillShare() {
   //   '" href="http://twitter.com/share?url=none&count=none" class="twitter-share-button"></a><span><br/> text+video</span></div>';
   // drop.position();
 
+
+  var a = true
   if (!a) {
     console.log('already selected');
     // b.contents().unwrap()
@@ -125,7 +129,7 @@ function fillShare() {
     '</div>';
   drop.position();
 
-  twttr.widgets.load();
+  // twttr.widgets.load();
 }
 
 var $textarea = $('#content');
@@ -163,6 +167,7 @@ $('#content').on("click", ".selected", function () {
   // true means it's already been highlighted
   var $this = $(this);
   addShareTool(false,$this)
+  console.log();
   
   // console.log($this.contents().unwrap());
   
