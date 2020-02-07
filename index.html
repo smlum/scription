@@ -40,8 +40,9 @@
   <label for="user-delay">delay:</label>
   <input type="number" id="user-delay" value="0">
 
-  <label for="clear-transcript">delay:</label>
   <button name="clear-transcript" onclick="clearTranscript()">Clear Transcript</button>
+
+  <button name="export-to-csv" onclick="exportToCsv('test',[['name1', 'city1', 'some other info'],['name2', 'city2', 'more info']])">Export to csv</button>
 
   <!-- <p>
     <form id="searchForm" style="float:right">
