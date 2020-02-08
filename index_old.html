@@ -3,13 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Transcriptoin Buddy</title>
   <link rel="stylesheet" href="css/trint-player.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-arrows-bounce-dark.css"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
@@ -19,14 +16,8 @@
 </head>
 
 <body>
-  
 
-  <div class="container">
-
-    <input type="file" id="files" name="files[]" multiple />
-    <output id="list"></output>
-
-  <button class="button is-primary" onclick="hyper()">Hyperaudio</button>
+  <button onclick="hyper()">Hyperaudio</button>
   <label for="audioUrl">audio url:</label>
   <input type="text" id="audioUrl" placeholder="Enter audio url" value="audio-deep.mp3">
   <button onclick="getAudioUrl()">Load audio</button>
@@ -42,11 +33,8 @@
   <label for="autoscroll-off">Autoscrolling off:</label>
   <input type="checkbox" name="autoscroll-off" id="autoscroll-off" value="autoscroll-off">
 
-  <div class="field">
-    <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
-    <label for="autosave">Autosave</label>
-  </div>
-  
+  <label for="autosave">autosave:</label>
+  <input type="checkbox" name="autosave" id="autosave" value="autosave">
 
   <label for="user-confidence">confidence:</label>
   <input type="number" id="user-confidence" value="0.95">
@@ -96,8 +84,6 @@
 
   <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->
-</div>
-
 </body>
 
 </html>

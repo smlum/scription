@@ -1,6 +1,39 @@
 // This script converts the json transcript file to html
 // so that hyperaudio-lite can interpret it
 
+<script>
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+    // Only process image files.
+    if (!f.type.match('image.*')) {
+        continue;
+    }
+
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+        return function(e) {
+        // Render thumbnail.
+        var span = document.createElement('span');
+        span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+        document.getElementById('list').insertBefore(span, null);
+        };
+    })(f);
+
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(f);
+    }
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+
 // TODO: I need to change this to get the structure for hyper
 // This is: 
 //   a set of paragraphs with data-tc property of the formatted time of the first word
@@ -22,7 +55,7 @@ function clearTranscript() {
 // creates a new paragraph tag
 function CreateNewPara(timeOfFirstWord, speaker, paraId) {
     var formattedTime = fmtMSS(timeOfFirstWord)
-    var paraTime = "<p id='" + paraId + "' data-time='" + timeOfFirstWord + "' data-tc='" + formattedTime + "'>";
+    var paraTime = "<p class='content' id='" + paraId + "' data-time='" + timeOfFirstWord + "' data-tc='" + formattedTime + "'>";
     // only give it span if a word?
     var paraSpeaker = "<span class='unread' data-m='" + timeOfFirstWord + "' data-d='0' class='speaker'>" + speaker + " </span>";
     var paraFormattedTime = "<span class ='timecode'>[" + formattedTime + "] </span>";
