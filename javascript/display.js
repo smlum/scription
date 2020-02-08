@@ -71,7 +71,7 @@ function getAudioUrl() {
 }
 
 // load transcript on start
-displayTranscript()
+// displayTranscript()
 
 
 // for the audio control (possibly to be deleted eventually)
@@ -102,7 +102,10 @@ function displayTranscript() {
 
 
         // parse the DeepSPeech formatted json
-        if (document.getElementById('deepspeech').checked) {
+
+        if (data.words) {
+            console.log('Mozilla formatted data  detected');
+        // if (document.getElementById('deepspeech').checked) {
             var results = data.words
 
             jsonLength = results.length
@@ -129,9 +132,10 @@ function displayTranscript() {
                 // create an manual adjustment to data when there is a playback sync error
                 // word highlighting too early means data time is too low, so make it higher
                 // word highlighting too late means data time is too high, so make it lower
-                var delay = $("#user-delay").val();
-                var adjustment = Number(delay);
-                console.log("adjustment: " + adjustment);
+                var adjustment = 0;
+                // var delay = $("#user-delay").val();
+                // // adjustment = Number(delay);
+                // console.log("adjustment: " + adjustment);
 
                 word_start_time = startTimeLabel + adjustment;
                 word_start_time_ms = word_start_time * 1000
@@ -208,9 +212,11 @@ function displayTranscript() {
 
 
 
-        } else {
+        } else if (data.results) {
+            console.log('AWS formatted data detected');
             // parse the AWS formatted json
 
+            // 
             var results = data.results;
             var transcript_raw = JSON.stringify(results.transcripts[0].transcript);
 
