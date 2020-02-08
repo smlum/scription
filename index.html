@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="dist/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
+
+  <link rel="stylesheet" type="text/css"
+    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
+
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
@@ -20,52 +24,171 @@
 </head>
 
 <body>
-  
+
+  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-bold" href="https://bulma.io">
+        Transcription Buddy
+        <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
+      </a>
+      <!-- 
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a> -->
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="navbar-item">
+            Docs
+          </a>
+          <div class="buttons">
+            <a class="button is-primary" href="https://github.com/samFredLumley/transcription-buddy" target="_blank">
+              GitHub &nbsp;
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
 
   <div class="container">
 
-    <div class="field">
-      <input id="switchExample" type="checkbox" name="switchExample" class="switch" checked="checked">
-      <label for="switchExample">Switch example</label>
+    <!-- <input type="button" onclick="ShowFolderFileList()" value="TEST">
+      <select id="filelist"> -->
+
+    <div class="block">
+      <div class="columns">
+        <div class="column is-12">
+
+
+
+          <!-- <input type="file" id="files" name="files[]" multiple />
+              <output id="list"></output> -->
+
+
+          <div class="gap-example field">
+            <audio id="hyperplayer" style="z-index: 5000000; position:relative;">
+              <source src="audio/audio-deep.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+
+
+
+          <div class="block">
+            <div class="field has-addons">
+              <p class="control">
+                <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+              </p>
+              <p class="control">
+                <button onclick="getAudioUrl()" class="button is-primary">Load</button>
+              </p>
+            </div>
+            <div class="field has-addons">
+              <p class="control">
+                <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
+                  value="test.json">
+              </p>
+              <p class="control">
+                <button onclick="displayTranscript()" class="button is-primary">Load</button>
+              </p>
+            </div>
+
+            <div class="field">
+              <button class="button is-primary" onclick="clearTranscript()">Clear Transcript</button>
+            </div>
+
+            <div class="field has-addons">
+              <p class="control">
+                <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95">
+              </p>
+              <p class="control">
+                <button name="confidence" onclick="displayConfidence()" class="button is-primary">Display
+                  Confidence</button>
+              </p>
+            </div>
+
+
+          </div>
+
+          <!-- <div class="field">
+            <button class="button is-primary" onclick="hyper()">Hyperaudio</button>
+          </div> -->
+          
+
+
+
+
+          <label for="deepspeech">DeepSpeech:</label>
+          <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech">
+
+          <button onclick="autoscrollOff()">Autoscrolling off</button>
+          
+
+          <div class="field">
+            <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
+            <label for="autosave">Autosave</label>
+          </div>
+
+          <div class="field">
+            <input id="autoscroll-off" type="checkbox" name="autoscroll-off" class="switch" checked="checked" value="autoscroll-off">
+            <label for="autoscroll-off">Interactive transcript</label>
+          </div>
+
+          <!-- <label for="autoscroll-off">Autoscrolling off:</label>
+          <input type="checkbox" name="autoscroll-off" id="autoscroll-off"> -->
+
+
+
+          <label for="user-delay">delay:</label>
+          <input type="number" id="user-delay" value="0">
+
+          
+        </div>
+      </div>
     </div>
 
-    <input type="file" id="files" name="files[]" multiple />
-    <output id="list"></output>
+    <div class="container"></div>
+    <div class="block">
+      <div class="columns">
+        <div class="column is-9">
+          <p>Timecode: <span id="timecodeOffset">00:00:00</span></p>
+          <div id="hypertranscript"
+            style="overflow-y:scroll; position:relative; height: 600px; border-style:dashed; border-width: 1px; border-color:#999; padding: 8px">
+            <article>
+              <section id="content" contenteditable="true">
+              </section>
+            </article>
+          </div>
 
-  <button class="button is-primary" onclick="hyper()">Hyperaudio</button>
-  <label for="audioUrl">audio url:</label>
-  <input type="text" id="audioUrl" placeholder="Enter audio url" value="audio-deep.mp3">
-  <button onclick="getAudioUrl()">Load audio</button>
+        </div>
+        <div class="column is-3">
+          <div class="block">
+            <div class="field">
+            <button class="button is-primary" name="get-annotations" onclick="getAnnotations()">get annotations</button>
+          </div>
+          <div class="field">
+            <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <label for="user-filename">json:</label>
-  <input type="text" id="user-filename" value="deepspeech.json">
-  <button onclick="displayTranscript()">Load Transcript</button>
-
-  <label for="deepspeech">DeepSpeech:</label>
-  <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech">
-
-  <button onclick="autoscrollOff()">Autoscrolling off</button>
-  <label for="autoscroll-off">Autoscrolling off:</label>
-  <input type="checkbox" name="autoscroll-off" id="autoscroll-off" value="autoscroll-off">
-
-  <div class="field">
-    <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
-    <label for="autosave">Autosave</label>
   </div>
-  
 
-  <label for="user-confidence">confidence:</label>
-  <input type="number" id="user-confidence" value="0.95">
-  <button name="confidence" onclick="displayConfidence()">Display Confidence</button>
 
-  <label for="user-delay">delay:</label>
-  <input type="number" id="user-delay" value="0">
 
-  <button name="clear-transcript" onclick="clearTranscript()">Clear Transcript</button>
+  </div>
 
-  <button name="get-annotations" onclick="getAnnotations()">get annotations</button>
-
-  <button name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
 
   <!-- <p>
     <form id="searchForm" style="float:right">
@@ -74,16 +197,8 @@
     </form>
   </p> -->
 
-  <p>  <audio id="hyperplayer" style="z-index: 5000000; position:relative;" src="audio/audio-deep.mp3" type="audio/mpeg" controls></audio>
-  </p>
 
-  <p>Timecode: <span id="timecodeOffset">00:00:00</span></p>
-  <div id="hypertranscript" style="overflow-y:scroll; height:600px; position:relative; border-style:dashed; border-width: 1px; border-color:#999; padding: 8px">
-    <article>
-      <section id="content" contenteditable="true">
-      </section>
-    </article>
-  </div>
+
 
   <script>
     window.offsetMs = 0 || 0;
@@ -97,12 +212,14 @@
   <script src="javascript/trint-player.js"></script>
   <script src="javascript/trint-player-share.js"></script>
 
+  <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
 
   <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->
-</div>
+  </div>
 
 </body>
 

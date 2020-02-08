@@ -79,6 +79,7 @@ var speakerTimes = [];
 var transcriptObject = [];
 
 function displayTranscript() {
+    
 
     // get json transcript from user input (default transcript.json)
     var json = "json/" + document.getElementById("user-filename").value;

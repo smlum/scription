@@ -1,8 +1,8 @@
 @charset "utf-8";
+
+$navbar-breakpoint: 200px;
+
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
+@import "../../node_modules/green-audio-player/dist/css/green-audio-player.min.css";
 
-p {
-    color: blue;
-    background-color: red;
-}

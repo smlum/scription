@@ -86,6 +86,8 @@ function exportToCsv() {
 
 $(document).ready(function () {
 
+    new GreenAudioPlayer('.gap-example');
+
     // load audio 
     var myAudio = document.getElementById("hyperplayer");
     var isPlaying = false;
@@ -195,6 +197,7 @@ function displayConfidence() {
 var autoscrollOffToggle = false;
 
 function autoscrollOff() {
+
     
     if (autoscrollOffToggle == false) {
         // to beat the javascript altering the color each span had to be selected

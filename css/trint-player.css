@@ -38,16 +38,21 @@
   color: #000;
 }
 
+#hypertranscript {
+  color: rgb(31, 31, 31);
+}
+
+
 #hypertranscript .active ~ span {
-  color: #666;
+  color: rgb(122, 122, 122);
 }
 
 #hypertranscript p.active ~ p span {
-  color: #666;
+  color: rgb(122, 122, 122);
 }
 
 #hypertranscript span.search-match {
-  background-color: rgb(156, 172, 199) !important;
+  background-color: rgb(156, 172, 199);
 }
 
 #hypertranscript sub:before {

@@ -1,3 +1,5 @@
+
+
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
     seconds = parseInt((duration / 1000) % 60),
@@ -143,6 +145,7 @@ function hyper(scrollOn) {
     hyperaudiolite.init('d', 'd');
 
   } else {
+    console.log('init');
     hyperaudiolite.init('hypertranscript', 'hyperplayer');
 
     // playbackRate listener

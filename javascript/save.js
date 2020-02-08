@@ -33,6 +33,9 @@ $(document).ready(function () {
         var autoscrollCheckbox = document.getElementById("autoscroll-off").checked;
         window.localStorage.setItem("autoscroll-off", autoscrollCheckbox);
         console.log("new autoscroll value:" + autoscrollCheckbox);
+        if (autoscrollCheckbox == true) {
+            hyper()
+        }
         autoscrollOff();
     });
 
