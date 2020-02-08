@@ -7,8 +7,9 @@
   <title>Transcriptoin Buddy</title>
   <link rel="stylesheet" href="css/trint-player.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="dist/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-arrows-bounce-dark.css"> -->
@@ -22,6 +23,11 @@
   
 
   <div class="container">
+
+    <div class="field">
+      <input id="switchExample" type="checkbox" name="switchExample" class="switch" checked="checked">
+      <label for="switchExample">Switch example</label>
+    </div>
 
     <input type="file" id="files" name="files[]" multiple />
     <output id="list"></output>

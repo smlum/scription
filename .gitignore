@@ -1,2 +1,6 @@
 # audio files
 *.mp3
+
+# node
+touch .gitignore && echo "node_modules" >> .gitignore
+node_modules
