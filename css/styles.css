@@ -25,7 +25,7 @@ html, body {
     background-color: white;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    padding-bottom: 5px;
     width: 100%;
     border: none;
     text-align: left;
@@ -34,9 +34,9 @@ html, body {
     transition: 0.4s;
     }
     
-    .active-accordion, .accordion:hover {
+    /* .active-accordion, .accordion:hover {
     background-color: #ccc; 
-    }
+    } */
     
     .panel {
     padding: 0 18px;

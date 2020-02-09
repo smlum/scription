@@ -27,14 +27,14 @@
 
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      
+
       <a class="navbar-item has-text-weight-bold" href="https://bulma.io">
         <h1 class="title is-4 has-text-weight-bold">
-        Transcription Buddy
-      </h1>
+          Transcription Buddy
+        </h1>
         <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
       </a>
-    
+
       <!-- 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -90,7 +90,7 @@
         </div>
         <div class="navbar-item">
           <div class="field">
-            <button class="button is-primary" onclick="clearTranscript()">Clear Transcript</button>
+            <button class="button is-primary" onclick="clearTranscript()">Clear transcript</button>
           </div>
         </div>
         <div class="navbar-item">
@@ -124,52 +124,52 @@
 
 
 
-          <!-- <input type="file" id="files" name="files[]" multiple />
+            <!-- <input type="file" id="files" name="files[]" multiple />
               <output id="list"></output> -->
 
-          <div class="field is-horizontal">
+            <div class="field is-horizontal">
 
-            <div class="gap-example field">
-              <audio id="hyperplayer" style="z-index: 5000000; position:relative;">
-                <source src="audio/audio-deep.mp3" type="audio/mpeg">
-              </audio>
-            </div>
+              <div class="gap-example field">
+                <audio id="hyperplayer" style="z-index: 5000000; position:relative;">
+                  <source src="audio/audio-deep.mp3" type="audio/mpeg">
+                </audio>
+              </div>
 
 
 
-            <div class="block">
-
-              <div class="field">
+              <div class="block">
 
                 <div class="field">
-                  <input id="confidence" type="checkbox" name="confidence" class="switch" checked="checked">
-                  <label for="confidence">Display confidence</label>
-                </div>
-                <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
+
+                  <div class="field">
+                    <input id="confidence" type="checkbox" name="confidence" class="switch is-small" checked="checked">
+                    <label for="confidence">Display confidence</label>
+                  </div>
+                  <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
 
 
-                <!-- <p class="control">
+                  <!-- <p class="control">
                 <button name="confidence" onclick="displayConfidence()" class="button is-primary">Display
                   Confidence</button>
               </p> -->
 
-                <div class="field">
-                  <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
-                  <label for="autosave">Autosave</label>
+                  <div class="field">
+                    <input id="autosave" type="checkbox" name="autosave" class="switch is-small" checked="checked">
+                    <label for="autosave">Autosave</label>
+                  </div>
+
+                  <div class="field">
+                    <input id="autoscroll-off" type="checkbox" name="autoscroll-off" class="switch is-small" checked="checked"
+                      value="autoscroll-off">
+                    <label for="autoscroll-off">Interactive transcript</label>
+                  </div>
+
                 </div>
 
-                <div class="field">
-                  <input id="autoscroll-off" type="checkbox" name="autoscroll-off" class="switch" checked="checked"
-                    value="autoscroll-off">
-                  <label for="autoscroll-off">Interactive transcript</label>
-                </div>
 
               </div>
 
-
-            </div>
-
-            <!-- <div class="field">
+              <!-- <div class="field">
             <button class="button is-primary" onclick="hyper()">Hyperaudio</button>
           </div> -->
 
@@ -177,96 +177,150 @@
 
 
 
-            <!-- <label for="deepspeech">DeepSpeech:</label>
+              <!-- <label for="deepspeech">DeepSpeech:</label>
           <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech"> -->
 
-            <!-- <button onclick="autoscrollOff()">Autoscrolling off</button> -->
+              <!-- <button onclick="autoscrollOff()">Autoscrolling off</button> -->
 
 
 
 
-            <!-- <label for="autoscroll-off">Autoscrolling off:</label>
+              <!-- <label for="autoscroll-off">Autoscrolling off:</label>
           <input type="checkbox" name="autoscroll-off" id="autoscroll-off"> -->
 
 
-            <!-- Add delay functionlity so that the user can manually correct when the audio playback is bad -->
-            <!-- <label for="user-delay">delay:</label>
+              <!-- Add delay functionlity so that the user can manually correct when the audio playback is bad -->
+              <!-- <label for="user-delay">delay:</label>
           <input type="number" id="user-delay" value="0"> -->
 
 
-          </div>
-
-          <div class="columns">
-            <div class="column">
-              <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
-              <div id="hypertranscript" style="overflow-y:scroll; position:relative; height: 600px;" class="textarea">
-                <article>
-                  <section id="content" contenteditable="true">
-                  </section>
-                </article>
-              </div>
             </div>
 
-          </div>
+            <div class="columns">
+              <div class="column">
+                <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
+                <div id="hypertranscript" style="overflow-y:scroll; position:relative" class="textarea">
+                  <article>
+                    <section id="content" contenteditable="true">
+                    </section>
+                  </article>
+                </div>
+              </div>
+
+            </div>
 
         </div>
-      </section>
+        </section>
 
-        
+
 
         <div class="column is-3">
           <section class="section">
-          <div class="block">
-            
+            <div class="block">
 
-            <h1 class="title is-4">Annotations</h1>
+
+              <h1 class="title is-4">Annotations</h1>
 
               <div class="accordion">
-                  <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                  <span class="tag is-primary is-light is-medium single-line" contenteditable="true">Primary</span>
-                  
-                  <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
-                    <span class="icon is-medium">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line category-1" contenteditable="true">Category 1</span>
 
-                
+                <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
               </div>
-              
               <div class="panel">
                 <div class="block">
-                <h1>category</h1>
-                <p>sd cdmf efv</p>
-                <hr>
-                <div class="field">
-                  <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
+                  <h1>category</h1>
+                  <p>sd cdmf efv</p>
+                  <hr>
+                  <div class="field">
+                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
+                      csv</button>
+                  </div>
                 </div>
               </div>
-              </div>
-    
-              <button class="accordion">Section 2</button>
-              <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-    
-              <button class="accordion">Section 3</button>
-              <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div> 
-  
 
-          <div class="block">
-            <div class="field">
-              <button contenteditable="true" class="button is-primary" name="get-annotations" onclick="getAnnotations()">get
-                annotations</button>
+
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line category-2" contenteditable="true">Category 2</span>
+
+                <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h1>category</h1>
+                  <p>sd cdmf efv</p>
+                  <hr>
+                  <div class="field">
+                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
+                      csv</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line category-3" contenteditable="true">Category 3</span>
+
+                <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h1>category</h1>
+                  <p>sd cdmf efv</p>
+                  <hr>
+                  <div class="field">
+                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
+                      csv</button>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line category-4" contenteditable="true">Category 4</span>
+
+                <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h1>category</h1>
+                  <p>sd cdmf efv</p>
+                  <hr>
+                  <div class="field">
+                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
+                      csv</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="block">
+                <!-- <div class="field">
+                  <button contenteditable="true" class="button is-primary" name="get-annotations"
+                    onclick="getAnnotations()">get
+                    annotations</button>
+                </div> -->
+                
+              </div>
             </div>
-            <div class="field">
-              <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
-            </div>
-          </div>
-        </div>
-        </section>
+          </section>
         </div>
 
       </div>
@@ -275,8 +329,8 @@
     <div class="container"></div>
     <div class="block">
       <div class="columns">
-        
-        
+
+
       </div>
     </div>
 
@@ -312,6 +366,31 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
+
+  <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+    
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <div class="field">
+              <button class="button is-primary is-outlined" name="export-transcript" onclick="">Export transcript</button>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="buttons">
+            <div class="field">
+              <button class="button is-primary is-outlined" name="export-to-csv" onclick="exportToCsv()">Export annotations</button>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </nav>
 
 
 

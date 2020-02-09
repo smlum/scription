@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 $navbar-breakpoint: 200px;
+$section-padding: 1rem 1.5rem;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
@@ -9,3 +10,32 @@ $navbar-breakpoint: 200px;
 
 @import "../../node_modules/green-audio-player/dist/css/green-audio-player.min.css";
 
+$tag-orange: #fedecd;
+$tag-yellow: #fbeed1;
+$tag-green: #cde7e2;
+$tag-blue: #d2e4f9;
+$tag-purple: #e1d2f9;
+$tag-pink: #f8cde6;
+$tag-red: #fecbcf;
+
+.category-1 {
+    background-color: $tag-orange !important;
+}
+.category-2 {
+    background-color: $tag-yellow !important;
+}
+.category-3 {
+    background-color: $tag-green !important;
+}
+.category-4 {
+    background-color: $tag-blue !important;
+}
+.category-5 {
+    background-color: $tag-purple !important;
+}
+.category-6 {
+    background-color: $tag-pink !important;
+}
+.category-7 {
+    background-color: $tag-red !important;
+}
