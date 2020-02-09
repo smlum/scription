@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Transcriptoin Buddy</title>
   <link rel="stylesheet" href="css/trint-player.css">
-  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="dist/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
+  <link rel="stylesheet" href="css/styles.css">
 
   <link rel="stylesheet" type="text/css"
     href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
@@ -27,10 +27,14 @@
 
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
+      
       <a class="navbar-item has-text-weight-bold" href="https://bulma.io">
+        <h1 class="title is-4 has-text-weight-bold">
         Transcription Buddy
+      </h1>
         <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
       </a>
+    
       <!-- 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -41,12 +45,59 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
+
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <a class="navbar-item">
-            Docs
+          <div class="field has-addons">
+            <!-- <p class="control">
+            <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+          </p> -->
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="country" id="audioUrl">
+                  <option value="audio.mp3">audio.mp3</option>
+                  <option value="Leo.mp3">Leo.mp3</option>
+                  <option value="audio-deep.mp3">audio-deep.mp3</option>
+                </select>
+              </div>
+            </div>
+            <p class="control">
+              <button onclick="getAudioUrl()" class="button is-primary">Load</button>
+            </p>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="field has-addons navbar-item">
+            <!-- <p class="control">
+            <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
+              value="deepspeech.json">
+          </p> -->
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="country" id="user-filename">
+                  <option value="deepspeech.json">deepspeech.json</option>
+                  <option value="test.json">test.json</option>
+                  <option value="L1.json">L1.json</option>
+                </select>
+              </div>
+            </div>
+            <p class="control">
+              <button onclick="displayTranscript()" class="button is-primary">Load</button>
+            </p>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="field">
+            <button class="button is-primary" onclick="clearTranscript()">Clear Transcript</button>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <!-- <button id="modal-button" class="button is-primary is-large modal-button" data-target="modal" aria-haspopup="true" onclick="modal()">Launch example modal</button> -->
+
+          <a class="navbar-item" id="modal-button">
+            Help
           </a>
           <div class="buttons">
             <a class="button is-primary" href="https://github.com/samFredLumley/transcription-buddy" target="_blank">
@@ -67,124 +118,165 @@
 
     <div class="block">
       <div class="columns">
-        <div class="column is-12">
+        <div class="column is-9">
+          <section class="section">
+
 
 
 
           <!-- <input type="file" id="files" name="files[]" multiple />
               <output id="list"></output> -->
 
+          <div class="field is-horizontal">
 
-          <div class="gap-example field">
-            <audio id="hyperplayer" style="z-index: 5000000; position:relative;">
-              <source src="audio/audio-deep.mp3" type="audio/mpeg">
-            </audio>
-          </div>
-
-
-
-          <div class="block">
-            <div class="field has-addons">
-              <p class="control">
-                <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
-              </p>
-              <p class="control">
-                <button onclick="getAudioUrl()" class="button is-primary">Load</button>
-              </p>
-            </div>
-            <div class="field has-addons">
-              <p class="control">
-                <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
-                  value="deepspeech.json">
-              </p>
-              <p class="control">
-                <button onclick="displayTranscript()" class="button is-primary">Load</button>
-              </p>
+            <div class="gap-example field">
+              <audio id="hyperplayer" style="z-index: 5000000; position:relative;">
+                <source src="audio/audio-deep.mp3" type="audio/mpeg">
+              </audio>
             </div>
 
-            <div class="field">
-              <button class="button is-primary" onclick="clearTranscript()">Clear Transcript</button>
-            </div>
 
-            <div class="field is-grouped">
-              <p class="control">
-              </p>
-                <input id="confidence" type="checkbox" name="confidence" class="switch" checked="checked">
-                <label for="confidence">Confidence</label>
-                <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95">
 
-              
-              <!-- <p class="control">
+            <div class="block">
+
+              <div class="field">
+
+                <div class="field">
+                  <input id="confidence" type="checkbox" name="confidence" class="switch" checked="checked">
+                  <label for="confidence">Display confidence</label>
+                </div>
+                <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
+
+
+                <!-- <p class="control">
                 <button name="confidence" onclick="displayConfidence()" class="button is-primary">Display
                   Confidence</button>
               </p> -->
+
+                <div class="field">
+                  <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
+                  <label for="autosave">Autosave</label>
+                </div>
+
+                <div class="field">
+                  <input id="autoscroll-off" type="checkbox" name="autoscroll-off" class="switch" checked="checked"
+                    value="autoscroll-off">
+                  <label for="autoscroll-off">Interactive transcript</label>
+                </div>
+
+              </div>
+
+
             </div>
 
-
-          </div>
-
-          <!-- <div class="field">
+            <!-- <div class="field">
             <button class="button is-primary" onclick="hyper()">Hyperaudio</button>
           </div> -->
-          
 
 
 
 
-          <label for="deepspeech">DeepSpeech:</label>
-          <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech">
 
-          <!-- <button onclick="autoscrollOff()">Autoscrolling off</button> -->
-          
+            <!-- <label for="deepspeech">DeepSpeech:</label>
+          <input type="checkbox" name="DeepSpeech" id="deepspeech" value="deepspeech"> -->
 
-          <div class="field">
-            <input id="autosave" type="checkbox" name="autosave" class="switch" checked="checked">
-            <label for="autosave">Autosave</label>
-          </div>
+            <!-- <button onclick="autoscrollOff()">Autoscrolling off</button> -->
 
-          <div class="field">
-            <input id="autoscroll-off" type="checkbox" name="autoscroll-off" class="switch" checked="checked" value="autoscroll-off">
-            <label for="autoscroll-off">Interactive transcript</label>
-          </div>
 
-          <!-- <label for="autoscroll-off">Autoscrolling off:</label>
+
+
+            <!-- <label for="autoscroll-off">Autoscrolling off:</label>
           <input type="checkbox" name="autoscroll-off" id="autoscroll-off"> -->
 
 
-          <!-- Add delay functionlity so that the user can manually correct when the audio playback is bad -->
-          <!-- <label for="user-delay">delay:</label>
+            <!-- Add delay functionlity so that the user can manually correct when the audio playback is bad -->
+            <!-- <label for="user-delay">delay:</label>
           <input type="number" id="user-delay" value="0"> -->
 
-          
+
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
+              <div id="hypertranscript" style="overflow-y:scroll; position:relative; height: 600px;" class="textarea">
+                <article>
+                  <section id="content" contenteditable="true">
+                  </section>
+                </article>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+      </section>
+
+        
+
+        <div class="column is-3">
+          <section class="section">
+          <div class="block">
+            
+
+            <h1 class="title is-4">Annotations</h1>
+
+              <div class="accordion">
+                  <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                  <span class="tag is-primary is-light is-medium single-line" contenteditable="true">Primary</span>
+                  
+                  <a href="#" class="is-pulled-right accordion-down" aria-label="more options">
+                    <span class="icon is-medium">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+
+                
+              </div>
+              
+              <div class="panel">
+                <div class="block">
+                <h1>category</h1>
+                <p>sd cdmf efv</p>
+                <hr>
+                <div class="field">
+                  <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
+                </div>
+              </div>
+              </div>
+    
+              <button class="accordion">Section 2</button>
+              <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+    
+              <button class="accordion">Section 3</button>
+              <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div> 
+  
+
+          <div class="block">
+            <div class="field">
+              <button contenteditable="true" class="button is-primary" name="get-annotations" onclick="getAnnotations()">get
+                annotations</button>
+            </div>
+            <div class="field">
+              <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
+            </div>
+          </div>
+        </div>
+        </section>
+        </div>
+
       </div>
     </div>
 
     <div class="container"></div>
     <div class="block">
       <div class="columns">
-        <div class="column is-9">
-          <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
-          <div id="hypertranscript"
-            style="overflow-y:scroll; position:relative"
-            class="textarea">
-            <article>
-              <section id="content" contenteditable="true">
-              </section>
-            </article>
-          </div>
-
-        </div>
-        <div class="column is-3">
-          <div class="block">
-            <div class="field">
-            <button class="button is-primary" name="get-annotations" onclick="getAnnotations()">get annotations</button>
-          </div>
-          <div class="field">
-            <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to csv</button>
-          </div>
-          </div>
-        </div>
+        
+        
       </div>
     </div>
 
@@ -202,6 +294,24 @@
     </form>
   </p> -->
 
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <!-- Any other Bulma elements you want -->
+      <section class="modal-card-body">
+        <div class="content">
+          <h1>Hello World</h1>
+          <p>Lorem ipsum dolor sit ametius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
+            odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+          <h2>Second level</h2>
+          <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus
+            mi, sit amet commodo arcuhoncus lacus dapibue nisl.</p>
+
+        </div>
+      </section>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
 
 
 
@@ -216,6 +326,8 @@
   <script src="javascript/hyperaudio-lite.js"></script>
   <script src="javascript/trint-player.js"></script>
   <script src="javascript/trint-player-share.js"></script>
+
+  <script src="javascript/bulma.js"></script>
 
   <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script>
 

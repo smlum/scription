@@ -120,14 +120,15 @@ htmlWordsLen = htmlWords.length;
 // };
 
 // if autoscroll disabled then don't make transcript interactive
-var autoScrollCheck = document.getElementById("deepspeech").checked;
-if (!autoScrollCheck) {
-  setTimeout(
-    function () {
-      hyper(true);
-      console.log('transcript now interactive');
-    }, 2000)
-}
+var autoScrollCheck = document.getElementById("autoscroll-off").checked;
+// if (autoScrollCheck) {
+//   setTimeout(
+//     function () {
+//       console.log('transcript being initiated');
+//       hyper(true);
+      
+//     }, 1000)
+// }
 
 
 
@@ -137,11 +138,8 @@ function hyper(scrollOn) {
   if (scrollOn == false) {
     // hyperaudiolite.init('plop', 'jns');
 
-    setTimeout(
-      function () {
-        console.log('mess');
-
-      }, 1000)
+    // puts wrong values into hyperaudio to turn it off
+    // TODO implement something less dumb
     hyperaudiolite.init('d', 'd');
 
   } else {
@@ -176,13 +174,14 @@ function hyper(scrollOn) {
     //   false,
     // );
 
-    var updateTimecode = function () {
-      var currentTimeMs = v.currentTime * 1000;
-      var time = currentTimeMs + window.offsetMs;
-      timecodeOffset.innerHTML = msToTime(time);
-    };
-    updateTimecode();
-    v.addEventListener('timeupdate', updateTimecode);
+    // below was for when timecode was displayed
+    // var updateTimecode = function () {
+    //   var currentTimeMs = v.currentTime * 1000;
+    //   var time = currentTimeMs + window.offsetMs;
+    //   timecodeOffset.innerHTML = msToTime(time);
+    // };
+    // updateTimecode();
+    // v.addEventListener('timeupdate', updateTimecode);
   }
 
 };

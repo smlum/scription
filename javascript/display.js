@@ -1,7 +1,6 @@
 // This script converts the json transcript file to html
 // so that hyperaudio-lite can interpret it
 
-
 // function handleFileSelect(evt) {
 //     var files = evt.target.files; // FileList object
 
@@ -104,7 +103,7 @@ function displayTranscript() {
         // parse the DeepSPeech formatted json
 
         if (data.words) {
-            console.log('Mozilla formatted data  detected');
+            console.log('Mozilla formatted data detected');
         // if (document.getElementById('deepspeech').checked) {
             var results = data.words
 
@@ -414,6 +413,17 @@ function displayTranscript() {
         $('.whole').html(obj);
 
     });
+
+
+    var autoScrollCheck = document.getElementById("autoscroll-off").checked;
+    if (autoScrollCheck) {
+    setTimeout(
+        function () {
+        console.log('transcript being initiated');
+        hyper(true);
+      
+        }, 1000)
+    }
 
 };
 

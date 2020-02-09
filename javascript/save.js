@@ -1,5 +1,6 @@
 // script to autosave to local storage
 
+
 // TODO: stop javascript running when page not active
 
 // check for idleness every 10 seconds
@@ -98,7 +99,8 @@ function loadSavedText() {
             if (previousCheck == "false") {
                 console.log("no autosave");
                 document.getElementById("autosave").checked = false;
-                displayTranscript()
+                // uncomment for automatic display
+                // displayTranscript()
             } else if (previousCheck == "true") {
                 console.log("autosave enabled");
                 document.getElementById("autosave").checked = true;

@@ -204,7 +204,7 @@ function autoscrollOff() {
         $("[data-m]").addClass("not-interactive")
         $(".timecode").addClass("not-interactive")
         autoscrollOffToggle = true
-        console.log('autoscroll off');
+        console.log('interactive transcript off');
         hyper(false);
     } else if (autoscrollOffToggle == true) {
         $(".not-interactive").removeClass("not-interactive");
