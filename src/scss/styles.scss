@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 $navbar-breakpoint: 200px;
-$section-padding: 1rem 1.5rem;
+$section-padding: 1rem 1rem;
+$navbar-background-color: #f7f6f3;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
