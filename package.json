@@ -7,7 +7,8 @@
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "serve": "browser-sync start --server --files 'dist/css/*.css, **/*.html, **/*.js'",
     "watch:css": "onchange 'src/scss' -- npm run scss",
-    "start": "run-p serve watch:css"
+    "start": "run-p serve watch:css",
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,13 @@
     "bulma": "^0.8.0",
     "bulma-switch": "^2.0.0",
     "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.0"
   },
   "dependencies": {
     "amplitudejs": "^5.0.3",
+    "express": "^4.17.1",
     "green-audio-player": "^1.0.11"
   }
 }

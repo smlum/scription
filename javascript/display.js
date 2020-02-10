@@ -82,6 +82,7 @@ function displayTranscript() {
 
     // get json transcript from user input (default transcript.json)
     var json = "json/" + document.getElementById("user-filename").value;
+    console.log($('#user-filename').value);
     console.log("loading: " + json);
 
     $.getJSON(json, function (data) {

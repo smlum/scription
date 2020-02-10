@@ -13,12 +13,28 @@ html, body {
     height: 100%;
 }
 
+.full-height {
+    height: 100%;
+}
+
 /* don't allow tags to be editable over multiple lines */
 .single-line {
     overflow: hidden;
 }
 [contenteditable="true"].single-line br {
     display:none;
+}
+
+.no-right-padding {
+    padding-right: 0px;
+}
+
+.green-audio-player {
+    min-width: 350px;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .accordion {

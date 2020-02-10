@@ -3,6 +3,8 @@
 $navbar-breakpoint: 200px;
 $section-padding: 1rem 1rem;
 $navbar-background-color: #f7f6f3;
+$headerHeight: 72px;
+$footerHeight: 56px;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
@@ -10,6 +12,13 @@ $navbar-background-color: #f7f6f3;
 @import '../../node_modules/@creativebulma/bulma-collapsible/node_modules/bulma/bulma.sass';
 
 @import "../../node_modules/green-audio-player/dist/css/green-audio-player.min.css";
+
+.myboody {
+    // min-height: calc( 100vh - $headerHeight - $footerHeight - 12);
+    background-color: red !important;
+    // min-height: calc( 100vh - 128px);
+}
+
 
 $tag-orange: #fedecd;
 $tag-yellow: #fbeed1;
