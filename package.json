@@ -8,7 +8,7 @@
     "serve": "browser-sync start --server --files 'dist/css/*.css, **/*.html, **/*.js'",
     "watch:css": "onchange 'src/scss' -- npm run scss",
     "start": "run-p serve watch:css",
-    "dev": "nodemon index"
+    "dev": "node index"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,9 @@
     "browser-sync": "^2.26.7",
     "bulma": "^0.8.0",
     "bulma-switch": "^2.0.0",
+    "connect-browser-sync": "^2.1.0",
     "node-sass": "^4.13.1",
+    "node-sass-middleware": "^0.11.0",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.0"

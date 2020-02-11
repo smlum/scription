@@ -2,12 +2,39 @@ const express = require('express')
 const path = require('path')
 const app = express();
 
+var sassMiddleware = require('node-sass-middleware');
+
 const audioFolder = './audio/';
 const jsonFolder = './json/';
 const fs = require('fs');
 
 var audioList
 var jsonList
+
+if (app.get('env') == 'development') {
+    var browserSync = require('browser-sync');
+    var config = {
+        files: ["**/*.html", "dist/css/*.css", "**/*.js", "sass/**/*.scss"],
+        logLevel: 'debug',
+        logSnippet: false,
+        reloadDelay: 3000,
+        reloadOnRestart: true
+    };
+    var bs = browserSync(config);
+    app.use(require('connect-browser-sync')(bs));
+}
+
+// TODO fix. tried to add this, it didn;t work, 
+app.use(sassMiddleware({
+    /* Options */
+    src: path.join(__dirname, 'src/scss'),
+    dest: path.join(__dirname, 'dist/css'),
+    debug: true,
+    indentedSyntax : false,
+    outputStyle: 'compressed',
+    // prefix:  '/dist/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
+
 
 // list files in audio directory
 fs.readdir(audioFolder, (err, files) => {
