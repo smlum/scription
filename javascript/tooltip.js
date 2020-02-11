@@ -6,11 +6,11 @@ var selectedText;
 // twttr.widgets.load();
 
 // this function is activated on mouseup after user has highlighted text
-function addShareTool(a,previousSelection) {
+function addShareTool(a, previousSelection) {
 
   if (window.getSelection) {
     selection = window.getSelection();
-    
+
   } else if (document.selection) {
     selection = document.selection.createRange();
   }
@@ -72,7 +72,7 @@ function fillShare() {
 
 
   var url = window.location.href;
-  var lastCharPos = url.length - 1;  
+  var lastCharPos = url.length - 1;
 
   if (url.charAt(lastCharPos) == '/') {
     // URL ends with a '/'
@@ -82,7 +82,7 @@ function fillShare() {
   var shareText = selection + ' ' + url + params;
 
   selectedText = selection;
-  
+
   var overspill = shareText.length - 140;
 
   selection += '';
@@ -112,20 +112,20 @@ function fillShare() {
   if (!a) {
     console.log('already selected');
     // b.contents().unwrap()
-    
+
   } else {
     previousSelection = "";
   }
 
   document.getElementById('tweet-box').innerHTML =
-    '<div class="tweet-btn-hldr">' + 
-    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' + 
-    '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' + 
-    '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' + 
-    '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' + 
-    '<button class="annotation-button button-5" onclick="SelectText(5)">select</button> <br/>' + 
-    '<button class="annotation-button button-6" onclick="SelectText(6)">select</button> <br/>' + 
-    '<button class="annotation-button button-7" onclick="SelectText(7)">select</button> <br/>' + 
+    '<div class="tweet-btn-hldr">' +
+    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' +
+    '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' +
+    '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' +
+    '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' +
+    '<button class="annotation-button button-5" onclick="SelectText(5)">select</button> <br/>' +
+    '<button class="annotation-button button-6" onclick="SelectText(6)">select</button> <br/>' +
+    '<button class="annotation-button button-7" onclick="SelectText(7)">select</button> <br/>' +
     '</div>';
   drop.position();
 
@@ -138,27 +138,64 @@ var $textarea = $('#content');
 function SelectText(n) {
 
 
+  // store selection in a variable
   var selection = window.getSelection();
+
+
 
   // Make sure something was selected
   if (!selection.rangeCount) {
+
     return;
   }
 
-  // class name of the button
-  var range = selection.getRangeAt(0);
-  var $container = document.createElement('span');
-  $container.className = "selected selected-" + n;
+  // get the text string
+  var selText = selection.toString();
+  var annotationClassName = ".annotation-content-" + n;
 
-  // Move the contents of the selection into the container
-  $container.appendChild(range.extractContents());
+  // get time of annotation
+  // create a document fragment from the selection
+  var fragment = selection.getRangeAt(0).cloneContents();
 
-  // Move the container into the now empty range
-  range.insertNode($container);
+  // parse the document fragment for the first element
+  var firstElement = fragment.firstElementChild;
+  // get the time attribute from the first element
 
-  // console.log(selectedText);
-  // var spn = '<span class="selected">' + selectedText + '</span>';
-  // window.getSelection().html().replace(selectedText, "");
+  // check whether more than a word has been selected
+  if (firstElement) {
+
+    var firstElementStartTime = firstElement.getAttribute('data-m');
+
+    // convert milliseconds to minutes seconds
+    var formattedStartTime = fmtMSS(firstElementStartTime / 1000)
+
+    var newAnnotation = "<p>[" + formattedStartTime + "] " + selText + "</p>";
+    $(annotationClassName).append(newAnnotation)
+    // copy it
+
+    // class name of the button
+    // this doesn't seem to actually get that? n give the class of the button
+    var range = selection.getRangeAt(0);
+
+
+    var $container = document.createElement('span');
+    $container.className = "selected selected-" + n;
+
+    // Move the contents of the selection into the container
+    $container.appendChild(range.extractContents());
+
+    // Move the container into the now empty range
+    range.insertNode($container);
+
+    // console.log(selectedText);
+    // var spn = '<span class="selected">' + selectedText + '</span>';
+    // window.getSelection().html().replace(selectedText, "");
+
+  } else {
+    console.log('just a fragment');
+  }
+
+  
 }
 
 // function SelectText(n,previousSelection) {
@@ -192,11 +229,10 @@ function SelectText(n) {
 $('#content').on("click", ".selected", function () {
   // true means it's already been highlighted
   var $this = $(this);
-  addShareTool(false,$this)
-  console.log();
-  
+  addShareTool(false, $this)
+
   // console.log($this.contents().unwrap());
-  
+
 });
 
 
