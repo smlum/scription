@@ -3,7 +3,29 @@ var params = '';
 var drop;
 var selectedText;
 
+// when category in tooltip is clicked, trigger event for selected text
+$(document).on("click", "a#category-1-button", function () {
+  SelectText(1)
+})
+
+function highlight(element){
+  console.log('hi');
+  console.log(element);
+  $(element).addClass("highlightt");
+  setTimeout(function () {
+        $(element).removeClass('highlightt');
+  }, 2000);
+}
+
+
 // twttr.widgets.load();
+
+var contentss = $('.category-1').html();
+$('.category-1').blur(function () {
+  if (contentss != $(this).html()) {
+    contentss = $(this).html();
+  }
+});
 
 // this function is activated on mouseup after user has highlighted text
 function addShareTool(a, previousSelection) {
@@ -117,15 +139,19 @@ function fillShare() {
     previousSelection = "";
   }
 
+  // get category name information
+  var cat1 = $('.category-1').html();
+  var cat2 = $('.category-2').html();
+  var cat3 = $('.category-3').html();
+  var cat4 = $('.category-4').html();
+
+
   document.getElementById('tweet-box').innerHTML =
-    '<div class="tweet-btn-hldr">' +
-    '<button class="annotation-button button-1" onclick="SelectText(1)">select</button> <br/>' +
-    '<button class="annotation-button button-2" onclick="SelectText(2)">select</button> <br/>' +
-    '<button class="annotation-button button-3" onclick="SelectText(3)">select</button> <br/>' +
-    '<button class="annotation-button button-4" onclick="SelectText(4)">select</button> <br/>' +
-    '<button class="annotation-button button-5" onclick="SelectText(5)">select</button> <br/>' +
-    '<button class="annotation-button button-6" onclick="SelectText(6)">select</button> <br/>' +
-    '<button class="annotation-button button-7" onclick="SelectText(7)">select</button> <br/>' +
+    '<div class="tweet-btn-hldr field is-grouped is-grouped-multiline">' +
+    '<div class="control"><div class="tags has-addons"><a id="category-1-button" class="tag is-link is-light grey category-1 onclick="SelectText(1)" href="javascript:void(0);">' + cat1 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-2-button" class="tag is-link is-light grey category-2 onclick="SelectText(2)" href="javascript:void(0);">' + cat2 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-3-button" class="tag is-link is-light grey category-3 onclick="SelectText(3)" href="javascript:void(0);">' + cat3 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-4-button" class="tag is-link is-light grey category-4 onclick="SelectText(4)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
     '</div>';
   drop.position();
 
@@ -152,6 +178,7 @@ function SelectText(n) {
   // get the text string
   var selText = selection.toString();
   var annotationClassName = ".annotation-content-" + n;
+  var annotationLabel = ".category-" + n;
 
   // get time of annotation
   // create a document fragment from the selection
@@ -169,9 +196,14 @@ function SelectText(n) {
     // convert milliseconds to minutes seconds
     var formattedStartTime = fmtMSS(firstElementStartTime / 1000)
 
-    var newAnnotation = "<p>[" + formattedStartTime + "] " + selText + "</p>";
+    // append selected annotation to the accordion panel
+    var newAnnotation = "<p class='content'>[" + formattedStartTime + "] " + selText + "</p>";
     $(annotationClassName).append(newAnnotation)
-    // copy it
+    
+    // make the category label glow
+    highlight(annotationLabel);
+
+    
 
     // class name of the button
     // this doesn't seem to actually get that? n give the class of the button
@@ -195,7 +227,8 @@ function SelectText(n) {
     console.log('just a fragment');
   }
 
-  
+
+
 }
 
 // function SelectText(n,previousSelection) {

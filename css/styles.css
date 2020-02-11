@@ -21,6 +21,40 @@ html, body {
 .single-line {
     overflow: hidden;
 }
+
+/* highlight shadow effect on category selection */
+@keyframes highlightt {
+    0% {
+        -webkit-box-shadow: 0px 0px 8px 4px rgba(184,184,184,0.61);
+        -moz-box-shadow: 0px 0px 8px 4px rgba(184,184,184,0.61);
+        box-shadow: 0px 0px 8px 4px rgba(184,184,184,0.61);
+    }
+    100% {
+        
+    }
+}
+.highlightt {
+    animation: highlightt 3s;
+}
+
+.panel {
+    min-height: 50px;
+}
+
+/* for tag anchor text */
+.grey {
+    color: rgba(0,0,0,0.7) !important;
+}
+
+.drop-content {
+    max-width: 250px;
+}
+
+.annotation-section {
+    height: 100%;
+    overflow: scroll;
+}
+
 [contenteditable="true"].single-line br {
     display:none;
 }
