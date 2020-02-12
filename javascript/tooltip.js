@@ -3,12 +3,12 @@ var params = '';
 var drop;
 var selectedText;
 
-function highlight(element){
+function highlight(element) {
   console.log('hi');
   console.log(element);
   $(element).addClass("highlightt");
   setTimeout(function () {
-        $(element).removeClass('highlightt');
+    $(element).removeClass('highlightt');
   }, 2000);
 }
 
@@ -172,6 +172,32 @@ function RemoveAnnotation() {
   // $("span").find("[data-m='" + firstElementStartTime + "']").css('background-color', 'red'); 
   $("span").find("[data-m='" + firstElementStartTime + "']").unwrap();
 
+  var findClassAnnotation = "." + firstElementStartTime + "-annotation";
+  console.log(findClassAnnotation);
+
+
+  var n = $(findClassAnnotation).data("cat");
+  
+  // make annotation category glow on remove
+
+  // need to get annotation category number
+
+  // sleect data aatribute data-cat - it is the category number we want: n
+  // it's of the paragraph with id 
+  // all info hightlight wants is category number
+  // that's stored in the data-cat category
+  // of the paragraph that's about to get deleted
+  // .data("id")
+  // var n = 10;
+  var annotationLabel = ".category-" + n;
+  highlight(annotationLabel);
+
+  // remove annotations para
+  $(findClassAnnotation).remove()
+
+  // $("div").find("[class='" + firstElementStartTime + "'-annotation]").remove();;
+
+
 
   // $('.row').replaceWith(function() {
   //   return $('ul', this);
@@ -179,9 +205,9 @@ function RemoveAnnotation() {
   // $('.row').replaceWith(function() {
   //   return $('ul', this);
   //   });
-//   $(w.startContainer.parentElement).replaceWith(function () {
-//     return $(this).contents();
-// });
+  //   $(w.startContainer.parentElement).replaceWith(function () {
+  //     return $(this).contents();
+  // });
 }
 
 
@@ -221,13 +247,20 @@ function SelectText(n) {
     var formattedStartTime = fmtMSS(firstElementStartTime / 1000)
 
     // append selected annotation to the accordion panel
-    var newAnnotation = "<p class='content'>[" + formattedStartTime + "] " + selText + "</p>";
-    $(annotationClassName).append(newAnnotation)
-    
+    var newAnnotation = "<p data-cat='" + n + "' class='content " + firstElementStartTime + "-annotation" + "'>[" + formattedStartTime + "] " + selText + "</p>";
+    $(annotationClassName).append(newAnnotation);
+
+
+    // className = firstElementStartTime + "-annotation";
+    // $(annotationClassName).addClass(className)
+
+    // add unique classname from timecode
+    // firstElementStartTime
+
     // make the category label glow
     highlight(annotationLabel);
 
-    
+
 
     // class name of the button
     // this doesn't seem to actually get that? n give the class of the button
