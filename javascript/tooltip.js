@@ -3,11 +3,6 @@ var params = '';
 var drop;
 var selectedText;
 
-// when category in tooltip is clicked, trigger event for selected text
-$(document).on("click", "a#category-1-button", function () {
-  SelectText(1)
-})
-
 function highlight(element){
   console.log('hi');
   console.log(element);
@@ -148,17 +143,46 @@ function fillShare() {
 
   document.getElementById('tweet-box').innerHTML =
     '<div class="tweet-btn-hldr field is-grouped is-grouped-multiline">' +
-    '<div class="control"><div class="tags has-addons"><a id="category-1-button" class="tag is-link is-light grey category-1 onclick="SelectText(1)" href="javascript:void(0);">' + cat1 + '</a></div></div>' +
-    '<div class="control"><div class="tags has-addons"><a id="category-2-button" class="tag is-link is-light grey category-2 onclick="SelectText(2)" href="javascript:void(0);">' + cat2 + '</a></div></div>' +
-    '<div class="control"><div class="tags has-addons"><a id="category-3-button" class="tag is-link is-light grey category-3 onclick="SelectText(3)" href="javascript:void(0);">' + cat3 + '</a></div></div>' +
-    '<div class="control"><div class="tags has-addons"><a id="category-4-button" class="tag is-link is-light grey category-4 onclick="SelectText(4)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-1-button" class="tag is-link is-light grey category-1" onclick="SelectText(1)" href="javascript:void(0);">' + cat1 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-2-button" class="tag is-link is-light grey category-2" onclick="SelectText(2)" href="javascript:void(0);">' + cat2 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-3-button" class="tag is-link is-light grey category-3" onclick="SelectText(3)" href="javascript:void(0);">' + cat3 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-4-button" class="tag is-link is-light grey category-4" onclick="SelectText(4)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-remove-button" class="tag is-link is-light grey category-remove" onclick="RemoveAnnotation()" href="javascript:void(0);">' + 'Remove' + '</a></div></div>' +
     '</div>';
   drop.position();
 
   // twttr.widgets.load();
 }
 
+
+
 var $textarea = $('#content');
+
+function RemoveAnnotation() {
+  selection = window.getSelection();
+  var fragment = selection.getRangeAt(0).cloneContents();
+  var firstElement = fragment.firstElementChild;
+  var firstElementStartTime = firstElement.getAttribute('data-m');
+
+
+  // console.log(selection.getRangeAt(0));
+  console.log(firstElementStartTime);
+  findClass = "." + firstElementStartTime;
+  console.log(findClass);
+  // $("span").find("[data-m='" + firstElementStartTime + "']").css('background-color', 'red'); 
+  $("span").find("[data-m='" + firstElementStartTime + "']").unwrap();
+
+
+  // $('.row').replaceWith(function() {
+  //   return $('ul', this);
+  //   });
+  // $('.row').replaceWith(function() {
+  //   return $('ul', this);
+  //   });
+//   $(w.startContainer.parentElement).replaceWith(function () {
+//     return $(this).contents();
+// });
+}
 
 
 function SelectText(n) {
@@ -258,6 +282,8 @@ function SelectText(n) {
 //   // window.getSelection().html().replace(selectedText, "");
 // }
 
+// allow annotations to be edited
+
 // highlight annotated sections on clicking them
 $('#content').on("click", ".selected", function () {
   // true means it's already been highlighted
@@ -267,6 +293,7 @@ $('#content').on("click", ".selected", function () {
   // console.log($this.contents().unwrap());
 
 });
+
 
 
 function closeDrop() {

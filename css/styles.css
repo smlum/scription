@@ -132,6 +132,9 @@ html, body {
 .selected-7 {
     background-color: var(--selected-purple);
 }
+.selected-remove {
+    background-color: var(--selected-grey);
+}
 
 .button-1 {
     background-color: var(--selected-blue);
