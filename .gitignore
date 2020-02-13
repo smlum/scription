@@ -4,4 +4,7 @@
 # node
 node_modules
 
+#save data
+saves
+
 .DS_Store

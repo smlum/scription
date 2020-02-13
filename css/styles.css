@@ -1,12 +1,16 @@
 :root {
-    --selected-blue: hsl(220, 45%, 81%);
-    --selected-red: hsl(349, 40%, 84%);
-    --selected-yellow: hsl(52, 62%, 85%);
-    --selected-orange: hsl(27, 52%, 84%);
-    --selected-pink: hsl(308, 35%, 83%);
-    --selected-green: hsl(146, 66%, 88%);
-    --selected-purple: hsl(262, 32%, 83%);
+    --selected-blue: #d2e4f9;
+    --selected-red: #fecbcf;
+    --selected-yellow: #fbeed1;
+    --selected-orange: #fedecd;
+    --selected-pink: #f8cde6;
+    --selected-green: #cde7e2;
+    --selected-purple: #e1d2f9;
     --primary-text: #1a1916;
+}
+
+::selection {
+    background: rgba(0, 210, 179, 0.3); /* WebKit/Blink Browsers */
 }
 
 html, body {
@@ -112,25 +116,25 @@ html, body {
 }
 
 .selected-1 {
-    background-color: var(--selected-blue);
-}
-.selected-2 {
-    background-color: var(--selected-red);
-}
-.selected-3 {
-    background-color: var(--selected-yellow);
-}
-.selected-4 {
     background-color: var(--selected-orange);
 }
-.selected-5 {
-    background-color: var(--selected-pink);
+.selected-2 {
+    background-color: var(--selected-yellow);
 }
-.selected-6 {
+.selected-3 {
     background-color: var(--selected-green);
 }
-.selected-7 {
+.selected-4 {
+    background-color: var(--selected-blue);
+}
+.selected-5 {
     background-color: var(--selected-purple);
+}
+.selected-6 {
+    background-color: var(--selected-pink);
+}
+.selected-7 {
+    background-color: var(--selected-red);
 }
 .selected-remove {
     background-color: var(--selected-grey);

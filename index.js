@@ -6,6 +6,7 @@ var sassMiddleware = require('node-sass-middleware');
 
 const audioFolder = './audio/';
 const jsonFolder = './json/';
+const saveFolder = './saves/';
 const fs = require('fs');
 
 var audioList
@@ -46,9 +47,14 @@ fs.readdir(jsonFolder, (err, files) => {
     jsonList = files
 });
 
+// list files in save directory
+fs.readdir(saveFolder, (err, files) => {
+    saveList = files
+});
+
 
 app.get('/files', (req, res) => {
-    data = [audioList, jsonList]
+    data = [audioList, jsonList, saveList]
     res.send(data)
 })
 

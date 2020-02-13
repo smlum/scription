@@ -259,7 +259,7 @@ function displayTranscript() {
                 word = results.items[i].alternatives[0].content;
                 confidence = results.items[i].alternatives[0].confidence;
                 word_start_time = results.items[i].start_time;
-                word_start_time_ms = word_start_time * 1000
+                word_start_time_ms = Math.round(word_start_time * 1000);
                 if (results.items[i + 1] && results.items[i + 1].start_time) {
                     next_word_start_time = results.items[i + 1].start_time;
                     // TODO truncaste this as it can go to lots of decimal places

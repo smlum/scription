@@ -9,7 +9,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
 
-  <link rel="stylesheet" type="text/css" href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
   <link rel="stylesheet" href="dist/css/styles.css">
   <link rel="stylesheet" href="css/styles.css">
 
@@ -65,7 +66,7 @@
             <p class="control">
               <button onclick="getAudioUrl()" class="button is-primary">Load</button>
             </p>
-          </div> 
+          </div>
         </div>
         <div class="navbar-item">
           <div class="field has-addons navbar-item">
@@ -159,8 +160,8 @@
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
                     <div class="field">
-                      <input id="annotation-switch" type="checkbox" name="annotation-switch" class="switch is-rounded is-small"
-                        checked="checked">
+                      <input id="annotation-switch" type="checkbox" name="annotation-switch"
+                        class="switch is-rounded is-small" checked="checked">
                       <label for="annotation-switch">Annotation mode</label>
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
@@ -200,7 +201,8 @@
             <div class="columns full-height">
               <div class="column">
                 <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
-                <div id="hypertranscript" style="overflow-y:scroll; position:relative; height:calc(100% - 40px)" class="textarea">
+                <div id="hypertranscript" style="overflow-y:scroll; position:relative; height:calc(100% - 40px)"
+                  class="textarea">
                   <article>
                     <section id="content" contenteditable="true">
                     </section>
@@ -224,7 +226,8 @@
 
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-light is-medium single-line accordion-category category-1" contenteditable="true">Category 1</span>
+                <span class="tag is-light is-medium single-line accordion-category category-1"
+                  contenteditable="true">Category 1</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -238,11 +241,10 @@
                   <div class="annotation-content-1"></div>
                 </div>
               </div>
-
-
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-light is-medium single-line accordion-category category-2" contenteditable="true">Category 2</span>
+                <span class="tag is-light is-medium single-line accordion-category category-2"
+                  contenteditable="true">Category 2</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -252,20 +254,14 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h1>category</h1>
-                  <p>sd cdmf efv</p>
-                  <hr>
-                  <div class="field">
-                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
-                      csv</button>
-                  </div>
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-2"></div>
                 </div>
               </div>
-
-
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-light is-medium single-line accordion-category category-3" contenteditable="true">Category 3</span>
+                <span class="tag is-light is-medium single-line accordion-category category-3"
+                  contenteditable="true">Category 3</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -275,18 +271,14 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h1>category</h1>
-                  <p>sd cdmf efv</p>
-                  <hr>
-                  <div class="field">
-                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
-                      csv</button>
-                  </div>
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-3"></div>
                 </div>
               </div>
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-light is-medium single-line category-4" contenteditable="true">Category 4</span>
+                <span class="tag is-light is-medium single-line accordion-category category-4"
+                  contenteditable="true">Category 4</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -296,15 +288,63 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h1>category</h1>
-                  <p>sd cdmf efv</p>
-                  <hr>
-                  <div class="field">
-                    <button class="button is-primary" name="export-to-csv" onclick="exportToCsv()">Export to
-                      csv</button>
-                  </div>
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-4"></div>
                 </div>
               </div>
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line accordion-category category-5"
+                  contenteditable="true">Category 5</span>
+
+                <a href="#" class="accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-5"></div>
+                </div>
+              </div>
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line accordion-category category-6"
+                  contenteditable="true">Category 6</span>
+
+                <a href="#" class="accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-6"></div>
+                </div>
+              </div>
+              <div class="accordion">
+                <!-- <span class="single-line" contenteditable="true">Component</span> -->
+                <span class="tag is-light is-medium single-line accordion-category category-7"
+                  contenteditable="true">Category 7</span>
+
+                <a href="#" class="accordion-down" aria-label="more options">
+                  <span class="icon is-medium">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="panel">
+                <div class="block">
+                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <div class="annotation-content-7"></div>
+                </div>
+              </div>
+
+
 
 
               <div class="block">
@@ -378,14 +418,43 @@
 
       </div>
 
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="field has-addons">
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="country" id="html-load">
+
+                </select>
+              </div>
+            </div>
+            <p class="control">
+              <button onclick="LoadFromHtml()" class="button is-primary is-outlined">Load</button>
+            </p>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="filename" name="country" id="save-html-name">
+
+                </input>
+            </div>
+            <p class="control">
+              <button class="button is-primary is-outlined disabled" name="export-html" onclick="exportToHtml()">Save</button>
+            </p>
+          </div>
+        </div>
+      </div>
 
 
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
             <div class="field">
-              <button class="button is-primary is-outlined disabled" name="export-transcript" onclick="">Export
-                transcript</button>
+              <button class="button is-primary is-outlined disabled" name="export-transcript"
+                onclick="exportToTxt()">Export
+                transcript text</button>
             </div>
           </div>
         </div>
@@ -406,9 +475,6 @@
 
   <script>
     window.offsetMs = 0 || 0;
-
-
-
   </script>
 
   <script src="javascript/requests.js"></script>

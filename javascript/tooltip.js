@@ -4,13 +4,23 @@ var drop;
 var selectedText;
 
 function highlight(element) {
-  console.log('hi');
-  console.log(element);
-  $(element).addClass("highlightt");
-  setTimeout(function () {
-    $(element).removeClass('highlightt');
-  }, 2000);
+  if(element) {
+    $(element).addClass("highlightt");
+    setTimeout(function () {
+      $(element).removeClass('highlightt');
+    }, 3000);
+  }
 }
+
+
+$(document).click(function(event) { 
+  $target = $(event.target);
+  if(!$target.closest('#tweet-box').length && 
+  $('#tweet-box').is(":visible")) {
+    // $('#menucontainer').hide();
+    closeDrop();
+  }        
+});
 
 
 // twttr.widgets.load();
@@ -139,6 +149,9 @@ function fillShare() {
   var cat2 = $('.category-2').html();
   var cat3 = $('.category-3').html();
   var cat4 = $('.category-4').html();
+  var cat5 = $('.category-5').html();
+  var cat6 = $('.category-6').html();
+  var cat7 = $('.category-7').html();
 
 
   document.getElementById('tweet-box').innerHTML =
@@ -147,6 +160,9 @@ function fillShare() {
     '<div class="control"><div class="tags has-addons"><a id="category-2-button" class="tag is-link is-light grey category-2" onclick="SelectText(2)" href="javascript:void(0);">' + cat2 + '</a></div></div>' +
     '<div class="control"><div class="tags has-addons"><a id="category-3-button" class="tag is-link is-light grey category-3" onclick="SelectText(3)" href="javascript:void(0);">' + cat3 + '</a></div></div>' +
     '<div class="control"><div class="tags has-addons"><a id="category-4-button" class="tag is-link is-light grey category-4" onclick="SelectText(4)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-5-button" class="tag is-link is-light grey category-5" onclick="SelectText(5)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-6-button" class="tag is-link is-light grey category-6" onclick="SelectText(6)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
+    '<div class="control"><div class="tags has-addons"><a id="category-7-button" class="tag is-link is-light grey category-7" onclick="SelectText(7)" href="javascript:void(0);">' + cat4 + '</a></div></div>' +
     '<div class="control"><div class="tags has-addons"><a id="category-remove-button" class="tag is-link is-light grey category-remove" onclick="RemoveAnnotation()" href="javascript:void(0);">' + 'Remove' + '</a></div></div>' +
     '</div>';
   drop.position();
@@ -164,6 +180,8 @@ function RemoveAnnotation() {
   var firstElement = fragment.firstElementChild;
   var firstElementStartTime = firstElement.getAttribute('data-m');
 
+  // close the drop 
+  closeDrop();
 
   // console.log(selection.getRangeAt(0));
   console.log(firstElementStartTime);
@@ -284,7 +302,7 @@ function SelectText(n) {
     console.log('just a fragment');
   }
 
-
+  closeDrop();
 
 }
 

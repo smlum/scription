@@ -1,5 +1,70 @@
 // script to autosave to local storage
 
+// load html from file
+
+function LoadFromHtml() {
+    var htmlPath = "saves/" + document.getElementById("html-load").value;
+    $("#content").load(htmlPath);
+
+    console.log(htmlPath);
+}
+
+// export transcrpt
+// function exportToTxt() {
+//     console.log('saving');
+//     var blob = new Blob(["Welcome to Websparrow.org."],
+//         { type: "text/plain;charset=utf-8" });
+//     saveAs(blob, "static.txt");
+// }
+
+// function exportToTxt() {
+//     var content = "bla"
+//     var fileName = "blo.txt"
+//     var contentType = "text/plain;charset=utf-8"
+//     var a = document.createElement("a");
+//     var file = new Blob([content], {type: contentType});
+//     a.href = URL.createObjectURL(file);
+//     a.downloadd = fileName;
+//     a.click();
+// }
+// downloadd(jsonData, 'json.txt', 'text/plain');
+
+// export just text to file
+function exportToTxt() {
+    var filename = "transcript.txt";
+    // var text = document.getElementById("content").innerHTML;
+    var text = document.getElementById("content").textContent;;
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// export raw html to file - can late be reloaded
+function exportToHtml() {
+    var userFilename = $('#save-html-name').val();
+
+    var filename = userFilename;
+    console.log('saving: ' + filename);
+    var text = document.getElementById("content").innerHTML;
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
 
 // TODO: stop javascript running when page not active
 
@@ -11,7 +76,7 @@ $(document).ready(function () {
     // save configuration as cookies
 
     // save autosave configuration
-    $('#autosave').change(function() {
+    $('#autosave').change(function () {
         // store the value of the checkbox when it's changed
         var autosaveCheckbox = document.getElementById("autosave").checked;
         window.localStorage.setItem("autosave-check", autosaveCheckbox);
@@ -22,14 +87,14 @@ $(document).ready(function () {
     });
 
     // save deepspeech configuration
-    $('#deepspeech').change(function() {
+    $('#deepspeech').change(function () {
         // store the value of the checkbox when it's changed
         var deepspeechCheckbox = document.getElementById("deepspeech").checked;
         window.localStorage.setItem("deepspeech-check", deepspeechCheckbox);
         console.log("new deepspeech value:" + deepspeechCheckbox);
     });
 
-    $('#autoscroll-off').change(function() {
+    $('#autoscroll-off').change(function () {
         // store the value of the checkbox when it's changed
         var autoscrollCheckbox = document.getElementById("autoscroll-off").checked;
         window.localStorage.setItem("autoscroll-off", autoscrollCheckbox);
@@ -60,18 +125,18 @@ function startTimer() {
 function timerIncrement() {
     idleTime++;
     if (idleTime > 2) { // idle after 20 seconds
-      console.log("idle");
+        console.log("idle");
     } else {
-      autosave()
+        autosave()
     }
 }
 
 
 
 // save content to local storage
-function autosave(){
+function autosave() {
 
-    
+
     // save transcript text
     var textToSave = document.getElementById("content").innerHTML;
     window.localStorage.setItem("saved-text", textToSave);
@@ -81,19 +146,27 @@ function autosave(){
     var jsonUrlToSave = document.getElementById("user-filename").value;
     window.localStorage.setItem("saved-transcript-filename", jsonUrlToSave);
     console.log("saved");
+
+    // save annotation sidebar contents
+    // var annotationsToSave = document.getElementsByClassName("annotation-content-1").innerHTML;
+    var annotationsToSave = $('.annotation-content-1').html();
+    console.log("saving" + annotationsToSave);
+    window.localStorage.setItem("saved-annotation-1", annotationsToSave);
 };
 
+
+
 // load previously saved data
-function loadSavedText() {    
-    
-    if(typeof(Storage) !== "undefined") {
+function loadSavedText() {
+
+    if (typeof (Storage) !== "undefined") {
 
         // check if the set value for the checkbox is true
         // if it's true, then set the checkbox value to true
 
         if (localStorage.getItem("autosave-check")) {
             var previousCheck = localStorage.getItem("autosave-check")
-            
+
             // if no autosave, then load the transcript
             // if autosave turned on then load the stored data
             if (previousCheck == "false") {
@@ -111,6 +184,11 @@ function loadSavedText() {
                     console.log("saved data found");
                     document.getElementById("content").innerHTML = document.getElementById("content").innerHTML + storedText;
                 }
+                if (localStorage.getItem("saved-annotation-1")) {
+                    var storedAnnotation = localStorage.getItem("saved-annotation-1");
+                    console.log("loading" + storedAnnotation);
+                    $('.annotation-content-1').html(storedAnnotation);
+                }
                 if (localStorage.getItem("saved-audio-url")) {
                     var storedAudioUrl = localStorage.getItem("saved-audio-url")
                     document.getElementById("audioUrl").value = storedAudioUrl;
@@ -125,7 +203,7 @@ function loadSavedText() {
         //document.getElementById("result").innerHTML = "Sorry, autosave didn't work :'(";
     }
 }
-$(document).ready(function() {
-  loadSavedText();
+$(document).ready(function () {
+    loadSavedText();
 
 })

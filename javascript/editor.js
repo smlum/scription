@@ -54,10 +54,10 @@ function exportToCsv() {
             if (result.search(/("|,|\n)/g) >= 0)
                 result = '"' + result + '"';
             if (j > 0)
-                finalVal += '\n';
+                finalVal += ',';
             finalVal += result;
         }
-        return finalVal + ',';
+        return finalVal + '\n';
     };
 
     let csvFile = 'sep=,' + '\n';

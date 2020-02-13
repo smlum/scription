@@ -14,5 +14,12 @@ $.each(data[1], function(val, text) {
         $('<option></option>').val(text).html(text)
     );
 });
+var mySelect = $('#html-load');
+$.each(data[2], function(val, text) {
+    console.log('object');
+    mySelect.append(
+        $('<option></option>').val(text).html(text)
+    );
+});
 
 });
