@@ -2,14 +2,13 @@
 
 $navbar-breakpoint: 200px;
 $section-padding: 1rem 1rem;
-$navbar-background-color: #f7f6f3;
 $headerHeight: 72px;
 $footerHeight: 56px;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
 
-@import '../../node_modules/@creativebulma/bulma-collapsible/node_modules/bulma/bulma.sass';
+// @import '../../node_modules/@creativebulma/bulma-collapsible/node_modules/bulma/bulma.sass';
 
 @import "../../node_modules/green-audio-player/dist/css/green-audio-player.min.css";
 
@@ -22,24 +21,4 @@ $tag-purple: #e1d2f9;
 $tag-pink: #f8cde6;
 $tag-red: #fecbcf;
 
-.category-1 {
-    background-color: $tag-orange !important;
-}
-.category-2 {
-    background-color: $tag-yellow !important;
-}
-.category-3 {
-    background-color: $tag-green !important;
-}
-.category-4 {
-    background-color: $tag-blue !important;
-}
-.category-5 {
-    background-color: $tag-purple !important;
-}
-.category-6 {
-    background-color: $tag-pink !important;
-}
-.category-7 {
-    background-color: $tag-red !important;
-}
+

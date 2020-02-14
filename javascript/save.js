@@ -86,13 +86,6 @@ $(document).ready(function () {
         }
     });
 
-    // save deepspeech configuration
-    $('#deepspeech').change(function () {
-        // store the value of the checkbox when it's changed
-        var deepspeechCheckbox = document.getElementById("deepspeech").checked;
-        window.localStorage.setItem("deepspeech-check", deepspeechCheckbox);
-        console.log("new deepspeech value:" + deepspeechCheckbox);
-    });
 
     $('#autoscroll-off').change(function () {
         // store the value of the checkbox when it's changed
@@ -104,6 +97,15 @@ $(document).ready(function () {
         }
         autoscrollOff();
     });
+
+    // $('#dark-mode-switch').change(function () {
+    //     // store the value of the checkbox when it's changed
+    //     var darkModeCheck = document.getElementById("dark-mode-switch").checked;
+    //     window.localStorage.setItem("dark-mode-switch", darkModeCheck);
+    //     console.log("new darkmode value:" + darkModeCheck);
+    // });
+
+
 
 
     //Increment the idle time counter every minute.
@@ -150,7 +152,6 @@ function autosave() {
     // save annotation sidebar contents
     // var annotationsToSave = document.getElementsByClassName("annotation-content-1").innerHTML;
     var annotationsToSave = $('.annotation-content-1').html();
-    console.log("saving" + annotationsToSave);
     window.localStorage.setItem("saved-annotation-1", annotationsToSave);
 };
 
@@ -184,19 +185,39 @@ function loadSavedText() {
                     console.log("saved data found");
                     document.getElementById("content").innerHTML = document.getElementById("content").innerHTML + storedText;
                 }
+                // TODO save more for each one
                 if (localStorage.getItem("saved-annotation-1")) {
                     var storedAnnotation = localStorage.getItem("saved-annotation-1");
-                    console.log("loading" + storedAnnotation);
                     $('.annotation-content-1').html(storedAnnotation);
                 }
-                if (localStorage.getItem("saved-audio-url")) {
-                    var storedAudioUrl = localStorage.getItem("saved-audio-url")
-                    document.getElementById("audioUrl").value = storedAudioUrl;
-                }
-                if (localStorage.getItem("saved-transcript-filename")) {
-                    var storedJsonUrl = localStorage.getItem("saved-transcript-filename")
-                    document.getElementById("user-filename").value = storedJsonUrl;
-                }
+                // load dark mode from cookie, else detect it from user computer
+                // if (localStorage.getItem("dark-mode-switch") != undefined) {
+                //     var storedDarkMode = localStorage.getItem("dark-mode-switch")
+                //     // note that stored data is a string not a Boolean
+                //     if (storedDarkMode == "true") {
+                //         $('#dark-mode-switch').prop('checked', true);
+                //     } else {
+                //         $('#dark-mode-switch').prop('checked', false);
+                //     }
+                // } else {
+                //     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                //         // dark mode
+                //         console.log('dark mode detected from system');
+                //         $('#dark-mode-switch').prop('checked', true);
+                //     } else {
+                //         console.log('light mode detected from system');
+                //         $('#dark-mode-switch').prop('checked', false);
+                //     }
+                // }
+                // if (localStorage.getItem("saved-audio-url")) {
+                //     var storedAudioUrl = localStorage.getItem("saved-audio-url")
+                //     document.getElementById("audioUrl").value = storedAudioUrl;
+                // }
+                // if (localStorage.getItem("saved-transcript-filename")) {
+                //     var storedJsonUrl = localStorage.getItem("saved-transcript-filename")
+                //     document.getElementById("user-filename").value = storedJsonUrl;
+                // }
+                
             }
         }
     } else {

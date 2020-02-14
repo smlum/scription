@@ -1,3 +1,5 @@
+
+
 :root {
     --selected-blue: #d2e4f9;
     --selected-red: #fecbcf;
@@ -7,6 +9,100 @@
     --selected-green: #cde7e2;
     --selected-purple: #e1d2f9;
     --primary-text: #1a1916;
+    --body-bg: #fafafa;
+    --body-color: #555;
+    --link-color: #222;
+    --link-color-hover: #000;
+    --nav-bg: #f5f5f5;
+    --audio-bg: rgba(255, 255, 255, 1.00);
+    --title-color: ;
+    --transcript-bg: ;
+    --transcript-ol: ;
+    --select-bg: ;
+
+    }
+
+    /* dark theme */
+    [data-theme="dark"] {
+    /* @media (prefers-color-scheme: dark) { */
+    /* :root { */
+        --body-bg: rgba(47, 52, 55, 1.00);
+        --body-color: #e7e7e7;
+        --link-color: #dee2e6;
+        --link-color-hover: #fff;
+        --nav-bg: rgba(55, 60, 63, 1.00);
+        --audio-bg: ;
+        --title-color: #ebebeb;
+        --transcript-bg: ;
+        --transcript-ol: ;
+        --select-bg: #25282a;
+        --icon-color: #8f9295;
+        --drop-bg: #3f4447;
+        --selected-blue: #487089;
+        --selected-red: #9f5b58;
+        --selected-yellow: #9f914a;
+        --selected-orange: #9f7346;
+        --selected-pink: #904c74;
+        --selected-green: #457771;
+        --selected-purple: #6c5990;
+        --primary-text: #1a1916;
+    }
+    
+
+.drop-content {
+    background-color: var(--drop-bg) !important;
+}
+
+.icon {
+    color: var(--icon-color);
+}
+
+.title, .content {
+    color: var(--title-color);
+}
+
+.navbar, .is-light {
+    background-color: var(--nav-bg);
+    color: var(--body-color);
+}
+
+a, .navbar-time {
+    color: var(--body-color) !important;
+}
+
+#hypertranscript {
+    background-color: var(--transcript-bg);
+    color: var(--body-color);
+}
+
+select, .select, input {
+    background-color: var(--select-bg) !important;
+    border-color: var(--select-bg) !important;
+    color: var(--body-color) !important;
+}
+
+label {
+    color: var(--body-color);
+}
+
+svg path {
+    fill: var(--icon-color);
+}
+
+div .controls {
+    color: var(--body-color);
+}
+
+.select::after {
+    border-color: var(--icon-color) !important;
+}
+
+.accordion {
+    background-color: var(--body-bg);
+}
+
+.green-audio-player {
+    background-color: var(--nav-bg);
 }
 
 ::selection {
@@ -15,6 +111,7 @@
 
 html, body {
     height: 100%;
+    background-color: var(--body-bg);
 }
 
 .full-height {
@@ -76,8 +173,6 @@ html, body {
 }
 
 .accordion {
-    background-color: white;
-    color: #444;
     cursor: pointer;
     padding-bottom: 5px;
     width: 100%;
@@ -95,7 +190,6 @@ html, body {
     .panel {
     padding: 0 18px;
     display: none;
-    background-color: white;
     overflow: hidden;
     }
 
@@ -162,6 +256,33 @@ html, body {
     background-color: var(--selected-purple);
 }
 
+.accordion-category {
+    color: #c3d0d8 !important;
+    font-weight: 700;
+}
+
+.category-1 {
+    background-color: var(--selected-orange) !important;
+}
+.category-2 {
+    background-color: var(--selected-yellow) !important;
+}
+.category-3 {
+    background-color: var(--selected-green) !important;
+}
+.category-4 {
+    background-color: var(--selected-blue) !important;
+}
+.category-5 {
+    background-color: var(--selected-purple) !important;
+}
+.category-6 {
+    background-color: var(--selected-pink) !important;
+}
+.category-7 {
+    background-color: var(--selected-red) !important;
+}
+
 .annotation-button {
     color: var(--primary-text);
     border: none;
@@ -175,7 +296,6 @@ html, body {
     -webkit-box-shadow: 0px 9px 25px -13px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 9px 25px -13px rgba(0,0,0,0.57);
     box-shadow: 0px 9px 25px -13px rgba(0,0,0,0.57);
-    background-color: white !important;
     padding: 12px !important;
 }
 
