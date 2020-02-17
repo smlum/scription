@@ -2,6 +2,15 @@ const express = require('express')
 const path = require('path')
 const app = express();
 
+let {PythonShell} = require('python-shell');
+
+PythonShell.runString('x=1+1;print("hello")', null, function (err) {
+    if (err) throw err;
+    console.log('finished');
+    });
+
+console.log('hey');
+
 var sassMiddleware = require('node-sass-middleware');
 
 const audioFolder = './audio/';
@@ -26,15 +35,15 @@ if (app.get('env') == 'development') {
 }
 
 // TODO fix. tried to add this, it didn;t work, 
-app.use(sassMiddleware({
-    /* Options */
-    src: path.join(__dirname, 'src/scss'),
-    dest: path.join(__dirname, 'dist/css'),
-    debug: true,
-    indentedSyntax : false,
-    outputStyle: 'compressed',
-    // prefix:  '/dist/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));
+// app.use(sassMiddleware({
+//     /* Options */
+//     src: path.join(__dirname, 'src/scss'),
+//     dest: path.join(__dirname, 'dist/css'),
+//     debug: true,
+//     indentedSyntax : false,
+//     outputStyle: 'compressed',
+//     // prefix:  '/dist/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+// }));
 
 
 // list files in audio directory
