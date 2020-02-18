@@ -34,69 +34,73 @@ $('.category-1').blur(function () {
 
 // this function is activated on mouseup after user has highlighted text
 function addShareTool(a, previousSelection) {
+  // if annotation mode on
+  var annotaionCheckbox = document.getElementById("annotation-switch").checked;
+  if (annotaionCheckbox) {
+    if (window.getSelection) {
+      selection = window.getSelection();
 
-  if (window.getSelection) {
-    selection = window.getSelection();
-
-  } else if (document.selection) {
-    selection = document.selection.createRange();
-  }
-
-  if (selection.toString() !== '') {
-    if (drop) {
-      drop.close();
-      drop.remove();
-      drop = null;
+    } else if (document.selection) {
+      selection = document.selection.createRange();
     }
 
-    anchorNode = selection.anchorNode.parentNode;
-    focusNode = selection.focusNode.parentNode;
+    if (selection.toString() !== '') {
+      if (drop) {
+        drop.close();
+        drop.remove();
+        drop = null;
+      }
 
-    var anchorNodeTime = parseInt(anchorNode.getAttribute('data-m'), 10);
-    var anchorNodeDuration = parseInt(anchorNode.getAttribute('data-d'), 10);
-    var focusNodeTime = parseInt(focusNode.getAttribute('data-m'), 10);
-    var focusNodeDuration = parseInt(focusNode.getAttribute('data-d'), 10);
+      anchorNode = selection.anchorNode.parentNode;
+      focusNode = selection.focusNode.parentNode;
 
-    // 1/10 of a second accuracy is fine for our needs
+      var anchorNodeTime = parseInt(anchorNode.getAttribute('data-m'), 10);
+      var anchorNodeDuration = parseInt(anchorNode.getAttribute('data-d'), 10);
+      var focusNodeTime = parseInt(focusNode.getAttribute('data-m'), 10);
+      var focusNodeDuration = parseInt(focusNode.getAttribute('data-d'), 10);
 
-    anchorNodeTime = Math.floor(anchorNodeTime / 100);
-    anchorNodeDuration = Math.floor(anchorNodeDuration / 100);
-    focusNodeTime = Math.floor(focusNodeTime / 100);
-    focusNodeDuration = Math.floor(focusNodeDuration / 100);
+      // 1/10 of a second accuracy is fine for our needs
 
-    if (anchorNodeTime < focusNodeTime) {
-      params =
-        '?s=' +
-        anchorNodeTime +
-        '&d=' +
-        (focusNodeTime + focusNodeDuration - anchorNodeTime);
-    } else {
-      params =
-        '?s=' +
-        focusNodeTime +
-        '&d=' +
-        (anchorNodeTime + anchorNodeDuration - focusNodeTime);
+      anchorNodeTime = Math.floor(anchorNodeTime / 100);
+      anchorNodeDuration = Math.floor(anchorNodeDuration / 100);
+      focusNodeTime = Math.floor(focusNodeTime / 100);
+      focusNodeDuration = Math.floor(focusNodeDuration / 100);
+
+      if (anchorNodeTime < focusNodeTime) {
+        params =
+          '?s=' +
+          anchorNodeTime +
+          '&d=' +
+          (focusNodeTime + focusNodeDuration - anchorNodeTime);
+      } else {
+        params =
+          '?s=' +
+          focusNodeTime +
+          '&d=' +
+          (anchorNodeTime + anchorNodeDuration - focusNodeTime);
+      }
+
+      drop = new Drop({
+        target: anchorNode,
+        classes: 'drop-theme-basic',
+        position: 'top center',
+        constrainToWindow: true,
+        constrainToScrollParent: true,
+        openOn: 'always',
+        content: '<div id="tweet-box"></div>',
+      });
+
+      drop.on('open', fillShare, false);
+
+      /*<a class="sharelink" href="#"><span class="icon-twitter"></span><span style="padding-left:40px">Share this text + video on Twitter</span></a>*/
     }
-
-    drop = new Drop({
-      target: anchorNode,
-      classes: 'drop-theme-basic',
-      position: 'top center',
-      constrainToWindow: true,
-      constrainToScrollParent: true,
-      openOn: 'always',
-      content: '<div id="tweet-box"></div>',
-    });
-
-    drop.on('open', fillShare, false);
-
-    /*<a class="sharelink" href="#"><span class="icon-twitter"></span><span style="padding-left:40px">Share this text + video on Twitter</span></a>*/
   }
+
+  
 }
 
 function fillShare() {
   // think can get rid of some of this function, since some of it was used to generate the tweet
-
 
   var url = window.location.href;
   var lastCharPos = url.length - 1;
@@ -338,6 +342,9 @@ function SelectText(n) {
 // highlight annotated sections on clicking them
 $('#content').on("click", ".selected", function () {
   // true means it's already been highlighted
+
+
+
   var $this = $(this);
   addShareTool(false, $this)
 

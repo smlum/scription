@@ -53,6 +53,10 @@
     --cat-weight: 600;
 }
 
+*:focus {
+    outline: none;
+}
+
 .textarea {
     border-color: var(--text-border-color) !important;
 }
@@ -122,8 +126,9 @@ div .controls {
     background-color: var(--body-bg);
 }
 
-.green-audio-player {
+.green-audio-player, .controls {
     background-color: var(--nav-bg);
+    color: var(--body-color) !important; 
 }
 
 ::selection {
@@ -163,10 +168,6 @@ body, html {
 
 .highlightt {
     animation: highlightt 3s;
-}
-
-.panel {
-    min-height: 50px;
 }
 
 .tag-text {
@@ -217,6 +218,9 @@ body, html {
     padding: 0 18px;
     display: none;
     overflow: hidden;
+    min-height: 50px;
+    background-color: var(--drop-bg) !important;
+    color: var(--primary-text);
 }
 
 

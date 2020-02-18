@@ -49,6 +49,7 @@ function fmtMSS(s) {
 
 function clearTranscript() {
     $('#content').html('')
+    $('.annotation-content').html('');
 }
 
 // creates a new paragraph tag
