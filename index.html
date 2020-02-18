@@ -203,7 +203,7 @@
               <div class="column">
                 <!-- <p>Timecode: <span id="timecodeOffset">00:00:00</span></p> -->
                 <div id="hypertranscript" style="overflow-y:scroll; position:relative; height:calc(100% - 40px)"
-                  class="textarea scroller">
+                  class="textarea scroller has-fixed-size">
                   <article>
                     <section id="content" contenteditable="true">
                     </section>
@@ -238,7 +238,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-1"></div>
                 </div>
               </div>
@@ -255,7 +255,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-2"></div>
                 </div>
               </div>
@@ -272,7 +272,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-3"></div>
                 </div>
               </div>
@@ -289,7 +289,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-4"></div>
                 </div>
               </div>
@@ -306,7 +306,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-5"></div>
                 </div>
               </div>
@@ -323,7 +323,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-6"></div>
                 </div>
               </div>
@@ -340,7 +340,7 @@
               </div>
               <div class="panel">
                 <div class="block">
-                  <h4 class="has-text-weight-bold">Annotations:</h4>
+                  <h4>Annotations:</h4>
                   <div class="annotation-content-7"></div>
                 </div>
               </div>
@@ -430,7 +430,7 @@
               </div>
             </div>
             <p class="control">
-              <button onclick="LoadFromHtml()" class="button is-small is-primary is-outlined">Load</button>
+              <button onclick="LoadFromHtml()" class="button is-small is-primary">Load</button>
             </p>
           </div>
         </div>
@@ -442,7 +442,7 @@
                 </input>
             </div>
             <p class="control">
-              <button class="button is-small is-primary is-outlined disabled" name="export-html" onclick="exportToHtml()">Save</button>
+              <button class="button is-small is-primary disabled" name="export-html" onclick="exportToHtml()">Save</button>
             </p>
           </div>
         </div>
@@ -453,7 +453,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <div class="field">
-              <button class="button is-small is-primary is-outlined disabled" name="export-transcript"
+              <button class="button is-small is-primary disabled" name="export-transcript"
                 onclick="exportToTxt()">Export
                 transcript text</button>
             </div>
@@ -462,7 +462,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <div class="field">
-              <button class="button is-small is-primary is-outlined" name="export-to-csv" onclick="exportToCsv()">Export
+              <button class="button is-small is-primary" name="export-to-csv" onclick="exportToCsv()">Export
                 annotations</button>
             </div>
           </div>

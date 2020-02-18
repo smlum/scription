@@ -11,24 +11,27 @@
     --body-color: #555;
     --link-color: #222;
     --link-color-hover: #000;
+    --drop-bg: #f5f5f5;
     --nav-bg: #f5f5f5;
     --audio-bg: rgba(255, 255, 255, 1.00);
     --title-color: ;
     --transcript-bg: ;
     --transcript-ol: ;
     --select-bg: ;
-
+    --cat-weight: 400;
+    --tag-color: rgba(0, 0, 0, 0.7);
+    --text-border-color: #dbdbdb;
 }
 
 /* dark theme */
 [data-theme="dark"] {
     /* @media (prefers-color-scheme: dark) { */
     /* :root { */
-    --body-bg: rgba(47, 52, 55, 1.00);
+    --body-bg: #2f3437;
     --body-color: #e7e7e7;
     --link-color: #dee2e6;
     --link-color-hover: #fff;
-    --nav-bg: rgba(55, 60, 63, 1.00);
+    --nav-bg: #373c3f;
     --audio-bg: ;
     --title-color: #ebebeb;
     --transcript-bg: ;
@@ -43,11 +46,23 @@
     --selected-pink: #904c74;
     --selected-green: #457771;
     --selected-purple: #6c5990;
-    --primary-text: #1a1916;
+    --selected-grey: #313131;
+    --primary-text: #ebebeb;
+    --tag-color: #ebebeb;
+    --text-border-color: #25282a;
+    --cat-weight: 600;
+}
+
+.textarea {
+    border-color: var(--text-border-color) !important;
+}
+
+label {
+    white-space: nowrap;
 }
 
 .scroller {
-    scrollbar-color: rebeccapurple green;
+    scrollbar-color: var(--select-bg) var(--body-bg);
 }
 
 .drop-content {
@@ -83,7 +98,7 @@ select,
 .select,
 input {
     background-color: var(--select-bg) !important;
-    border-color: var(--select-bg) !important;
+    border-color: var(--text-border-color) !important;
     color: var(--body-color) !important;
 }
 
@@ -116,10 +131,14 @@ div .controls {
     /* WebKit/Blink Browsers */
 }
 
-html,
-body {
+/* html {
     height: 100%;
+} */
+
+body, html {
+    height: 95vh;
     background-color: var(--body-bg);
+    overflow: hidden;
 }
 
 .full-height {
@@ -150,9 +169,8 @@ body {
     min-height: 50px;
 }
 
-/* for tag anchor text */
-.grey {
-    color: rgba(0, 0, 0, 0.7) !important;
+.tag-text {
+    color: 
 }
 
 .drop-content {
@@ -214,7 +232,9 @@ body {
     color: var(--primary-text) !important;
 }
 
-.selected {}
+.selected {
+    color: var(--tag-color);
+}
 
 .selected-1 {
     background-color: var(--selected-orange);
@@ -245,7 +265,7 @@ body {
 }
 
 .selected-remove {
-    background-color: var(--selected-grey);
+    background-color: var(--selected-grey) !important;
 }
 
 .button-1 {
@@ -277,8 +297,8 @@ body {
 }
 
 .accordion-category {
-    color: #c3d0d8 !important;
-    font-weight: 700;
+    color: var(--tag-color) !important;
+    font-weight: var(--cat-weight);
 }
 
 .category-1 {
@@ -307,6 +327,10 @@ body {
 
 .category-7 {
     background-color: var(--selected-red) !important;
+}
+
+.category-remove {
+    background-color: var(--selected-grey) !important;
 }
 
 .annotation-button {
