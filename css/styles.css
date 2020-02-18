@@ -1,4 +1,5 @@
 :root {
+    --primary: #005cd4;
     --selected-blue: #d2e4f9;
     --selected-red: #fecbcf;
     --selected-yellow: #fbeed1;
@@ -21,6 +22,7 @@
     --cat-weight: 400;
     --tag-color: rgba(0, 0, 0, 0.7);
     --text-border-color: #dbdbdb;
+    --switch-bg: #b5b5b5;
 }
 
 /* dark theme */
@@ -51,6 +53,7 @@
     --tag-color: #ebebeb;
     --text-border-color: #25282a;
     --cat-weight: 600;
+    --switch-bg: #25282a;
 }
 
 *:focus {
@@ -129,6 +132,10 @@ div .controls {
 .green-audio-player, .controls {
     background-color: var(--nav-bg);
     color: var(--body-color) !important; 
+}
+
+.pin {
+    background-color: var(--primary) !important;
 }
 
 ::selection {

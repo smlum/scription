@@ -97,22 +97,22 @@ $(document).ready(function () {
         autoscrollOff();
     });
 
-    // realise better way to do this was to add an if condition on the function
-    // $('#annotation-switch').change(function () {
-    //     // 
-    //     var annotaionCheckbox = document.getElementById("annotation-switch").checked;
-    //     if (annotaionCheckbox == true) {
-    //         $(".selected").css({"backgroundColor": ""});
-    //         $(".drop-element").css({'cssText': 'display: none !important'});
-    //         console.log("annotations on");
-    //     } else {
-    //         $(".selected").css({"backgroundColor": "transparent"});
-    //         $(".drop-element").css({'cssText': 'display: block !important'});
-    //         console.log("annotations off");
-    //     }
+    // realise better to do this was to add an if condition on the function
+    $('#annotation-switch').change(function () {
+        // 
+        var annotaionCheckbox = document.getElementById("annotation-switch").checked;
+        if (annotaionCheckbox == true) {
+            $(".selected").css({"backgroundColor": ""});
+            // $(".drop-element").css({'cssText': 'display: none !important'});
+            console.log("annotations on");
+        } else {
+            $(".selected").css({"backgroundColor": "transparent"});
+            // $(".drop-element").css({'cssText': 'display: block !important'});
+            console.log("annotations off");
+        }
         
-    //     // $('.selected').css("background-color") = "transparent !important";
-    // });
+        // $('.selected').css("background-color") = "transparent !important";
+    });
 
 
     // $('#dark-mode-switch').change(function () {
