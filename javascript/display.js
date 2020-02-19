@@ -77,13 +77,13 @@ function getAudioUrl() {
 // for the audio control (possibly to be deleted eventually)
 var speakerTimes = [];
 var transcriptObject = [];
+var word_start_time;
 
 function displayTranscript() {
     
 
     // get json transcript from user input (default transcript.json)
     var json = "json/" + document.getElementById("user-filename").value;
-    console.log($('#user-filename').value);
     console.log("loading: " + json);
 
     $.getJSON(json, function (data) {
@@ -341,6 +341,7 @@ function displayTranscript() {
                                 // add a new para
                                 paragraphCounter++;
                                 paraId = "para-" + paragraphCounter;
+
                                 newPara = CreateNewPara(word_start_time, new_speaker, paraId);
                                 $('#content').append(newPara);
                                 // reset the paragraph word counter
@@ -387,11 +388,14 @@ function displayTranscript() {
                 var max_para_length = 35;
 
 
+
                 if (type == "punctuation" && (word == "." || word == "!" || word == "?") && paragraphWordCounter > max_para_length && new_speaker == speaker_times[speaker_counter][0]) {
                     // set data for new speaker
                     paragraphCounter++;
                     paraId = "para-" + paragraphCounter;
-                    newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+
+                    // use next word start time as current one is punctuation
+                    newPara = CreateNewPara(next_word_start_time, new_speaker, paraId);
                     $('#content').append(newPara);
                     // reset the paragraph word counter
                     paragraphWordCounter = 0;

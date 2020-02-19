@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const app = express();
+const fs = require('fs');
+
 
 let {PythonShell} = require('python-shell');
 
@@ -16,7 +18,14 @@ var sassMiddleware = require('node-sass-middleware');
 const audioFolder = './audio/';
 const jsonFolder = './json/';
 const saveFolder = './saves/';
-const fs = require('fs');
+
+// // want to try save files to the repository to load from there
+// fs.writeFile("../saves", "Hey there!", function(err) {
+//     if(err) {
+//         return console.log(err);
+//     }
+//     console.log("The file was saved!");
+// }); 
 
 var audioList
 var jsonList

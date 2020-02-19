@@ -1,5 +1,5 @@
 :root {
-    --primary: #005cd4;
+    --primary: #21a094;
     --selected-blue: #d2e4f9;
     --selected-red: #fecbcf;
     --selected-yellow: #fbeed1;
@@ -139,7 +139,7 @@ div .controls {
 }
 
 ::selection {
-    background: rgba(0, 210, 179, 0.3);
+    background: rgba(210, 161, 0, 0.192);
     /* WebKit/Blink Browsers */
 }
 
@@ -236,7 +236,7 @@ body, html {
 }
 
 .low-confidence {
-    color: rgb(201, 40, 40) !important;
+    background-color: rgba(238, 20, 4, 0.301) !important;
 }
 
 .not-interactive {

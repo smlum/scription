@@ -5,7 +5,8 @@ $section-padding: 1rem 1rem;
 $headerHeight: 72px;
 $footerHeight: 56px;
 $switch-background: var(--switch-bg);
-$primary: var(--primary);
+$primary: #21a094;
+// $primary: var(--primary);
 
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/bulma-switch/dist/css/bulma-switch.sass";

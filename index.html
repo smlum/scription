@@ -31,6 +31,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
 
+
       <a class="navbar-item has-text-weight-bold" href="https://bulma.io">
         <h1 class="title is-4 has-text-weight-bold">
           Transcription Buddy
@@ -156,7 +157,7 @@
                   <div class="column is-half no-right-padding">
                     <div class="field">
                       <input id="confidence" type="checkbox" name="confidence" class="switch is-rounded is-small"
-                        checked="checked">
+                        checked="">
                       <label for="confidence">Highlight confidence</label>
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
@@ -430,7 +431,7 @@
               </div>
             </div>
             <p class="control">
-              <button onclick="LoadFromHtml()" class="button is-small is-primary">Load</button>
+              <button onclick="LoadFromHtml()" class="button is-small is-primary">Load Project</button>
             </p>
           </div>
         </div>
@@ -442,7 +443,7 @@
                 </input>
             </div>
             <p class="control">
-              <button class="button is-small is-primary disabled" name="export-html" onclick="exportToHtml()">Save</button>
+              <button class="button is-small is-primary disabled" name="export-html" onclick="exportToHtml()">Save Project</button>
             </p>
           </div>
         </div>

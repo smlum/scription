@@ -172,11 +172,27 @@ $(document).ready(function () {
 
 var displayConfidenceToggle = false
 
+
+
+$('#confidence').prop('checked', false);
+
+$('#confidence').change(function () {
+    // store the value of the checkbox when it's changed
+    var confidenceCheckbox = document.getElementById("confidence").checked;
+    window.localStorage.setItem("autoscroll-off", confidenceCheckbox);
+    console.log("new confidence checkbox value:" + confidenceCheckbox);
+    // if (confidenceCheckbox == true) {
+        displayConfidence()
+    // }
+});
+
 // highlight low confidence words
+
 function displayConfidence() {
     
     if (displayConfidenceToggle == false) {
         var userConfidence = $("#user-confidence").val()
+        var userConfidence = 0.95;
         console.log(userConfidence);
         $("span").filter(function() {
             return $(this).data("confidence") < userConfidence;
