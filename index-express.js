@@ -1,3 +1,16 @@
+// error stuff
+(function() {
+    var childProcess = require("child_process");
+    var oldSpawn = childProcess.spawn;
+    function mySpawn() {
+        console.log('spawn called');
+        console.log(arguments);
+        var result = oldSpawn.apply(this, arguments);
+        return result;
+    }
+    childProcess.spawn = mySpawn;
+})();
+
 const express = require('express')
 const path = require('path')
 const app = express();
@@ -15,9 +28,11 @@ console.log('hey');
 
 // var sassMiddleware = require('node-sass-middleware');
 
-const audioFolder = './audio/';
-const jsonFolder = './json/';
-const saveFolder = './saves/';
+// note the filename was so hard to get right
+// it needs the process path to find the correct place
+const audioFolder = `${process.resourcesPath}/app/audio/`;
+const jsonFolder = `${process.resourcesPath}/app/json/`;
+const saveFolder = `${process.resourcesPath}/app/saves/`;
 
 // // want to try save files to the repository to load from there
 // fs.writeFile("../saves", "Hey there!", function(err) {
