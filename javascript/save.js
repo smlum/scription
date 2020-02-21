@@ -159,9 +159,9 @@ function autosave() {
     // save transcript text
     var textToSave = document.getElementById("content").innerHTML;
     window.localStorage.setItem("saved-text", textToSave);
-    // save input box text
-    var audioUrlToSave = document.getElementById("audioUrl").value;
-    window.localStorage.setItem("saved-audio-url", audioUrlToSave);
+    // save input box text - turned off
+    // var audioUrlToSave = document.getElementById("audioUrl").value;
+    // window.localStorage.setItem("saved-audio-url", audioUrlToSave);
     var jsonUrlToSave = document.getElementById("user-filename").value;
     window.localStorage.setItem("saved-transcript-filename", jsonUrlToSave);
     console.log("saved");

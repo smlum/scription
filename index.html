@@ -54,10 +54,31 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
+          
           <div class="field has-addons">
+
+            <!-- for file api input  -->
+            <div class="file has-name is-small is-primary">
+              <label class="file-label">
+                <input id="user-audio-file" class="file-input" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Browse audio…
+                  </span>
+                </span>
+                <span id="audio-name" class="file-name">
+                  none selected
+                </span>
+              </label>
+            </div>
             <!-- <p class="control">
             <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
           </p> -->
+
+<!--             
             <div class="control">
               <div class="select is-small is-fullwidth">
                 <select name="country" id="audioUrl">
@@ -67,15 +88,37 @@
             </div>
             <p class="control">
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
-            </p>
-          </div>
+            </p> -->
+          </div> 
         </div>
         <div class="navbar-item">
           <div class="field has-addons navbar-item">
+
+            <!-- for file api input  -->
+            <div class="file has-name is-small is-primary">
+              <label class="file-label">
+                <input id="user-json-file" class="file-input" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Browse json…
+                  </span>
+                </span>
+                <span id="json-name" class="file-name">
+                  nothing selected
+                </span>
+              </label>
+            </div>
+
             <!-- <p class="control">
             <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
               value="deepspeech.json">
           </p> -->
+
+
+<!-- 
             <div class="control">
               <div class="select is-small is-fullwidth">
                 <select name="country" id="user-filename">
@@ -84,8 +127,8 @@
             </div>
             <p class="control">
               <button onclick="displayTranscript()" class="button is-small is-primary">Load</button>
-            </p>
-          </div>
+            </p> 
+          </div> 
         </div>
         <div class="navbar-item">
           <div class="field">

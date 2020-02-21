@@ -54,6 +54,7 @@
     --text-border-color: #25282a;
     --cat-weight: 600;
     --switch-bg: #25282a;
+    --audio-icon: #e7e7e7;
 }
 
 *:focus {
@@ -113,8 +114,8 @@ label {
     color: var(--body-color);
 }
 
-svg path {
-    fill: var(--icon-color);
+.play-pause-btn__icon, .volume__speaker {
+    fill: var(--audio-icon);
 }
 
 div .controls {
@@ -178,7 +179,7 @@ body, html {
 }
 
 .tag-text {
-    color: 
+    color: var(--tag-color)
 }
 
 .drop-content {

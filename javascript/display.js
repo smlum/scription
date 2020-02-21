@@ -64,11 +64,55 @@ function CreateNewPara(timeOfFirstWord, speaker, paraId) {
     return newPara;
 }
 
-// load audio from file or url
+// load audio from file or url using the dropdown or text input
 function getAudioUrl() {
     var audioUrl = "audio/" + document.getElementById("audioUrl").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
+
+// try to alter this for File API input
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    console.log(files);
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process audio files.
+        if (!f.type.match('audio.*')) {
+            console.log('audio detected');
+            continue;
+        } 
+
+        var reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+
+                document.getElementById("hyperplayer").src = e.target.result;
+                console.log(theFile.name);
+                document.getElementById("audio-name").innerHTML = theFile.name;
+
+                // var span = document.createElement('span');
+                // span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                //     '" title="', escape(theFile.name), '"/>'
+                // ].join('');
+                // document.getElementById('list').insertBefore(span, null);
+            };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
+}
+
+document.getElementById('user-audio-file').addEventListener('change', handleFileSelect, false);
+
+
 
 // load transcript on start
 // displayTranscript()
@@ -80,7 +124,7 @@ var transcriptObject = [];
 var word_start_time;
 
 function displayTranscript() {
-    
+
 
     // get json transcript from user input (default transcript.json)
     var json = "json/" + document.getElementById("user-filename").value;
@@ -106,7 +150,7 @@ function displayTranscript() {
 
         if (data.words) {
             console.log('Mozilla formatted data detected');
-        // if (document.getElementById('deepspeech').checked) {
+            // if (document.getElementById('deepspeech').checked) {
             var results = data.words
 
             jsonLength = results.length
@@ -155,7 +199,7 @@ function displayTranscript() {
                 duration_ms = 1000 * durationLabel;
 
                 if (i == 0) {
-       
+
                     new_speaker = "New Para";
 
                     // add new para
@@ -198,15 +242,15 @@ function displayTranscript() {
 
                 if (paragraphWordCounter > max_para_length) {
                     // set data for new speaker
-                    paragraphCounter++; 
-                    paraId = "para-" + paragraphCounter; 
+                    paragraphCounter++;
+                    paraId = "para-" + paragraphCounter;
                     newPara = CreateNewPara(word_start_time, new_speaker, paraId);
                     $('#content').append(newPara);
                     // reset the paragraph word counter
                     paragraphWordCounter = 0;
                     // console.log(word);
                     // console.log('para too long');
-            
+
                 };
 
             };
@@ -423,12 +467,12 @@ function displayTranscript() {
 
     var autoScrollCheck = document.getElementById("autoscroll-off").checked;
     if (autoScrollCheck) {
-    setTimeout(
-        function () {
-        console.log('transcript being initiated');
-        hyper(true);
-      
-        }, 1000)
+        setTimeout(
+            function () {
+                console.log('transcript being initiated');
+                hyper(true);
+
+            }, 1000)
     }
 
 };
@@ -454,4 +498,3 @@ function CopyToClipboard(containerid) {
     // Remove the textarea
     document.body.removeChild(textarea);
 };
-
