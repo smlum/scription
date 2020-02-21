@@ -34,9 +34,15 @@
     "onchange": "^6.1.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "amplitudejs": "^5.0.3",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
     "green-audio-player": "^1.0.11",
-    "python-shell": "^1.0.8"
+    "jquery": "^3.4.1",
+    "jsdom": "^16.2.0",
+    "python-shell": "^1.0.8",
+    "tether-drop": "^1.4.2",
+    "velocity-animate": "^1.5.2"
   }
 }

@@ -54,6 +54,11 @@
     --text-border-color: #25282a;
     --cat-weight: 600;
     --switch-bg: #25282a;
+    --font-weight: 500;
+}
+
+button {
+    font-weight: bold;
 }
 
 *:focus {
@@ -66,6 +71,7 @@
 
 label {
     white-space: nowrap;
+    font-weight: var(--font-weight);
 }
 
 .scroller {
@@ -99,6 +105,7 @@ a,
 #hypertranscript {
     background-color: var(--transcript-bg);
     color: var(--body-color);
+    font-weight: var(--font-weight);
 }
 
 select,

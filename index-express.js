@@ -16,10 +16,12 @@ const path = require('path')
 const app = express();
 const fs = require('fs');
 
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
 
 let {PythonShell} = require('python-shell');
 
-PythonShell.runString('x=1+1;print("hello")', null, function (err) {
+PythonShell.runString('x=1+1;print(x)', null, function (err) {
     if (err) throw err;
     console.log('finished');
     });
