@@ -70,8 +70,7 @@ function getAudioUrl() {
     document.getElementById("hyperplayer").src = audioUrl;
 }
 
-// try to alter this for File API input
-
+// load audio from user selected file
 function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
@@ -109,8 +108,111 @@ function handleFileSelect(evt) {
         reader.readAsDataURL(f);
     }
 }
-
 document.getElementById('user-audio-file').addEventListener('change', handleFileSelect, false);
+
+// load json from user selected file
+function handleJsonFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    console.log(files);
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process audio files.
+        // if (!f.type.match('json.*')) {
+        //     console.log('json detected');
+        //     continue;
+        // } 
+
+        var reader = new FileReader();
+
+        // console.log(f.name);
+        // document.getElementById("json-name").innerHTML = f.name;
+        // console.log(f.target.result);
+        // displayTranscript();
+
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+
+                console.log(theFile.name);
+                document.getElementById("json-name").innerHTML = theFile.name;
+                console.log(e);
+                JsonObj = JSON.parse(e.target.result);
+                console.log(JsonObj);
+                displayTranscript(JsonObj);
+
+                // var span = document.createElement('span');
+                // span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                //     '" title="', escape(theFile.name), '"/>'
+                // ].join('');
+                // document.getElementById('list').insertBefore(span, null);
+            };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsText(f);
+    }
+}
+
+document.getElementById('user-json-file').addEventListener('change', handleJsonFileSelect, false);
+
+// load project from user selected file
+function handleProjectFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    console.log(files);
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process audio files.
+        // if (!f.type.match('json.*')) {
+        //     console.log('json detected');
+        //     continue;
+        // } 
+
+        var reader = new FileReader();
+
+        // console.log(f.name);
+        // document.getElementById("json-name").innerHTML = f.name;
+        // console.log(f.target.result);
+        // displayTranscript();
+
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+
+                console.log("loading project:" + theFile.name);
+                document.getElementById("project-name").innerHTML = theFile.name;
+                $("#content").html(e.target.result)
+
+                // var span = document.createElement('span');
+                // span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                //     '" title="', escape(theFile.name), '"/>'
+                // ].join('');
+                // document.getElementById('list').insertBefore(span, null);
+            };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsText(f);
+    }
+}
+
+// load html from file
+
+function LoadFromHtml() {
+    var htmlPath = "saves/" + document.getElementById("html-load").value;
+    $("#content").load(htmlPath);
+
+    console.log(htmlPath);
+}
+
+document.getElementById('user-project-file').addEventListener('change', handleProjectFileSelect, false);
 
 
 
@@ -123,14 +225,16 @@ var speakerTimes = [];
 var transcriptObject = [];
 var word_start_time;
 
-function displayTranscript() {
+function displayTranscript(userJson) {
 
 
     // get json transcript from user input (default transcript.json)
-    var json = "json/" + document.getElementById("user-filename").value;
-    console.log("loading: " + json);
+    // var json = "json/" + document.getElementById("user-filename").value;
+    // console.log("loading: " + json);
 
-    $.getJSON(json, function (data) {
+    // $.getJSON(json, function (data) {
+
+        data = userJson
 
         // assign variables for use in for loop below
 
@@ -462,7 +566,7 @@ function displayTranscript() {
         $('.raw').html(transcript_raw);
         $('.whole').html(obj);
 
-    });
+    // });
 
 
     var autoScrollCheck = document.getElementById("autoscroll-off").checked;

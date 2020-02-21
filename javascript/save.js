@@ -1,13 +1,6 @@
 // script to autosave to local storage
 
-// load html from file
 
-function LoadFromHtml() {
-    var htmlPath = "saves/" + document.getElementById("html-load").value;
-    $("#content").load(htmlPath);
-
-    console.log(htmlPath);
-}
 
 // export transcrpt
 // function exportToTxt() {
@@ -144,7 +137,7 @@ function startTimer() {
 function timerIncrement() {
     idleTime++;
     if (idleTime > 2) { // idle after 20 seconds
-        console.log("idle");
+        // console.log("idle");
     } else {
         autosave()
     }
@@ -162,9 +155,9 @@ function autosave() {
     // save input box text - turned off
     // var audioUrlToSave = document.getElementById("audioUrl").value;
     // window.localStorage.setItem("saved-audio-url", audioUrlToSave);
-    var jsonUrlToSave = document.getElementById("user-filename").value;
-    window.localStorage.setItem("saved-transcript-filename", jsonUrlToSave);
-    console.log("saved");
+    // var jsonUrlToSave = document.getElementById("user-filename").value;
+    // window.localStorage.setItem("saved-transcript-filename", jsonUrlToSave);
+    // console.log("saved");
 
     // save annotation sidebar contents
     // var annotationsToSave = document.getElementsByClassName("annotation-content-1").innerHTML;

@@ -1,5 +1,6 @@
 # audio files
 *.mp3
+*.wav
 
 # node
 node_modules

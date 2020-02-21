@@ -58,7 +58,7 @@
           <div class="field has-addons">
 
             <!-- for file api input  -->
-            <div class="file has-name is-small is-primary">
+            <!-- <div class="file has-name is-small is-primary">
               <label class="file-label">
                 <input id="user-audio-file" class="file-input" type="file" name="resume">
                 <span class="file-cta">
@@ -66,29 +66,33 @@
                     <i class="fas fa-upload"></i>
                   </span>
                   <span class="file-label">
-                    Browse audio…
+                    Load audio…
                   </span>
                 </span>
                 <span id="audio-name" class="file-name">
                   none selected
                 </span>
               </label>
-            </div>
+            </div> -->
             <!-- <p class="control">
             <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
           </p> -->
 
-<!--             
+            
             <div class="control">
-              <div class="select is-small is-fullwidth">
-                <select name="country" id="audioUrl">
+              <!-- <div class="select is-small is-fullwidth"> -->
+              <div class="is-small">
+                <!-- <select name="country" id="audioUrl">
 
-                </select>
+                </select> -->
+                <input type="text" class="input is-small" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+
+                
               </div>
             </div>
             <p class="control">
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
-            </p> -->
+            </p>
           </div> 
         </div>
         <div class="navbar-item">
@@ -103,11 +107,11 @@
                     <i class="fas fa-upload"></i>
                   </span>
                   <span class="file-label">
-                    Browse json…
+                    Load json…
                   </span>
                 </span>
                 <span id="json-name" class="file-name">
-                  nothing selected
+                  none selected
                 </span>
               </label>
             </div>
@@ -118,8 +122,8 @@
           </p> -->
 
 
-<!-- 
-            <div class="control">
+ 
+            <!-- <div class="control">
               <div class="select is-small is-fullwidth">
                 <select name="country" id="user-filename">
                 </select>
@@ -127,7 +131,7 @@
             </div>
             <p class="control">
               <button onclick="displayTranscript()" class="button is-small is-primary">Load</button>
-            </p> 
+            </p>  -->
           </div> 
         </div>
         <div class="navbar-item">
@@ -466,7 +470,25 @@
       <div class="navbar-start">
         <div class="navbar-item">
           <div class="field has-addons">
-            <div class="control">
+            <!-- for file api input  -->
+            <div class="file has-name is-small is-primary">
+              <label class="file-label">
+                <input id="user-project-file" class="file-input" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Load project…
+                  </span>
+                </span>
+                <span id="project-name" class="file-name">
+                  none selected
+                </span>
+              </label>
+            </div>
+
+            <!-- <div class="control">
               <div class="select is-small is-fullwidth">
                 <select name="country" id="html-load">
 
@@ -475,7 +497,7 @@
             </div>
             <p class="control">
               <button onclick="LoadFromHtml()" class="button is-small is-primary">Load Project</button>
-            </p>
+            </p> -->
           </div>
         </div>
         <div class="navbar-item">
