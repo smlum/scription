@@ -2,6 +2,9 @@
 *.mp3
 *.wav
 
+#distribution
+dist
+
 # node
 node_modules
 
