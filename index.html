@@ -4,27 +4,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transcriptoin Buddy</title>
+  <title>Transcription Buddy</title>
   <link rel="stylesheet" href="css/trint-player.css">
 
-  <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css">
+  <!-- <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
 
-  <link rel="stylesheet" type="text/css"
-    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
+  
+  <!-- <link rel="stylesheet" type="text/css"
+    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+  
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/styles-css.css">
 
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
+  <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
+
   <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
   <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
-  
-  <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-arrows-bounce-dark.css"> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script> -->
-  <script src="../../node_modules/velocity-animate/velocity.min.js"></script>
+
+   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+  <!-- <script src="../../node_modules/velocity-animate/velocity.min.js"></script> -->
+
   <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@0.12.4/dist/hls.min.js"></script> -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="/jquery/jquery.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="/jquery/jquery.js"></script> -->
+
   <script src="javascript/dark-mode.js"></script>
 </head>
 
@@ -57,7 +65,7 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          
+
           <div class="field has-addons">
 
             <!-- user audio input -->
@@ -78,7 +86,7 @@
                   none selected
                 </span>
               </label>
-            </div> 
+            </div>
             <!-- <p class="control">
             <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
           </p>
@@ -86,11 +94,11 @@
             
             <div class="control">
               <div class="select is-small is-fullwidth"> -->
-              <!-- <div class="is-small"> -->
-                <!-- <select name="country" id="audioUrl">
+            <!-- <div class="is-small"> -->
+            <!-- <select name="country" id="audioUrl">
 
                 </select> -->
-                <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+            <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
 
                 
               </div> -->
@@ -98,7 +106,7 @@
             <p class="control">
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
             </p> -->
-          </div> 
+          </div>
         </div>
         <div class="navbar-item">
           <div class="field has-addons navbar-item">
@@ -127,7 +135,7 @@
           </p> -->
 
 
- 
+
             <!-- <div class="control">
               <div class="select is-small is-fullwidth">
                 <select name="country" id="user-filename">
@@ -137,7 +145,7 @@
             <p class="control">
               <button onclick="displayTranscript()" class="button is-small is-primary">Load</button>
             </p>  -->
-          </div> 
+          </div>
         </div>
         <div class="navbar-item">
           <div class="field">
@@ -280,8 +288,8 @@
 
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-medium single-line accordion-category category-1"
-                  contenteditable="true">Category 1</span>
+                <span class="tag is-medium single-line accordion-category category-1" contenteditable="true">Category
+                  1</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -297,8 +305,8 @@
               </div>
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-medium single-line accordion-category category-2"
-                  contenteditable="true">Category 2</span>
+                <span class="tag is-medium single-line accordion-category category-2" contenteditable="true">Category
+                  2</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -464,8 +472,7 @@
       <div class="navbar-start">
         <div class="navbar-item">
           <div class="field">
-            <input id="dark-mode-switch" type="checkbox" name="dark-mode-switch"
-              class="switch is-rounded is-small">
+            <input id="dark-mode-switch" type="checkbox" name="dark-mode-switch" class="switch is-rounded is-small">
             <label for="dark-mode-switch">Dark mode</label>
           </div>
         </div>
@@ -508,12 +515,13 @@
         <div class="navbar-item">
           <div class="field has-addons">
             <div class="control">
-                <input class="input is-small" type="text" placeholder="Project name" name="country" id="save-html-name">
+              <input class="input is-small" type="text" placeholder="Project name" name="country" id="save-html-name">
 
-                </input>
+              </input>
             </div>
             <p class="control">
-              <button class="button is-small is-primary disabled" name="export-html" onclick="exportToHtml()">Save Project</button>
+              <button class="button is-small is-primary disabled" name="export-html" onclick="exportToHtml()">Save
+                Project</button>
             </p>
           </div>
         </div>
@@ -561,10 +569,13 @@
 
   <script src="javascript/bulma.js"></script>
 
-  <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script>
+  <!-- <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
 
-  <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
-  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script>
+  <!-- <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
+  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
 
   <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->
