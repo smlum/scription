@@ -2,7 +2,7 @@
   "name": "transcription-buddy",
   "version": "1.0.0",
   "description": "Transcription buddy is an interactive transcript editor.",
-  "main": "index.js",
+  "main": "index-express.js",
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "serve": "browser-sync start --server --files 'dist/css/*.css, **/*.html, **/*.js'",
