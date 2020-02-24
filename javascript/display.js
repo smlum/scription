@@ -71,18 +71,28 @@ function getAudioUrl() {
 }
 
 // load audio from user selected file
+// note that this made the computer crash with large file size. I think audio was loaded to memory. files were way too big with wav
+// set limit
+
 function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
-    console.log(files);
+    
 
     // Loop through the FileList and render image files as thumbnails.
     for (var i = 0, f; f = files[i]; i++) {
 
         // Only process audio files.
         if (!f.type.match('audio.*')) {
-            console.log('audio detected');
-            continue;
+            console.log('file not audio');
+            return;
+        };
+
+        // Only process if size is smaller than 30mb
+        fileSize = Math.round(files[0].size / 1000000)
+        if (fileSize > 31.457280) {
+            console.log('file is ' + fileSize + 'mb. but max file size is 30mb');
+            return;
         } 
 
         var reader = new FileReader();
@@ -109,6 +119,24 @@ function handleFileSelect(evt) {
     }
 }
 document.getElementById('user-audio-file').addEventListener('change', handleFileSelect, false);
+
+// this is simpler version of file api audio
+// $('#user-audio-file').on('change', function (e) {
+//     console.log('trying');
+//     var $audio = $('#hyperplayer');
+//     var target = e.currentTarget;
+//     var file = target.files[0];
+//     var reader = new FileReader();
+
+//     if (target.files && file) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             $audio.attr('src', e.target.result);
+//             document.getElementById("audio-name").innerHTML = theFile.name;
+//         }
+//         reader.readAsDataURL(file);
+//     }
+// });
 
 // load json from user selected file
 function handleJsonFileSelect(evt) {
@@ -234,337 +262,346 @@ function displayTranscript(userJson) {
 
     // $.getJSON(json, function (data) {
 
-        data = userJson
+    data = userJson
 
-        // assign variables for use in for loop below
+    // assign variables for use in for loop below
 
-        // contains the html to append for each word
-        var text = "";
-        // counts upwards each time the speaker changes, it should be as long as the length of speaker_times
-        var speaker_counter = 0;
-        var new_speaker = "";
-        // counts of how long each para is
-        var paragraphWordCounter = 0;
-        // counts the number of paragraphs
-        var paragraphCounter = 0;
-        var newPara = "";
-
-
-        // parse the DeepSPeech formatted json
-
-        if (data.words) {
-            console.log('Mozilla formatted data detected');
-            // if (document.getElementById('deepspeech').checked) {
-            var results = data.words
-
-            jsonLength = results.length
+    // contains the html to append for each word
+    var text = "";
+    // counts upwards each time the speaker changes, it should be as long as the length of speaker_times
+    var speaker_counter = 0;
+    var new_speaker = "";
+    // counts of how long each para is
+    var paragraphWordCounter = 0;
+    // counts the number of paragraphs
+    var paragraphCounter = 0;
+    var newPara = "";
 
 
-            transcriptObject = results.words;
-            var confidence = 1;
+    // parse the DeepSPeech formatted json
 
-            // loop through json to appeand words and data
-            // TODO need to adjust this to create a para first
-            // then to append words to that paragraph
-            // then when speaker changes to create a new para
-            for (var i = 0; i < jsonLength; i++) {
-                // get data from JSON string
+    if (data.words) {
+        console.log('Mozilla formatted data detected');
 
-                var wordLabel = results[i].word;
-                var startTimeLabel = results[i]["start_time "];
-                var durationLabel = results[i].duration;
+        // turn off confidence toggle
+        document.getElementById('confidence').setAttribute('disabled', 'disabled');
 
 
-                word = results[i].word;
-                // word start time is in seconds
+        // if (document.getElementById('deepspeech').checked) {
+        var results = data.words
 
-                // create an manual adjustment to data when there is a playback sync error
-                // word highlighting too early means data time is too low, so make it higher
-                // word highlighting too late means data time is too high, so make it lower
-                var adjustment = 0;
-                // var delay = $("#user-delay").val();
-                // // adjustment = Number(delay);
-                // console.log("adjustment: " + adjustment);
-
-                word_start_time = startTimeLabel + adjustment;
-                word_start_time_ms = word_start_time * 1000
-
-                if (results[i + 1] && results[i + 1].start_time) {
-                    next_word_start_time = results[i + 1].start_time;
-                    // TODO truncaste this as it can go to lots of decimal places
-                    // duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
-
-                } else if (results[i + 2] && results[i + 2].start_time) {
-                    next_word_start_time = results[i + 2].start_time;
-                    // TODO truncaste this as it can go to lots of decimal places
-                    // duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
-                }
-
-                duration_ms = 1000 * durationLabel;
-
-                if (i == 0) {
-
-                    new_speaker = "New Para";
-
-                    // add new para
-                    // function takes: timeOfFirstWord, speaker, wordCount
-                    paraId = "para-" + paragraphCounter;
-                    newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                    $('#content').append(newPara);
-                    // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
-                    // newPara);
-                };
+        jsonLength = results.length
 
 
-                // add data to each word: confidence, start time, duration, speaker
-                spanStartTime = "<span data-m='" + word_start_time_ms + "' data-d='" + duration_ms + "' data-confidence='" + confidence + "'>";
-                // create html to be added
+        transcriptObject = results.words;
+        var confidence = 1;
 
+        // loop through json to appeand words and data
+        // TODO need to adjust this to create a para first
+        // then to append words to that paragraph
+        // then when speaker changes to create a new para
+        for (var i = 0; i < jsonLength; i++) {
+            // get data from JSON string
+
+            var wordLabel = results[i].word;
+            var startTimeLabel = results[i]["start_time "];
+            var durationLabel = results[i].duration;
+
+
+            word = results[i].word;
+            // word start time is in seconds
+
+            // create an manual adjustment to data when there is a playback sync error
+            // word highlighting too early means data time is too low, so make it higher
+            // word highlighting too late means data time is too high, so make it lower
+            var adjustment = 0;
+            // var delay = $("#user-delay").val();
+            // // adjustment = Number(delay);
+            // console.log("adjustment: " + adjustment);
+
+            word_start_time = startTimeLabel + adjustment;
+            word_start_time_ms = word_start_time * 1000
+
+            if (results[i + 1] && results[i + 1].start_time) {
+                next_word_start_time = results[i + 1].start_time;
+                // TODO truncaste this as it can go to lots of decimal places
+                // duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
+
+            } else if (results[i + 2] && results[i + 2].start_time) {
+                next_word_start_time = results[i + 2].start_time;
+                // TODO truncaste this as it can go to lots of decimal places
+                // duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
+            }
+
+            duration_ms = 1000 * durationLabel;
+
+            if (i == 0) {
+
+                new_speaker = "New Para";
+
+                // add new para
+                // function takes: timeOfFirstWord, speaker, wordCount
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
+                // newPara);
+            };
+
+
+            // add data to each word: confidence, start time, duration, speaker
+            spanStartTime = "<span data-m='" + word_start_time_ms + "' data-d='" + duration_ms + "' data-confidence='" + confidence + "'>";
+            // create html to be added
+
+            space = " ";
+
+            text = space + spanStartTime + word + "</span>";
+
+            // Uncomment out below to use tooltips
+            // spanTooltip = "<span class='tooltiptext'>";
+            // divTooltip = "<div class='tooltip'>";
+            // text = space + divTooltip + spanStartTime + word + "</span>" + spanTooltip + confidence + "<br>" + word_start_time + "</span>" + "</div>";
+
+            // append text to paragraph
+            para = "#para-" + paragraphCounter;
+
+            $(para).append(text);
+
+            // if it gets to a full stop and the current paragraph is too long, start a new paragraph
+            // TODO let user set the paragraph amount
+            var max_para_length = 35;
+
+
+            //for (var i = 0; i < speaker_times.length; i++) {
+            //console.log(speaker_times[i]);
+            //}
+            paragraphWordCounter++
+
+            if (paragraphWordCounter > max_para_length) {
+                // set data for new speaker
+                paragraphCounter++;
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                // reset the paragraph word counter
+                paragraphWordCounter = 0;
+                // console.log(word);
+                // console.log('para too long');
+
+            };
+
+        };
+
+
+
+    } else if (data.results) {
+        console.log('AWS formatted data detected');
+        // turn on confidence display toggle
+        document.getElementById('confidence').removeAttribute('disabled');
+
+
+        // parse the AWS formatted json
+
+        // 
+        var results = data.results;
+        var transcript_raw = JSON.stringify(results.transcripts[0].transcript);
+
+        // create empty array to hold speaker names and start times
+        // TODO is this array actually used in anything?  
+        // REPLY: yes, it is used to look up who the speaker is depending on the time
+        // Note: in the json a speaker can speak multiple times in a row
+        // we simplify this
+        var whoIsSpeaker
+        var speaker_times = [];
+        var segments = results.speaker_labels.segments;
+        for (var i = 1; i < segments.length; i++) {
+            // check if the speaker has changed
+            if (whoIsSpeaker != segments[i].speaker_label) {
+                // if so add to the array
+                whoIsSpeaker = segments[i].speaker_label
+                speaker = [];
+                speaker.push(segments[i].speaker_label);
+                speaker.push(Number(segments[i].start_time));
+                speaker_times.push(speaker);
+            }
+
+        };
+
+        // saving global variables for use in audio-control.js (poss can delete)
+        speakerTimes = speaker_times
+
+        transcriptObject = results.items;
+
+        jsonLength = results.items.length;
+
+
+
+        // loop through json to appeand words and data
+        // TODO need to adjust this to create a para first
+        // then to append words to that paragraph
+        // then when speaker changes to create a new para
+        for (var i = 0; i < jsonLength; i++) {
+            // get data from JSON string
+            word = results.items[i].alternatives[0].content;
+            confidence = results.items[i].alternatives[0].confidence;
+            word_start_time = results.items[i].start_time;
+            word_start_time_ms = Math.round(word_start_time * 1000);
+            if (results.items[i + 1] && results.items[i + 1].start_time) {
+                next_word_start_time = results.items[i + 1].start_time;
+                // TODO truncaste this as it can go to lots of decimal places
+                duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
+
+            } else if (results.items[i + 2] && results.items[i + 2].start_time) {
+                next_word_start_time = results.items[i + 2].start_time;
+                ``
+                // TODO truncaste this as it can go to lots of decimal places
+                duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
+            }
+            type = results.items[i].type;
+
+            // check for punctuation and ensure punctuation doesn't have spaces before them
+            if (type == "pronunciation") {
                 space = " ";
+                paragraphWordCounter++;
+            } else if (type == "punctuation") {
+                space = "";
+            };
+
+
+
+            // make sure first word has a speaker - may be unecessary
+            if (i == 0) {
+                // find out and set the speaker counter for the first word
+
+                // // to check who the speaker is at the time of the first word
+                // while (Number(speaker_times[speaker_counter][1]) < Number(word_start_time)) {
+                //   speaker_counter++;
+                // };          
+                new_speaker = speaker_times[speaker_counter][0];
+
+                // add new para
+                // function takes: timeOfFirstWord, speaker, wordCount
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
+                // newPara);
+            };
+
+            // ok this might need overhaul
+            // want to detect if the speaker has changed 
+            // if it has, create a new paragraph and increase speaker counter by 1
+            // speaker_times has the times where the speaker changes
+            // speaker counter starts at 0
+            // when the time of the word exceeds speaker_times 0th row, then change it
+
+            // add new para if speaker changes
+            // checks if it's not the last speaker
+            if ((speaker_counter < speaker_times.length) && (i != 0)) {
+
+                speakerStart = speaker_times[speaker_counter][1]
+                // checks if the time of the speaker is less than the current word
+                // ok to do this, we need to check for the next word, not this one
+                // also what if the next word is punctuation
+                if (speakerStart < next_word_start_time) {
+
+
+                    // checks if the amount of time the speaker spoke for is more than a second
+                    // might be able to remove this since it addressed a problems that's been solved elsewhere
+                    var min_time = 1;
+                    // if 
+                    if (speaker_times[speaker_counter + 1] && (speaker_times[speaker_counter + 1][1] - speaker_times[speaker_counter][1] > min_time)) {
+                        speaker_counter++;
+                        // checks if the speaker has changed
+                        if (new_speaker != speaker_times[speaker_counter][0]) {
+                            // console.log(speaker_times);
+
+                            // console.log(word);
+                            // console.log(speaker_counter);
+
+
+                            // changes the speaker variable
+                            new_speaker = speaker_times[speaker_counter][0];
+
+                            // add a new para
+                            paragraphCounter++;
+                            paraId = "para-" + paragraphCounter;
+
+                            newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                            $('#content').append(newPara);
+                            // reset the paragraph word counter
+                            paragraphWordCounter = 0;
+
+
+
+                        };
+                    };
+
+                };
+            };
+
+            // add data to each word: confidence, start time, duration, speaker
+            spanStartTime = "<span data-m=" + word_start_time_ms + " data-d=" + duration_ms + " data-confidence=" + confidence + ">";
+            // create html to be added
+
+
+
+            if (type == "pronunciation") {
+                // remove
 
                 text = space + spanStartTime + word + "</span>";
+            } else if (type == "punctuation") {
+                // check if the previous word was also punctuation cause by removing an utterence
 
-                // Uncomment out below to use tooltips
-                // spanTooltip = "<span class='tooltiptext'>";
-                // divTooltip = "<div class='tooltip'>";
-                // text = space + divTooltip + spanStartTime + word + "</span>" + spanTooltip + confidence + "<br>" + word_start_time + "</span>" + "</div>";
+                text = space + word
 
-                // append text to paragraph
-                para = "#para-" + paragraphCounter;
-
-                $(para).append(text);
-
-                // if it gets to a full stop and the current paragraph is too long, start a new paragraph
-                // TODO let user set the paragraph amount
-                var max_para_length = 35;
-
-
-                //for (var i = 0; i < speaker_times.length; i++) {
-                //console.log(speaker_times[i]);
-                //}
-                paragraphWordCounter++
-
-                if (paragraphWordCounter > max_para_length) {
-                    // set data for new speaker
-                    paragraphCounter++;
-                    paraId = "para-" + paragraphCounter;
-                    newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                    $('#content').append(newPara);
-                    // reset the paragraph word counter
-                    paragraphWordCounter = 0;
-                    // console.log(word);
-                    // console.log('para too long');
-
-                };
 
             };
 
+            // Uncomment out below to use tooltips
+            // spanTooltip = "<span class='tooltiptext'>";
+            // divTooltip = "<div class='tooltip'>";
+            // text = space + divTooltip + spanStartTime + word + "</span>" + spanTooltip + confidence + "<br>" + word_start_time + "</span>" + "</div>";
 
+            // append text to paragraph
+            para = "#para-" + paragraphCounter;
 
-        } else if (data.results) {
-            console.log('AWS formatted data detected');
-            // parse the AWS formatted json
+            $(para).append(text);
 
-            // 
-            var results = data.results;
-            var transcript_raw = JSON.stringify(results.transcripts[0].transcript);
-
-            // create empty array to hold speaker names and start times
-            // TODO is this array actually used in anything?  
-            // REPLY: yes, it is used to look up who the speaker is depending on the time
-            // Note: in the json a speaker can speak multiple times in a row
-            // we simplify this
-            var whoIsSpeaker
-            var speaker_times = [];
-            var segments = results.speaker_labels.segments;
-            for (var i = 1; i < segments.length; i++) {
-                // check if the speaker has changed
-                if (whoIsSpeaker != segments[i].speaker_label) {
-                    // if so add to the array
-                    whoIsSpeaker = segments[i].speaker_label
-                    speaker = [];
-                    speaker.push(segments[i].speaker_label);
-                    speaker.push(Number(segments[i].start_time));
-                    speaker_times.push(speaker);
-                }
-
-            };
-
-            // saving global variables for use in audio-control.js (poss can delete)
-            speakerTimes = speaker_times
-
-            transcriptObject = results.items;
-
-            jsonLength = results.items.length;
+            // if it gets to a full stop and the current paragraph is too long, start a new paragraph
+            // TODO let user set the paragraph amount
+            var max_para_length = 35;
 
 
 
-            // loop through json to appeand words and data
-            // TODO need to adjust this to create a para first
-            // then to append words to that paragraph
-            // then when speaker changes to create a new para
-            for (var i = 0; i < jsonLength; i++) {
-                // get data from JSON string
-                word = results.items[i].alternatives[0].content;
-                confidence = results.items[i].alternatives[0].confidence;
-                word_start_time = results.items[i].start_time;
-                word_start_time_ms = Math.round(word_start_time * 1000);
-                if (results.items[i + 1] && results.items[i + 1].start_time) {
-                    next_word_start_time = results.items[i + 1].start_time;
-                    // TODO truncaste this as it can go to lots of decimal places
-                    duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
+            if (type == "punctuation" && (word == "." || word == "!" || word == "?") && paragraphWordCounter > max_para_length && new_speaker == speaker_times[speaker_counter][0]) {
+                // set data for new speaker
+                paragraphCounter++;
+                paraId = "para-" + paragraphCounter;
 
-                } else if (results.items[i + 2] && results.items[i + 2].start_time) {
-                    next_word_start_time = results.items[i + 2].start_time;
-                    ``
-                    // TODO truncaste this as it can go to lots of decimal places
-                    duration_ms = Math.round(1000 * (next_word_start_time - word_start_time))
-                }
-                type = results.items[i].type;
-
-                // check for punctuation and ensure punctuation doesn't have spaces before them
-                if (type == "pronunciation") {
-                    space = " ";
-                    paragraphWordCounter++;
-                } else if (type == "punctuation") {
-                    space = "";
-                };
-
-
-
-                // make sure first word has a speaker - may be unecessary
-                if (i == 0) {
-                    // find out and set the speaker counter for the first word
-
-                    // // to check who the speaker is at the time of the first word
-                    // while (Number(speaker_times[speaker_counter][1]) < Number(word_start_time)) {
-                    //   speaker_counter++;
-                    // };          
-                    new_speaker = speaker_times[speaker_counter][0];
-
-                    // add new para
-                    // function takes: timeOfFirstWord, speaker, wordCount
-                    paraId = "para-" + paragraphCounter;
-                    newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                    $('#content').append(newPara);
-                    // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
-                    // newPara);
-                };
-
-                // ok this might need overhaul
-                // want to detect if the speaker has changed 
-                // if it has, create a new paragraph and increase speaker counter by 1
-                // speaker_times has the times where the speaker changes
-                // speaker counter starts at 0
-                // when the time of the word exceeds speaker_times 0th row, then change it
-
-                // add new para if speaker changes
-                // checks if it's not the last speaker
-                if ((speaker_counter < speaker_times.length) && (i != 0)) {
-
-                    speakerStart = speaker_times[speaker_counter][1]
-                    // checks if the time of the speaker is less than the current word
-                    // ok to do this, we need to check for the next word, not this one
-                    // also what if the next word is punctuation
-                    if (speakerStart < next_word_start_time) {
-
-
-                        // checks if the amount of time the speaker spoke for is more than a second
-                        // might be able to remove this since it addressed a problems that's been solved elsewhere
-                        var min_time = 1;
-                        // if 
-                        if (speaker_times[speaker_counter + 1] && (speaker_times[speaker_counter + 1][1] - speaker_times[speaker_counter][1] > min_time)) {
-                            speaker_counter++;
-                            // checks if the speaker has changed
-                            if (new_speaker != speaker_times[speaker_counter][0]) {
-                                // console.log(speaker_times);
-
-                                // console.log(word);
-                                // console.log(speaker_counter);
-
-
-                                // changes the speaker variable
-                                new_speaker = speaker_times[speaker_counter][0];
-
-                                // add a new para
-                                paragraphCounter++;
-                                paraId = "para-" + paragraphCounter;
-
-                                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                                $('#content').append(newPara);
-                                // reset the paragraph word counter
-                                paragraphWordCounter = 0;
-
-
-
-                            };
-                        };
-
-                    };
-                };
-
-                // add data to each word: confidence, start time, duration, speaker
-                spanStartTime = "<span data-m=" + word_start_time_ms + " data-d=" + duration_ms + " data-confidence=" + confidence + ">";
-                // create html to be added
-
-
-
-                if (type == "pronunciation") {
-                    // remove
-
-                    text = space + spanStartTime + word + "</span>";
-                } else if (type == "punctuation") {
-                    // check if the previous word was also punctuation cause by removing an utterence
-
-                    text = space + word
-
-
-                };
-
-                // Uncomment out below to use tooltips
-                // spanTooltip = "<span class='tooltiptext'>";
-                // divTooltip = "<div class='tooltip'>";
-                // text = space + divTooltip + spanStartTime + word + "</span>" + spanTooltip + confidence + "<br>" + word_start_time + "</span>" + "</div>";
-
-                // append text to paragraph
-                para = "#para-" + paragraphCounter;
-
-                $(para).append(text);
-
-                // if it gets to a full stop and the current paragraph is too long, start a new paragraph
-                // TODO let user set the paragraph amount
-                var max_para_length = 35;
-
-
-
-                if (type == "punctuation" && (word == "." || word == "!" || word == "?") && paragraphWordCounter > max_para_length && new_speaker == speaker_times[speaker_counter][0]) {
-                    // set data for new speaker
-                    paragraphCounter++;
-                    paraId = "para-" + paragraphCounter;
-
-                    // use next word start time as current one is punctuation
-                    newPara = CreateNewPara(next_word_start_time, new_speaker, paraId);
-                    $('#content').append(newPara);
-                    // reset the paragraph word counter
-                    paragraphWordCounter = 0;
-                    // console.log(word);
-                    // console.log('para too long');
-
-                };
-
-                //for (var i = 0; i < speaker_times.length; i++) {
-                //console.log(speaker_times[i]);
-                //}
+                // use next word start time as current one is punctuation
+                newPara = CreateNewPara(next_word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                // reset the paragraph word counter
+                paragraphWordCounter = 0;
+                // console.log(word);
+                // console.log('para too long');
 
             };
 
-        }
+            //for (var i = 0; i < speaker_times.length; i++) {
+            //console.log(speaker_times[i]);
+            //}
+
+        };
+
+    }
 
 
 
-        var obj = JSON.stringify(results);
-        $('.raw').html(transcript_raw);
-        $('.whole').html(obj);
+    var obj = JSON.stringify(results);
+    $('.raw').html(transcript_raw);
+    $('.whole').html(obj);
 
     // });
 
