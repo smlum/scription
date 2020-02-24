@@ -5,7 +5,10 @@
 # node
 node_modules
 
-#save data
+# save data
 saves
+
+# electron distribution
+transcription-buddy-darwin-x64
 
 .DS_Store
