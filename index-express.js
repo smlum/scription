@@ -68,18 +68,18 @@ const saveFolder = `${process.resourcesPath}/app/saves/`;
 var audioList
 var jsonList
 
-// if (app.get('env') == 'development') {
-//     var browserSync = require('browser-sync');
-//     var config = {
-//         files: ["**/*.html", "dist/css/*.css", "**/*.js", "sass/**/*.scss"],
-//         logLevel: 'debug',
-//         logSnippet: false,
-//         reloadDelay: 3000,
-//         reloadOnRestart: true
-//     };
-//     var bs = browserSync(config);
-//     app.use(require('connect-browser-sync')(bs));
-// }
+if (app.get('env') == 'development') {
+    var browserSync = require('browser-sync');
+    var config = {
+        files: ["**/*.html", "dist/css/*.css", "**/*.js", "sass/**/*.scss"],
+        logLevel: 'debug',
+        logSnippet: false,
+        reloadDelay: 3000,
+        reloadOnRestart: true
+    };
+    var bs = browserSync(config);
+    app.use(require('connect-browser-sync')(bs));
+}
 
 // TODO fix. tried to add this, it didn;t work, 
 // app.use(sassMiddleware({
