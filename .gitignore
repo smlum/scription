@@ -6,7 +6,7 @@
 dist
 
 # user files
-user
+user/
 
 # node
 node_modules
