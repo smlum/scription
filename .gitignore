@@ -5,6 +5,9 @@
 #distribution
 dist
 
+# user files
+user
+
 # node
 node_modules
 
