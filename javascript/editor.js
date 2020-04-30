@@ -7,9 +7,8 @@
 
 // create array of annotations to be exported
 function getAnnotations() {
-    numberOfCategories = 8;
+    numberOfCategories = 7 + 1;
 
-    
 
     // this would make an n*m matrics
     // var matrix = [];
@@ -20,10 +19,11 @@ function getAnnotations() {
     //     }
     // }
      
-    // create the array
+    // create the array from category names and contents
     var annotationsArray = [[],[]]
     for (let i = 1; i < numberOfCategories; i++) {
-        categoryName = 'selected-' + i;
+        getCategory = '.category-' + i;
+        categoryName = $(getCategory).html();
         var items = document.getElementsByClassName(categoryName);
         var array = [categoryName]
         // put just the inner text in a new array

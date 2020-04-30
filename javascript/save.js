@@ -163,6 +163,25 @@ function autosave() {
     // var annotationsToSave = document.getElementsByClassName("annotation-content-1").innerHTML;
     var annotationsToSave = $('.annotation-content-1').html();
     window.localStorage.setItem("saved-annotation-1", annotationsToSave);
+
+    // save category titles (dumb)
+    var annotationTitle = $('.category-1').html();    
+    window.localStorage.setItem("saved-category-1", annotationTitle);
+    var annotationTitle = $('.category-2').html();    
+    window.localStorage.setItem("saved-category-2", annotationTitle);
+    var annotationTitle = $('.category-3').html();    
+    window.localStorage.setItem("saved-category-3", annotationTitle);
+    var annotationTitle = $('.category-4').html();    
+    window.localStorage.setItem("saved-category-4", annotationTitle);
+    var annotationTitle = $('.category-5').html();    
+    window.localStorage.setItem("saved-category-5", annotationTitle);
+    var annotationTitle = $('.category-6').html();    
+    window.localStorage.setItem("saved-category-6", annotationTitle);
+    var annotationTitle = $('.category-7').html();    
+    window.localStorage.setItem("saved-category-7", annotationTitle);
+
+    
+    
 };
 
 
@@ -200,6 +219,46 @@ function loadSavedText() {
                     var storedAnnotation = localStorage.getItem("saved-annotation-1");
                     $('.annotation-content-1').html(storedAnnotation);
                 }
+
+                // load category names (dumb)
+                if (localStorage.getItem("saved-category-1")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-1");
+                    $('.category-1').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-2")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-2");
+                    $('.category-2').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-3")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-3");
+                    $('.category-3').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-4")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-4");
+                    $('.category-4').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-5")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-5");
+                    $('.category-5').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-6")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-6");
+                    $('.category-6').html(storedCategory);
+                }
+                if (localStorage.getItem("saved-category-7")) {
+                    
+                    var storedCategory = localStorage.getItem("saved-category-7");
+                    $('.category-7').html(storedCategory);
+                }
+
+
+       
                 // load dark mode from cookie, else detect it from user computer
                 // if (localStorage.getItem("dark-mode-switch") != undefined) {
                 //     var storedDarkMode = localStorage.getItem("dark-mode-switch")
