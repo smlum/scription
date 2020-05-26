@@ -24,7 +24,9 @@ function getAnnotations() {
     for (let i = 1; i < numberOfCategories; i++) {
         getCategory = '.category-' + i;
         categoryName = $(getCategory).html();
-        var items = document.getElementsByClassName(categoryName);
+        // populate the list from the transcript
+        var items = document.getElementsByClassName('selected-' + i);
+        // var items = document.getElementsByClassName(categoryName);
         var array = [categoryName]
         // put just the inner text in a new array
         for (let j = 0; j < items.length; j++) {
@@ -32,6 +34,7 @@ function getAnnotations() {
         }
         annotationsArray[i-1] = array;
     }
+    
     return annotationsArray;
 }
 
@@ -65,7 +68,7 @@ function exportToCsv() {
         csvFile += processRow(rows[i]);
     }
     
-
+    
     var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
     if (navigator.msSaveBlob) { // IE 10+
         navigator.msSaveBlob(blob, filename);

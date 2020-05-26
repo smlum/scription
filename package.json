@@ -42,7 +42,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "green-audio-player": "^1.0.11",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "jsdom": "^16.2.0",
     "python-shell": "^1.0.8",
     "tether-drop": "^1.4.2",
