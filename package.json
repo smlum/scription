@@ -28,7 +28,7 @@
     "bulma-switch": "^2.0.0",
     "connect-browser-sync": "^2.1.0",
     "copyfiles": "^2.2.0",
-    "electron": "^8.0.1",
+    "electron": "^8.2.4",
     "electron-packager": "^14.2.1",
     "http-server": "^0.12.1",
     "node-sass-middleware": "^0.11.0",
