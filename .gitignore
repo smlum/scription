@@ -1,6 +1,7 @@
 # audio files
 *.mp3
 *.wav
+!data/demo_lo.mp3
 
 #distribution
 dist
