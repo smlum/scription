@@ -2,6 +2,7 @@
 *.mp3
 *.wav
 !data/demo_lo.mp3
+!data/demo_hi.mp3
 
 #distribution
 dist
