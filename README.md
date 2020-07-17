@@ -2,6 +2,8 @@
 
 Transcription buddy is an interactive transcript editor.
 
+See a live demo here: https://samfredlumley.github.io/AWS-transcription-buddy/
+
 ## why?
 
 Manual transcription has the advantage of the listener getting close to the material, but it can take a long time. Automated transcription is fast and cheap, but it isn't perfect, and you lose the insights from going through the manual transcription process.
