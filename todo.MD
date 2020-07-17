@@ -3,9 +3,8 @@ General
     - Upload instructions, save options, exports
 
 Known issues with workarounds
-- Large audio files cause text-audio sync issues - recommended to compress large audio files (constant bit rate, 8kbps, 8k sample rate). E.g. use ffmpeg: 
 - Export text removes paragraphs - for now use copy and paste
-
+- Large audio files cause text-audio sync issues - recommended to compress large audio files (constant bit rate, 8kbps, 8k sample rate). E.g. use ffmpeg: 
 `find ./ -name “*.mp3” -exec ffmpeg -i "{}" -codec:a libmp3lame -b:a 8k -ac 1 -ar 8000 '$(basename {} min)’.mp3 \;`
 
 Bugs
