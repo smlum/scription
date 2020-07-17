@@ -377,3 +377,7 @@ body, html {
 .drop-content::before {
     border-bottom-color: white !important;
 }
+
+.temporary-link {
+    color: #21a094 !important;
+}
