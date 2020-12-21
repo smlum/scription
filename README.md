@@ -2,7 +2,7 @@
 
 Transcription buddy is an interactive transcript editor.
 
-See a live demo here: https://samfredlumley.github.io/AWS-transcription-buddy/
+See a live demo here: https://samfredlumley.github.io/aws-transcription-editor/
 
 ## why?
 
