@@ -2,7 +2,7 @@
 
 Scription is an editor for AWS Transcribe and Mozilla DeepSpeech transcript files. It links transcript text to audio playback to make editing easier. 
 
-You can use Scription via the web app: https://samfredlumley.github.io/scription
+You can use Scription via the web app: https://smlum.github.io/scription
 
 Automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech) are a neat way to turn speech to text. However, neither offers a way to edit the output json files after running a transcription job.
 
@@ -25,7 +25,7 @@ And some other useful stuff:
 
 1. Run a transcription job using AWS Transcribe or Mozilla DeepSpeech
 2. Download the json output file
-3. Load the json file into [Scription](https://samfredlumley.github.io/scription/)
+3. Load the json file into [Scription](https://smlum.github.io/scription/)
 4. Load in your corresponding audio (see below for larger audio files)
 5. You're good to go!
 
@@ -107,7 +107,7 @@ To use automated transcription services you may need to format audio in a partic
 
 1. Clone the repository:
 ```
-git clone https://github.com/samFredLumley/scription
+git clone https://github.com/smlum/scription
 cd scription
 ```
 2. In the "json" folder save your downloaded json files 
