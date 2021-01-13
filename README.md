@@ -29,19 +29,19 @@ And some other useful stuff:
 4. Load in your corresponding audio (see below for larger audio files)
 5. You're good to go!
 
-### Saving and loading a project
+### Saving and loading a project 💾
 
 'Save project' creates a text file which you can load into Scription at a later time. It preserves any text edits and annotations.
 
 If you have 'Autosave' turned on it saves your edits every 5 seconds, so that if you refresh the page, they should still be there.
 
-### Exporting
+### Exporting 
 
 'Export text' creates a plain text file which includes the speaker tags - essentially the same thing as copy and pasting. 
 
 'Export annotations' creates a csv file with highlighted quotes by each category.
 
-### Audio control shortcuts
+### Audio control shortcuts ⌨️
 
 Audio playback can be controlled by the following shortcuts:
 
@@ -50,7 +50,7 @@ Audio playback can be controlled by the following shortcuts:
 * Slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
 * Speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
 
-### Uploading audio to Scription
+### Uploading audio to Scription 🔈
 
 Large audio files (above ~50mb) can cause playback issues. So can files with variable bitrates.
 
