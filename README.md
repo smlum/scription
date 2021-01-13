@@ -10,14 +10,14 @@ Automated transcription services like [Amazon Transcribe](https://aws.amazon.com
 
 * Highlight words as the audio plays 
 * Control audio playback by clicking words in the text
-* Allow you to highlight quotes and export them to a csv
 * Bring love and joy to the transcription process ❤️
 
-Other useful stuff:
+And some other useful stuff:
 
 * Seperate speech by speakers 
 * Highlight low confidence words
 * Skip back and forth in audio with keyboard shortcuts
+* Allow you to highlight quotes and export them to a csv
 
 ## How to use
 
@@ -43,16 +43,34 @@ Audio can be played using the controls,
 
 'Export annotations' creates a csv file with highlighted quotes by each category.
 
-### keyboard shortcuts
+### Audio control shortcuts
 
-The audio player can also be controlled by the following shortcuts:
-* go back 5s <kbd>Ctrl</kbd> + <kbd>,</kbd>
-* skip 5s <kbd>Ctrl</kbd> + <kbd>.</kbd>
-* slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
-* speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
+Audio playback can be controlled by the following shortcuts:
 
+* Go back 5s <kbd>Ctrl</kbd> + <kbd>,</kbd>
+* Skip 5s <kbd>Ctrl</kbd> + <kbd>.</kbd>
+* Slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
+* Speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
 
-## Running locally
+### Uploading audio to Scription
+
+Large audio files cause text/audio sync issues. Above ~50mb it starts to run slowly. So can files with a variable bitrate.
+
+Even if you have large audio files (eg an hour) you can compress these down to a small size. Size can be degreased by using a lossy file format (like mp3), switching to mono, reducing the bitrate. 
+
+You can manually adjust these using something like [Audacity](https://www.audacityteam.org/). 
+
+I used the following ffmpeg script to iterate through 
+
+1. Install ffmpeg
+2. Go 
+3. Iterate through all mp3 files, 
+
+`
+find ./ -name “*.mp3” -exec ffmpeg -i "{}" -codec:a libmp3lame -b:a 8k -ac 1 -ar 8000 '$(basename {} min)’.mp3 \;
+`
+
+## Run Scription locally
 
 
 ## Using AWS Transcribe and Mozilla DeepSpeech
@@ -73,7 +91,6 @@ DeepSpeech is free and runs locally on your machine, so there are no privacy con
 | good accuracy | ok accuracy   |
 | lots of features | text only  |
 
-
 ### Setup AWS Transcribe
 
 * Follow their [instructions](https://aws.amazon.com/getting-started/hands-on/create-audio-transcript-transcribe/)
@@ -81,49 +98,18 @@ DeepSpeech is free and runs locally on your machine, so there are no privacy con
 
 ### Setup Mozilla DeepSpeech
 
-Follow their [instructions](https://deepspeech.readthedocs.io/en/latest/?badge=latest)
+* Follow their [instructions](https://deepspeech.readthedocs.io/en/latest/?badge=latest)
+* They have quite tight requirements for audio format. It needs to be .wav, mono, sample rate 16000hz.
+
+### Cleaning audio for transcription
+
+To use automated transcription services you may need to format audio in a particular way or clean it up (eg remove noise). I recommend [Audacity](https://www.audacityteam.org/) for manual audio editing/formatting and [ffmpeg](https://ffmpeg.org/) for automated formatting.
+
+## Privacy using Scription
+
+The Scription web app uses your browser's local storage. So when you load files they're being uploaded onto another server.
 
 
-## why?
-
-Manual transcription has the advantage of the listener getting close to the material, but it can take a long time. Automated transcription is fast and cheap, but it isn't perfect, and you lose the insights from going through the manual transcription process.
-
-Transcription buddy aims to provide a best of both worlds. It uses the brute force of automated transcription to start things off and provides an interactive editor to easily correct the transcript in real time by listening to the original audio. 
-
-I couldn't find another service which was cheap, quick and easy to edit, but there is lots of other good stuff out there. For completely manual transcription, try [oTranscribe](https://otranscribe.com/). For paid, automatic transcription try [Trint](https://trint.com/). For a deeper overview of options see this [Medium article](https://medium.com/journalism-innovation/the-best-new-ways-to-transcribe-c4c342abf172).
-
-## Amazon Transcribe features
-
-*  Solid automatic transcription of audio
-*  Punctuation
-*  Speaker identification
-*  Custom volcabularies 
-*  Custom word removal
-
-## Editor features
-
-*  Linked audio and text
-*  Autoscroll
-*  Visualise confidence score for each word
-*  Autosave
-*  Highlight word on click 
-*  Audio control via keybaord shortcuts
-
-## Workflow
-
-To use the app, you'll run jobs through the Amazon Web Services (AWS), download the output, and run the output through the app. The process could take 15 minutes or so minutes to set up, so it's probably not worth it if you have less than an hour of audio. Right now, the process also requires you to enter a few commands in your computer's terminal.
-
-Amazon Transcribe is not free. It costs $1.44 per hour. So 10 hours costs $14.40. More pricing info [here](https://aws.amazon.com/transcribe/pricing/).
-
-## Getting started
-
-If this all sounds good, the following instructions will guide you through using the Amazon Transcribe and getting a copy of the project up and running.
-
-### Prerequisites
-
-1. Get an [Amazon Web Servives](https://aws.amazon.com/) account 
-2. Setup [S3](https://aws.amazon.com/s3/) and [Transcribe](https://aws.amazon.com/transcribe/) on your AWS account
-3. Install [http-server](https://www.npmjs.com/package/http-server)* or use another server
 
 Note: http-server requires [node](https://nodejs.org/en/). The recommended way to install node is via the [node version manager](https://github.com/nvm-sh/nvm) (nvm):
 
