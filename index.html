@@ -9,13 +9,13 @@
 
   <link rel="stylesheet" href="css/trint-player.css">
 
-  <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css"> -->
+  <!-- <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
 
-  
+<!--   
   <link rel="stylesheet" type="text/css"
-    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css"> -->
+    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/styles-css.css">
@@ -23,16 +23,16 @@
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
 
-  <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
-  <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script> -->
    
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script> -->
-  <script src="../../node_modules/velocity-animate/velocity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+  <!-- <script src="../../node_modules/velocity-animate/velocity.min.js"></script> -->
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@0.12.4/dist/hls.min.js"></script> -->
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="../../node_modules/jquery/dist/jquery.min.js"></script> -->
   <!-- <script src="/jquery/jquery.js"></script> -->
 
   <script src="javascript/dark-mode.js"></script>
@@ -85,7 +85,7 @@
                   </span>
                 </span>
                 <span id="audio-name" class="file-name">
-                  none selected
+                  demo_hi.mp3
                 </span>
               </label>
             </div>
@@ -126,7 +126,7 @@
                   </span>
                 </span>
                 <span id="json-name" class="file-name">
-                  none selected
+                  demo.json
                 </span>
               </label>
             </div>
@@ -158,11 +158,11 @@
           <!-- <button id="modal-button" class="button is-small is-primary is-large modal-button" data-target="modal" aria-haspopup="true" onclick="modal()">Launch example modal</button> -->
 
           <a class="navbar-item" id="modal-button">
-            Help
+            About
           </a>
 
           <a class="navbar-item" href="https://github.com/samFredLumley/transcription-buddy" target="_blank">
-            GitHub &nbsp;
+            Docs &nbsp;
             <i class="fab fa-github fa-lg"></i>
           </a>
 
@@ -193,7 +193,7 @@
 
               <div class="gap-example field audio-container">
                 <audio id="hyperplayer" style="z-index: 5000000; position:relative; height:calc(100% - 40px)">
-                  <source src="audio/Jamie_edit_8.mp3" type="audio/mpeg">
+                  <source src="data/demo_hi.mp3" type="audio/mpeg">
                 </audio>
               </div>
 
@@ -219,7 +219,7 @@
                   <div class="column is-half no-right-padding">
                     <div class="field">
                       <input id="confidence" type="checkbox" name="confidence" class="switch is-rounded is-small"
-                        checked="">
+                        checked="checked">
                       <label for="confidence">Highlight confidence</label>
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
@@ -268,7 +268,7 @@
                 <div id="hypertranscript" style="overflow-y:scroll; position:relative; height:calc(100% - 40px)"
                   class="textarea scroller has-fixed-size">
                   <article>
-                    <section id="content" contenteditable="true">
+                    <section id="content" contenteditable="true"><p class="content" id="para-0" data-time="0.34" data-tc="0:00"><span class="unread" data-m="0.34" data-d="0">spk_1 </span><span class="timecode">[0:00] </span> <span data-m="340" data-d="600" data-confidence="1.0" class="">transcription</span> <span data-m="940" data-d="210" data-confidence="0.933" class="low-confidence">body</span> <span data-m="1150" data-d="340" data-confidence="0.986" class="">combines</span> <span data-m="1490" data-d="80" data-confidence="0.819" class="low-confidence">the</span> <span data-m="1570" data-d="370" data-confidence="1.0" class="">brute</span> <span data-m="1940" data-d="330" data-confidence="1.0" class="">force</span> <span data-m="2270" data-d="200" data-confidence="1.0" class="">of</span> <span data-m="2470" data-d="580" data-confidence="1.0" class="">automated</span> <span data-m="3050" data-d="830" data-confidence="1.0" class="">transcription</span> <span data-m="3880" data-d="270" data-confidence="1.0" class="">with</span> <span data-m="4150" data-d="120" data-confidence="0.999">an</span> <span data-m="4270" data-d="640" data-confidence="1.0" class="">interactive</span> <span data-m="4910" data-d="1490" data-confidence="1.0" class="">editor</span>. <span data-m="6400" data-d="180" data-confidence="1.0" class="">It</span> <span data-m="6580" data-d="460" data-confidence="0.999" class="">links</span> <span data-m="7040" data-d="420" data-confidence="0.999" class="">text</span> <span data-m="7460" data-d="380" data-confidence="1.0" class="">audio</span> <span data-m="7840" data-d="940" data-confidence="1.0" class="">playback</span>, <span data-m="8780" data-d="290" data-confidence="1.0" class="">making</span> <span data-m="9070" data-d="100" data-confidence="1.0">it</span> <span data-m="9170" data-d="380" data-confidence="1.0" class="">easier</span> <span data-m="9550" data-d="140" data-confidence="1.0">to</span> <span data-m="9690" data-d="420" data-confidence="1.0" class="">scan</span> <span data-m="10110" data-d="150" data-confidence="0.99" class="">through</span> <span data-m="10260" data-d="60" data-confidence="0.995" class="">a</span> <span data-m="10320" data-d="790" data-confidence="1.0" class="">transcript</span> <span data-m="11110" data-d="140" data-confidence="1.0">to</span> <span data-m="11250" data-d="310" data-confidence="1.0" class="">fix</span> <span data-m="11560" data-d="180" data-confidence="1.0">any</span> <span data-m="11740" data-d="520" data-confidence="1.0" class="">errors</span> <span data-m="12260" data-d="120" data-confidence="0.998" class="">and</span> <span data-m="12380" data-d="460" data-confidence="1.0" class="">extract</span> <span data-m="12840" data-d="380" data-confidence="1.0" class="">useful</span> <span data-m="13220" data-d="1520" data-confidence="1.0" class="">information</span>. <br></p><p class="content" data-time="0.34" data-tc="0:00"><span data-m="14740" data-d="100" data-confidence="1.0" class="">spk_1 [0:14] The</span> <span data-m="14840" data-d="950" data-confidence="1.0" class="">objective</span> <span data-m="15790" data-d="150" data-confidence="1.0" class="">is</span> <span data-m="15940" data-d="80" data-confidence="1.0">to</span> <span data-m="16020" data-d="190" data-confidence="1.0" class="">make</span> <span data-m="16210" data-d="90" data-confidence="0.592" class="low-confidence">this</span> <span data-m="16300" data-d="380" data-confidence="1.0" class="">speech</span> <span data-m="16680" data-d="130" data-confidence="0.998">to</span> <span data-m="16810" data-d="360" data-confidence="0.997" class="">text</span> <span data-m="17170" data-d="410" data-confidence="1.0" class="">process</span> <span data-m="17580" data-d="840" data-confidence="1.0" class="">quicker</span>, <span data-m="18420" data-d="800" data-confidence="1.0" class="">cheaper</span>, <span data-m="19220" data-d="140" data-confidence="0.806" class="low-confidence">on</span> <span data-m="19360" data-d="50" data-confidence="0.999">a</span> <span data-m="19410" data-d="180" data-confidence="1.0" class="">bit</span> <span data-m="19590" data-d="200" data-confidence="1.0" class="">more</span> <span data-m="19790" data-d="200" data-confidence="1.0">enjoyable</span>.</p><p class="content" id="para-1" data-time="19.79" data-tc="0:20"><span class="unread" data-m="19.79" data-d="0">spk_1 </span><span class="timecode">[0:20] </span></p>
                     </section>
                   </article>
                 </div>
@@ -453,12 +453,9 @@
       <!-- Any other Bulma elements you want -->
       <section class="modal-card-body">
         <div class="content">
-          <h1>How to use Transcription Buddy</h1>
-          <h2>Loading audio</h2>
-          <p>How do you do that</p>
-          <h2>Loading transcript</h2>
-          <p></p>
-
+          <h4>Transcription Buddy is being made by <a class="temporary-link" href="https://www.linkedin.com/in/sam-lumley-6b26ba78/" target="_blank">Sam Lumley</a> to make audio transcription quicker, cheaper and more fun.</h4>
+          <h4>It’s currently under development!</h4>
+          <h4>If you’re interested in using it in your workflow <a class="temporary-link" href="mailto:samfredlumley@icloud.com">blast me an email</a>.</h4>
         </div>
       </section>
     </div>
@@ -570,13 +567,13 @@
 
   <script src="javascript/bulma.js"></script>
 
-  <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script> -->
+  <!-- <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
 
-  <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
-  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script> -->
+  <!-- <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
+  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
 
   <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->

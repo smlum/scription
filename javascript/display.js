@@ -66,7 +66,7 @@ function CreateNewPara(timeOfFirstWord, speaker, paraId) {
 
 // load audio from file or url using the dropdown or text input
 function getAudioUrl() {
-    var audioUrl = "audio/" + document.getElementById("audioUrl").value;
+    var audioUrl = "data/" + document.getElementById("audio-name").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
 
@@ -137,6 +137,8 @@ document.getElementById('user-audio-file').addEventListener('change', handleFile
 //         reader.readAsDataURL(file);
 //     }
 // });
+
+
 
 // load json from user selected file
 function handleJsonFileSelect(evt) {
@@ -242,11 +244,12 @@ function LoadFromHtml() {
 
 document.getElementById('user-project-file').addEventListener('change', handleProjectFileSelect, false);
 
-
-
-// load transcript on start
-// displayTranscript()
-
+// activates interactive script on load. For demo only. Need to remove this.
+setTimeout(function(){ 
+    hyper(true);
+    console.log('interactive script');
+    
+}, 2000);
 
 // for the audio control (possibly to be deleted eventually)
 var speakerTimes = [];
