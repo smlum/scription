@@ -9,28 +9,29 @@ Automated transcription services like [Amazon Transcribe](https://aws.amazon.com
 ## What Scription can do
 
 * Highlight words as the audio plays 
-* Control audio playback by clicking a word
+* Control audio playback by clicking words in the text
+* Allow you to highlight quotes and export them to a csv
+* Bring love and joy to the transcription process ❤️
+
+Other useful stuff:
+
 * Seperate speech by speakers 
 * Highlight low confidence words
-* Allow you to highlight quotes and export them to a csv
-* Bring love and joy to the transcription process
+* Skip back and forth in audio with keyboard shortcuts
 
 ## How to use
 
 ### Basic usage
 
-* Run a transcription job using AWS Transcrive or Mozilla DeepSpeech
-* Download the json file
-* Load the json into [Scription](https://samfredlumley.github.io/scription/)
-* Load the audio 
-* You're good to go!
+1. Run a transcription job using AWS Transcrive or Mozilla DeepSpeech
+2. Download the json file
+3. Load the json into [Scription](https://samfredlumley.github.io/scription/)
+4. Load in the audio 
+5. You're good to go!
 
 ### The interface
 
-Audio can be played using the controls, or keyboard shortcuts: go back 5s <kbd>Ctrl</kbd> + <kbd>,</kbd>
-| skip 5s <kbd>Ctrl</kbd> + <kbd>.</kbd>
-| slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
-| speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
+Audio can be played using the controls, 
 
 ### Saving and loading a project
 
@@ -42,7 +43,16 @@ Audio can be played using the controls, or keyboard shortcuts: go back 5s <kbd>C
 
 'Export annotations' creates a csv file with highlighted quotes by each category.
 
-### Running locally
+### keyboard shortcuts
+
+The audio player can also be controlled by the following shortcuts:
+* go back 5s <kbd>Ctrl</kbd> + <kbd>,</kbd>
+* skip 5s <kbd>Ctrl</kbd> + <kbd>.</kbd>
+* slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
+* speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
+
+
+## Running locally
 
 
 ## Using AWS Transcribe and Mozilla DeepSpeech
