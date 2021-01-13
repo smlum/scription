@@ -68,9 +68,6 @@ This can be a pain for multiple files. I used the following [ffmpeg](https://ffm
 find ./ -name “*.mp3” -exec ffmpeg -i "{}" -codec:a libmp3lame -b:a 8k -ac 1 -ar 8000 '$(basename {} min)’.mp3 \;
 `
 
-## Run Scription locally
-
-
 ## Using AWS Transcribe and Mozilla DeepSpeech
 
 Amazon and Mozilla both offer automated speech-to-text services. 
@@ -103,84 +100,35 @@ DeepSpeech is free and runs locally on your machine, so there are no privacy con
 
 To use automated transcription services you may need to format audio in a particular way or clean it up (eg remove noise). I recommend [Audacity](https://www.audacityteam.org/) for manual audio editing/formatting and [ffmpeg](https://ffmpeg.org/) for automated formatting.
 
-## Privacy using Scription
 
-The Scription web app uses your browser's local storage. So when you load files they're being uploaded onto another server.
+## Run Scription locally
 
-
-
-Note: http-server requires [node](https://nodejs.org/en/). The recommended way to install node is via the [node version manager](https://github.com/nvm-sh/nvm) (nvm):
-
-1. install nvm
-
-`curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`
-
-2. use nvm to install node
-
-`nvm install node`
-
-### Transcribing with AWS
-
-#### Cleaning audio
-See bottom of this page for steps to take to clean your audio.
-
-#### Uploading audio to S3
-1. Create a bucket for your audio in S3, using the default settings
-2. Upload your audio file to the bucket, using the default settings
-4. Right click the file in S3 and select 'Copy Path'
-
-#### Using Amazon Transcribe
-*note you may have to set your region to US East (Ohio)) for this stage to work*
-1. Navigate to the 'Transcription jobs' page
-2. Create new job
-3. Choose the language and dialect used by most of the speakers
-4. Paste the path location of the audio (should look something like this )
-5. On the next page, enable audio identification and set the number of speakers.
-6. (Optional) add a custom vocabulary or filtering lists (or use mine for non-verbals)
-7. Once the job is finished download the transcription (which shold be json file)
-
-#### Installing the app
 1. Clone the repository:
 ```
-git clone https://github.com/samFredLumley/transcription-buddy
-cd transcription-buddy
+git clone https://github.com/samFredLumley/scription
+cd scription
 ```
-2. In the "json" folder copy the downloaded json file (suggested name "transcript.json")
-3. Add your audio file to the "audio" folder
-3. Launch the app
+2. In the "json" folder save your downloaded json files 
+3. Add your audio files to the "audio" folder
+3. Launch the app in a browser, eg:
 ```
 http-server
 ```
-You should now be able to access the app from your browser via the url: [http://localhost:8080/](http://localhost:8080/)
 
-#### Using the app
-* Enter filenames for your audio json files and click "load audio" and "load transcript"
-* Click "hyperaudio" to link the transcript to the audio playback
-* You can control the audio while writing using keyboard shortcuts:
+## Privacy 
 
-| Task        | Shortcut           |
-| ------------- |:-------------:|
-| go back 5s      | ctrl + , |
-| skip 5s     | ctrl + .      |
-| slow down | ctrl + shift + ,      |
-| speed up | ctrl + shift + .      |
+The Scription web app uses your browser's local storage (ie not being uploaded onto another server).
 
-## Extras
 
-### Audio recording
+## Known issues
 
-To work well, automated transcription services need clear audio. For recording interviews, it can help for each participant to have a microphone (e.g. the one included on [Apple headphones](https://apple.stackexchange.com/questions/248404/where-is-the-mic-located-in-apple-earphones)).
+* 
 
-### Audio preprocessing
+## Big future plans
 
-Two steps you can take to clean your audio after recording are noise removal (taking out constant background noise) and normalisation (raising the volume of the audio). Both can be done easily using the open source software [Audacity](https://www.audacityteam.org/).
+* Have corrections feed back into nlp model (eg with DeepSpeech)
 
-Here's a [guide](https://opensource.com/life/14/10/how-clean-digital-recordings-using-audacity).
+## Liscence
 
-## Future
-
-*  Make it not ugly
-*  Streamline workflow
-*  Move to something more open like Mozilla's [DeepSpeech](https://github.com/mozilla/DeepSpeech)
-
+TODO
 
