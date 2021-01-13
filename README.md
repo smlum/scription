@@ -54,17 +54,15 @@ Audio playback can be controlled by the following shortcuts:
 
 ### Uploading audio to Scription
 
-Large audio files cause text/audio sync issues. Above ~50mb it starts to run slowly. So can files with a variable bitrate.
+Large audio files (above ~50mb) can cause playback issues. So can files with variable bitrates.
 
-Even if you have large audio files (eg an hour) you can compress these down to a small size. Size can be degreased by using a lossy file format (like mp3), switching to mono, reducing the bitrate. 
+Even if you have large audio files (eg > 1 hour) you can compress these down to a small size. I strongly recommend using a lossy file format (like mp3), switching to mono, reducing the bitrate and using a constant bitrate. 
 
-You can manually adjust these using something like [Audacity](https://www.audacityteam.org/). 
+You can manually adjust these using something like [Audacity's](https://www.audacityteam.org/) export to mp3:
 
-I used the following ffmpeg script to iterate through 
+<img src="images/audacity.png">
 
-1. Install ffmpeg
-2. Go 
-3. Iterate through all mp3 files, 
+This can be a pain for multiple files. I used the following [ffmpeg](https://ffmpeg.org/) script to iterate through a folder of mp3 files, change the bitrates and sample rates to 8k, change to mono and rename audio filed with the '.min' suffix:
 
 `
 find ./ -name “*.mp3” -exec ffmpeg -i "{}" -codec:a libmp3lame -b:a 8k -ac 1 -ar 8000 '$(basename {} min)’.mp3 \;
@@ -83,13 +81,13 @@ Amazon has a (fairly) easy to use web user interface, high accuracy and has lots
 
 DeepSpeech is free and runs locally on your machine, so there are no privacy concerns. However, it requires you to download and run their pre-trained model using python from the command line. The accuracy is pretty average. You need to add your own punctuation, correct specialised volcabulary and seperate speakers. It also requires specific audio formats.
 
-| AWS Transcribe       | Mozilla DeepSpeech           |
-| ------------- |:-------------:|
-| (~1.44 per hour)[https://aws.amazon.com/transcribe/pricing/]   | free |
-| web user interface     | python/command line  |
-| data saved on Amazon's servers | data saved locally  |
-| good accuracy | ok accuracy   |
-| lots of features | text only  |
+|| AWS Transcribe       | Mozilla DeepSpeech           |
+|---| ------------- |:-------------:|
+|cost| [~1.44 per hour](https://aws.amazon.com/transcribe/pricing/)   | free |
+|setup| web user interface     | python/command line  |
+|privacy| data saved on Amazon's servers | data saved locally  |
+|accuracy| good | ok   |
+|features| [lots](https://aws.amazon.com/transcribe/features/) | text only  |
 
 ### Setup AWS Transcribe
 
