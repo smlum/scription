@@ -1,8 +1,45 @@
-# Transcription Buddy
+# Scription
 
-Transcription buddy is an interactive transcript editor.
+Scription is an editor for AWS Transcribe and Mozilla DeepSpeech transcript files. It links the audio and text playback to make editing the text easier. 
 
-See a live demo here: https://samfredlumley.github.io/aws-transcription-editor/
+Web app: https://samfredlumley.github.io/scription
+
+Automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech) are a neat way to turn speech to text. However, neither offers a way to edit the output json files after running a transcription job.
+
+## What Scription can do
+
+* Link text to audio playback: words are highlighted as the audio plays; clicking a word goes to its place in the audio
+* Seperate speech into paragraphs
+* Seperate speech by speakers (AWS)
+* Add punctuation (AWS)
+* Highlight low confidence words
+* Highlight phrases with coloured annotations and export quotes to a csv
+
+## How to use
+
+### Basic usage
+
+* Run a transcription job using AWS Transcrive or Mozilla DeepSpeech
+* Download the json file
+* Load the json into [Scription](https://samfredlumley.github.io/scription/)
+* Load the audio 
+* You're good to go!
+
+### Saving and loading a project
+
+'Save project' creates a text file which you can load into Scription at a later time to save your work. It preserves any text edits and annotations.
+
+### Exporting
+
+'Export text' creates a plain text file which includes the speaker tags - essentially the same thing as copy and pasting. 
+
+'Export annotations' creates a csv file with highlighted quotes by each category.
+
+### Running locally
+
+
+
+
 
 ## why?
 
