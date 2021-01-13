@@ -29,11 +29,13 @@ And some other useful stuff:
 4. Load in your corresponding audio (see below for larger audio files)
 5. You're good to go!
 
+
 ### Saving and loading a project 
 
 'Save project' creates a text file which you can load into Scription at a later time. It preserves any text edits and annotations.
 
 If you have 'Autosave' turned on it saves your edits every 5 seconds, so that if you refresh the page, they should still be there.
+
 
 ### Exporting 
 
@@ -78,7 +80,7 @@ A quick comparison I considered price, setup, privacy, performance and features.
 
 || AWS Transcribe       | Mozilla DeepSpeech           |
 |---| ------------- |:-------------:|
-|cost| [~1.44 per hour](https://aws.amazon.com/transcribe/pricing/)   | free |
+|cost| [~1.44usd per hour](https://aws.amazon.com/transcribe/pricing/)   | free |
 |setup| web user interface     | python/command line  |
 |privacy| data saved on Amazon's servers | data saved locally  |
 |accuracy| good | ok   |
