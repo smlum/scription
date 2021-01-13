@@ -23,7 +23,7 @@ And some other useful stuff:
 
 ### Basic usage
 
-1. Run a transcription job using AWS Transcrive or Mozilla DeepSpeech
+1. Run a transcription job using AWS Transcribe or Mozilla DeepSpeech
 2. Download the json output file
 3. Load the json file into [Scription](https://samfredlumley.github.io/scription/)
 4. Load in your corresponding audio (see below for larger audio files)
@@ -31,7 +31,7 @@ And some other useful stuff:
 
 ### Saving and loading a project
 
-'Save project' creates a text file which you can load into Scription at a later time to save your work. It preserves any text edits and annotations.
+'Save project' creates a text file which you can load into Scription at a later time. It preserves any text edits and annotations.
 
 If you have 'Autosave' turned on it saves your edits every 5 seconds, so that if you refresh the page, they should still be there.
 
