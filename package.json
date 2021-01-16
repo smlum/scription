@@ -1,27 +1,26 @@
 {
-  "name": "transcription-buddy",
+  "name": "scription",
   "version": "1.0.0",
-  "description": "Transcription buddy is an interactive transcript editor.",
-  "main": "index-express.js",
+  "description": "Scription is an interactive transcript editor.",
   "scripts": {
     "scss": "node-sass --output-style compressed -o css src/scss",
-    "serve": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js'",
+    "dev": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js'",
     "watch:css": "onchange 'src/scss' -- npm run scss",
-    "dev": "node index-express",
+    "express": "node index-express",
     "electron": "electron .",
     "package": "electron-packager .",
     "build": ""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samFredLumley/transcription-buddy.git"
+    "url": "git+https://github.com/smlum/scription.git"
   },
   "author": "sam",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/samFredLumley/transcription-buddy/issues"
+    "url": "https://github.com/smlum/scription/issues"
   },
-  "homepage": "https://github.com/samFredLumley/transcription-buddy#readme",
+  "homepage": "https://github.com/smlum/scription",
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "bulma": "^0.8.0",
