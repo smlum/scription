@@ -9,13 +9,13 @@
 
   <link rel="stylesheet" href="css/trint-player.css">
 
-  <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css"> -->
+  <!-- <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
 
-  
+<!--   
   <link rel="stylesheet" type="text/css"
-    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css">
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css"> -->
+    href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/styles-css.css">
@@ -23,16 +23,16 @@
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
 
-  <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
-  <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script> -->
    
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script> -->
-  <script src="../../node_modules/velocity-animate/velocity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+  <!-- <script src="../../node_modules/velocity-animate/velocity.min.js"></script> -->
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@0.12.4/dist/hls.min.js"></script> -->
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="../../node_modules/jquery/dist/jquery.min.js"></script> -->
   <!-- <script src="/jquery/jquery.js"></script> -->
 
   <script src="javascript/dark-mode.js"></script>
@@ -85,7 +85,9 @@
                   </span>
                 </span>
                 <span id="audio-name" class="file-name">
-                  demo_lo.mp3
+
+                  demo_hi.mp3
+
                 </span>
               </label>
             </div>
@@ -158,7 +160,7 @@
           <!-- <button id="modal-button" class="button is-small is-primary is-large modal-button" data-target="modal" aria-haspopup="true" onclick="modal()">Launch example modal</button> -->
 
           <a class="navbar-item" id="modal-button">
-            Help
+            About
           </a>
 
           <a class="navbar-item" href="https://github.com/smlum/scription" target="_blank">
@@ -193,7 +195,9 @@
 
               <div class="gap-example field audio-container">
                 <audio id="hyperplayer" style="z-index: 5000000; position:relative; height:calc(100% - 40px)">
-                  <source src="data/demo_lo.mp3" type="audio/mpeg">
+
+                  <source src="data/demo_hi.mp3" type="audio/mpeg">
+
                 </audio>
               </div>
 
@@ -219,7 +223,7 @@
                   <div class="column is-half no-right-padding">
                     <div class="field">
                       <input id="confidence" type="checkbox" name="confidence" class="switch is-rounded is-small"
-                        checked="">
+                        checked="checked">
                       <label for="confidence">Highlight confidence</label>
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
@@ -268,8 +272,10 @@
                 <div id="hypertranscript" style="overflow-y:scroll; position:relative; height:calc(100% - 40px)"
                   class="textarea scroller has-fixed-size">
                   <article>
-                    <section id="content" contenteditable="true">
-                      <p class="content active" id="para-0" data-time="1.09" data-tc="0:01"><span class="unread active" data-m="1.09" data-d="0">spk_1 </span><span class="timecode">[0:01] </span> <span data-m="1090" data-d="140" data-confidence="0.995">for</span> <span data-m="1230" data-d="290" data-confidence="0.997">turning</span> <span data-m="1520" data-d="400" data-confidence="1.0">speech</span>, <span data-m="1920" data-d="290" data-confidence="1.0">audio</span> <span data-m="2210" data-d="140" data-confidence="1.0">to</span></p><p class="content" id="para-1" data-time="2.35" data-tc="0:02"><span class="unread" data-m="2.35" data-d="0">spk_0 </span><span class="timecode">[0:02] </span> <span data-m="2350" data-d="880" data-confidence="1.0">text</span>. <span data-m="3230" data-d="150" data-confidence="1.0">You</span> <span data-m="3380" data-d="160" data-confidence="1.0">have</span> <span data-m="3540" data-d="240" data-confidence="0.755">two</span> <span data-m="3780" data-d="230" data-confidence="0.938">main</span> <span data-m="4010" data-d="1330" data-confidence="0.995">choices</span>. <span data-m="5340" data-d="130" data-confidence="0.762">My</span> <span data-m="5470" data-d="150" data-confidence="0.759">new</span> <span data-m="5620" data-d="600" data-confidence="1.0">transcription</span> <span data-m="6220" data-d="150" data-confidence="1.0">is</span> <span data-m="6370" data-d="820" data-confidence="1.0">accurate</span>, <span data-m="7190" data-d="130" data-confidence="0.949">but</span> <span data-m="7320" data-d="70" data-confidence="1.0">it</span> <span data-m="7390" data-d="110" data-confidence="0.66">can</span> <span data-m="7500" data-d="250" data-confidence="1.0">take</span> <span data-m="7750" data-d="50" data-confidence="1.0">a</span> <span data-m="7800" data-d="240" data-confidence="1.0">long</span> <span data-m="8040" data-d="1200" data-confidence="1.0">time</span>. <span data-m="9240" data-d="520" data-confidence="1.0">Automated</span> <span data-m="9760" data-d="600" data-confidence="1.0">transcription</span> <span data-m="10360" data-d="110" data-confidence="0.995">is</span> <span data-m="10470" data-d="550" data-confidence="1.0">fast</span> <span data-m="11020" data-d="170" data-confidence="1.0">and</span> <span data-m="11190" data-d="750" data-confidence="1.0">cheap</span>, <span data-m="11940" data-d="130" data-confidence="1.0">but</span> <span data-m="12070" data-d="100" data-confidence="1.0">it</span> <span data-m="12170" data-d="310" data-confidence="1.0">isn't</span> <span data-m="12480" data-d="920" data-confidence="1.0">perfect</span>, <span data-m="13400" data-d="120" data-confidence="1.0">and</span> <span data-m="13520" data-d="110" data-confidence="1.0">you</span> <span data-m="13630" data-d="330" data-confidence="1.0">lose</span> <span data-m="13960" data-d="130" data-confidence="1.0">the</span> <span data-m="14090" data-d="500" data-confidence="0.997">insights</span> <span data-m="14590" data-d="180" data-confidence="1.0">from</span> <span data-m="14770" data-d="290" data-confidence="1.0">going</span> <span data-m="15060" data-d="200" data-confidence="0.992">through</span> <span data-m="15260" data-d="70" data-confidence="1.0">The</span> <span data-m="15330" data-d="360" data-confidence="1.0">manual</span> <span data-m="15690" data-d="650" data-confidence="1.0">transcription</span> <span data-m="16340" data-d="1600" data-confidence="1.0">process</span> <span data-m="17940" data-d="570" data-confidence="1.0">Transcription</span> <span data-m="18510" data-d="290" data-confidence="0.95">Body</span> <span data-m="18800" data-d="210" data-confidence="0.416">ain't</span> <span data-m="19010" data-d="330" data-confidence="0.999">provide</span> <span data-m="19340" data-d="60" data-confidence="1.0">the</span> <span data-m="19400" data-d="270" data-confidence="1.0">best</span> <span data-m="19670" data-d="80" data-confidence="1.0">of</span> <span data-m="19750" data-d="990" data-confidence="1.0">both</span>.</p><p class="content" id="para-2" data-time="20.74" data-tc="0:21"><span class="unread" data-m="20.74" data-d="0">spk_0 </span><span class="timecode">[0:21] </span> <span data-m="20740" data-d="140" data-confidence="1.0">It</span> <span data-m="20880" data-d="330" data-confidence="0.989">uses</span> <span data-m="21210" data-d="140" data-confidence="1.0">the</span> <span data-m="21350" data-d="310" data-confidence="1.0">brute</span> <span data-m="21660" data-d="390" data-confidence="1.0">force</span> <span data-m="22050" data-d="160" data-confidence="1.0">of</span> <span data-m="22210" data-d="530" data-confidence="1.0">automated</span> <span data-m="22740" data-d="1210" data-confidence="1.0">transcription</span> <span data-m="23950" data-d="130" data-confidence="1.0">and</span> <span data-m="24080" data-d="300" data-confidence="1.0">provides</span> <span data-m="24380" data-d="100" data-confidence="1.0">an</span> <span data-m="24480" data-d="560" data-confidence="1.0">interactive</span> <span data-m="25040" data-d="810" data-confidence="1.0">editor</span> <span data-m="25850" data-d="130" data-confidence="1.0">to</span> <span data-m="25980" data-d="170" data-confidence="1.0">make</span> <span data-m="26150" data-d="110" data-confidence="1.0">it</span> <span data-m="26260" data-d="350" data-confidence="0.327">easy</span>. <span data-m="26610" data-d="90" data-confidence="0.327">A</span> <span data-m="26700" data-d="230" data-confidence="0.456">few</span> <span data-m="26930" data-d="100" data-confidence="0.989">to</span> <span data-m="27030" data-d="490" data-confidence="1.0">correct</span> <span data-m="27520" data-d="90" data-confidence="1.0">the</span> <span data-m="27610" data-d="570" data-confidence="1.0">transcript</span> <span data-m="28180" data-d="130" data-confidence="1.0">in</span> <span data-m="28310" data-d="210" data-confidence="1.0">real</span> <span data-m="28520" data-d="710" data-confidence="1.0">time</span> <span data-m="29230" data-d="160" data-confidence="0.999">by</span> <span data-m="29390" data-d="360" data-confidence="0.968">listening</span> <span data-m="29750" data-d="390" data-confidence="0.999">through</span> <span data-m="30140" data-d="130" data-confidence="1.0">with</span> <span data-m="30270" data-d="100" data-confidence="1.0">the</span> <span data-m="30370" data-d="460" data-confidence="1.0">original</span> <span data-m="30830" data-d="460" data-confidence="1.0">audio</span>.</p></section>
+
+                    <section id="content" contenteditable="true"><p class="content" id="para-0" data-time="0.34" data-tc="0:00"><span class="unread" data-m="0.34" data-d="0">spk_1 </span><span class="timecode">[0:00] </span> <span data-m="340" data-d="600" data-confidence="1.0" class="">transcription</span> <span data-m="940" data-d="210" data-confidence="0.933" class="low-confidence">body</span> <span data-m="1150" data-d="340" data-confidence="0.986" class="">combines</span> <span data-m="1490" data-d="80" data-confidence="0.819" class="low-confidence">the</span> <span data-m="1570" data-d="370" data-confidence="1.0" class="">brute</span> <span data-m="1940" data-d="330" data-confidence="1.0" class="">force</span> <span data-m="2270" data-d="200" data-confidence="1.0" class="">of</span> <span data-m="2470" data-d="580" data-confidence="1.0" class="">automated</span> <span data-m="3050" data-d="830" data-confidence="1.0" class="">transcription</span> <span data-m="3880" data-d="270" data-confidence="1.0" class="">with</span> <span data-m="4150" data-d="120" data-confidence="0.999">an</span> <span data-m="4270" data-d="640" data-confidence="1.0" class="">interactive</span> <span data-m="4910" data-d="1490" data-confidence="1.0" class="">editor</span>. <span data-m="6400" data-d="180" data-confidence="1.0" class="">It</span> <span data-m="6580" data-d="460" data-confidence="0.999" class="">links</span> <span data-m="7040" data-d="420" data-confidence="0.999" class="">text</span> <span data-m="7460" data-d="380" data-confidence="1.0" class="">audio</span> <span data-m="7840" data-d="940" data-confidence="1.0" class="">playback</span>, <span data-m="8780" data-d="290" data-confidence="1.0" class="">making</span> <span data-m="9070" data-d="100" data-confidence="1.0">it</span> <span data-m="9170" data-d="380" data-confidence="1.0" class="">easier</span> <span data-m="9550" data-d="140" data-confidence="1.0">to</span> <span data-m="9690" data-d="420" data-confidence="1.0" class="">scan</span> <span data-m="10110" data-d="150" data-confidence="0.99" class="">through</span> <span data-m="10260" data-d="60" data-confidence="0.995" class="">a</span> <span data-m="10320" data-d="790" data-confidence="1.0" class="">transcript</span> <span data-m="11110" data-d="140" data-confidence="1.0">to</span> <span data-m="11250" data-d="310" data-confidence="1.0" class="">fix</span> <span data-m="11560" data-d="180" data-confidence="1.0">any</span> <span data-m="11740" data-d="520" data-confidence="1.0" class="">errors</span> <span data-m="12260" data-d="120" data-confidence="0.998" class="">and</span> <span data-m="12380" data-d="460" data-confidence="1.0" class="">extract</span> <span data-m="12840" data-d="380" data-confidence="1.0" class="">useful</span> <span data-m="13220" data-d="1520" data-confidence="1.0" class="">information</span>. <br></p><p class="content" data-time="0.34" data-tc="0:00"><span data-m="14740" data-d="100" data-confidence="1.0" class="">spk_1 [0:14] The</span> <span data-m="14840" data-d="950" data-confidence="1.0" class="">objective</span> <span data-m="15790" data-d="150" data-confidence="1.0" class="">is</span> <span data-m="15940" data-d="80" data-confidence="1.0">to</span> <span data-m="16020" data-d="190" data-confidence="1.0" class="">make</span> <span data-m="16210" data-d="90" data-confidence="0.592" class="low-confidence">this</span> <span data-m="16300" data-d="380" data-confidence="1.0" class="">speech</span> <span data-m="16680" data-d="130" data-confidence="0.998">to</span> <span data-m="16810" data-d="360" data-confidence="0.997" class="">text</span> <span data-m="17170" data-d="410" data-confidence="1.0" class="">process</span> <span data-m="17580" data-d="840" data-confidence="1.0" class="">quicker</span>, <span data-m="18420" data-d="800" data-confidence="1.0" class="">cheaper</span>, <span data-m="19220" data-d="140" data-confidence="0.806" class="low-confidence">on</span> <span data-m="19360" data-d="50" data-confidence="0.999">a</span> <span data-m="19410" data-d="180" data-confidence="1.0" class="">bit</span> <span data-m="19590" data-d="200" data-confidence="1.0" class="">more</span> <span data-m="19790" data-d="200" data-confidence="1.0">enjoyable</span>.</p><p class="content" id="para-1" data-time="19.79" data-tc="0:20"><span class="unread" data-m="19.79" data-d="0">spk_1 </span><span class="timecode">[0:20] </span></p>
+                    </section>
+
                   </article>
                 </div>
               </div>
@@ -570,13 +576,13 @@
 
   <script src="javascript/bulma.js"></script>
 
-  <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script> -->
+  <!-- <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
 
-  <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
-  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script> -->
+  <!-- <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
+  <script src="../../node_modules/tether-drop/dist/js/drop.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/js/drop.js"></script>
 
   <!-- Uncomment the following script if you require IE versions less than 10 to be supported or Opera Mini http://caniuse.com/#search=classlist ¯\_(ツ)_/¯ -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script> -->

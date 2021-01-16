@@ -245,7 +245,12 @@ function LoadFromHtml() {
 document.getElementById('user-project-file').addEventListener('change', handleProjectFileSelect, false);
 
 // activates interactive script on load. For demo only. Need to remove this.
-setTimeout(function(){ hyper(true); }, 1000);
+
+setTimeout(function(){ 
+    hyper(true);
+    console.log('interactive script');
+    
+}, 2000);
 
 // for the audio control (possibly to be deleted eventually)
 var speakerTimes = [];

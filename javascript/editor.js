@@ -177,7 +177,7 @@ var displayConfidenceToggle = false
 
 
 
-$('#confidence').prop('checked', false);
+// $('#confidence').prop('checked', false);
 
 $('#confidence').change(function () {
     // store the value of the checkbox when it's changed
@@ -209,6 +209,8 @@ function displayConfidence() {
     }
     
 }
+// display confidence by default for demo
+displayConfidence()
 
 // turn off the interactivity and return text color 
 // TODO this is not a smart way of doing this!
