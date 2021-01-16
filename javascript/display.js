@@ -245,6 +245,7 @@ function LoadFromHtml() {
 document.getElementById('user-project-file').addEventListener('change', handleProjectFileSelect, false);
 
 // activates interactive script on load. For demo only. Need to remove this.
+
 setTimeout(function(){ 
     hyper(true);
     console.log('interactive script');
