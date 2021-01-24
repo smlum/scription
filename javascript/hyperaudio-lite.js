@@ -80,7 +80,10 @@ var hyperaudiolite = (function() {
       ) {
         // TODO: look for a better way of doing this
         var strayActive = transcript.getElementsByClassName('active')[0];
+        //fix undefined state error
+        if (strayActive){
         strayActive.classList.remove('active');
+        }
 
         // word time is in the future - set the previous word as active.
         words[i - 1].classList.add('active');
