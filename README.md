@@ -125,6 +125,10 @@ The Scription web app uses your browser's local storage (ie nothing is being upl
 
 TODO
 
+## Contributing
+
+TODO
+
 ## Support/ feedback
 
 TODO
