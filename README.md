@@ -2,7 +2,7 @@
 
 Scription is an editor for AWS Transcribe and Mozilla DeepSpeech transcript files. It links transcript text to audio playback to make editing easier. 
 
-You can use Scription via the web app: https://smlum.github.io/scription
+You can use Scription via the web app: [scription.app](https://scription.app/)
 
 Automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech) are a neat way to turn speech to text. However, neither offers a way to edit the output json files after running a transcription job.
 
