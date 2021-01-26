@@ -1,23 +1,21 @@
 # Scription ✍️
 
-Scription is an editor for AWS Transcribe and Mozilla DeepSpeech transcript files. It links transcript text to audio playback to make editing easier. 
+Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ 
 
 You can use Scription via the web app: [scription.app](https://scription.app/)
 
-Automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech) are a neat way to turn speech to text. However, neither offers a way to edit the output json files after running a transcription job.
-
 ## What Scription can do
 
-* Highlight words as the audio plays 
+* Highlight and scroll text as the audio plays 
 * Control audio playback by clicking words in the text
-* Bring love and joy to the transcription process ❤️
+* Skip around in the audio with keyboard shortcuts
 
 And some other useful stuff:
 
-* Skip back and forth in audio with keyboard shortcuts
-* Allow you to highlight quotes and export them to a csv
+* Highlight quotes and export them to csv
 * Seperate speech by speakers (AWS)
 * Highlight low confidence words (AWS)
+* Add punctuation (AWS)
 
 ## How to use
 
@@ -127,7 +125,7 @@ TODO
 
 ## Contributing
 
-TODO
+Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
 
 ## Credits
 
