@@ -24,6 +24,7 @@
     --text-border-color: #dbdbdb;
     --switch-bg: #b5b5b5;
     --placeholder-color: rgb(122, 122, 122);
+    --logo-color: 0;
 }
 
 /* dark theme */
@@ -58,6 +59,14 @@
     --audio-icon: #e7e7e7;
     --font-weight: 500;
     --placeholder-color: rgb(122, 122, 122);
+    --logo-color: 1;
+}
+
+.logo {
+    height: 30px;
+    /* fill: var(--logo-color) !important; */
+    stroke: yellow !important;
+    filter: invert(var(--logo-color));
 }
 
 ::placeholder {
