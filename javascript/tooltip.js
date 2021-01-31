@@ -13,13 +13,13 @@ function highlight(element) {
 }
 
 
-$(document).click(function(event) { 
+$(document).click(function(event) {
   $target = $(event.target);
-  if(!$target.closest('#tweet-box').length && 
+  if(!$target.closest('#tweet-box').length &&
   $('#tweet-box').is(":visible")) {
     // $('#menucontainer').hide();
     closeDrop();
-  }        
+  }
 });
 
 
@@ -96,7 +96,7 @@ function addShareTool(a, previousSelection) {
     }
   }
 
-  
+
 }
 
 function fillShare() {
@@ -184,14 +184,14 @@ function RemoveAnnotation() {
   var firstElement = fragment.firstElementChild;
   var firstElementStartTime = firstElement.getAttribute('data-m');
 
-  // close the drop 
+  // close the drop
   closeDrop();
 
   // console.log(selection.getRangeAt(0));
   console.log(firstElementStartTime);
   findClass = "." + firstElementStartTime;
   console.log(findClass);
-  // $("span").find("[data-m='" + firstElementStartTime + "']").css('background-color', 'red'); 
+  // $("span").find("[data-m='" + firstElementStartTime + "']").css('background-color', 'red');
   $("span").find("[data-m='" + firstElementStartTime + "']").unwrap();
 
   var findClassAnnotation = "." + firstElementStartTime + "-annotation";
@@ -199,13 +199,13 @@ function RemoveAnnotation() {
 
 
   var n = $(findClassAnnotation).data("cat");
-  
+
   // make annotation category glow on remove
 
   // need to get annotation category number
 
   // sleect data aatribute data-cat - it is the category number we want: n
-  // it's of the paragraph with id 
+  // it's of the paragraph with id
   // all info hightlight wants is category number
   // that's stored in the data-cat category
   // of the paragraph that's about to get deleted
@@ -261,7 +261,7 @@ function SelectText(n) {
   // get the time attribute from the first element
 
   // check whether more than a word has been selected
-  if (firstElement) {
+  if (firstElement && firstElement.tagName == 'SPAN') {
 
     var firstElementStartTime = firstElement.getAttribute('data-m');
 
@@ -302,8 +302,13 @@ function SelectText(n) {
     // var spn = '<span class="selected">' + selectedText + '</span>';
     // window.getSelection().html().replace(selectedText, "");
 
+  } else if (firstElement && firstElement.tagName == 'P') {
+    console.log('outside papagraph');
+    alert('Please, select text inside one paragraph.')
   } else {
     console.log('just a fragment');
+    alert('Please, select more one word')
+
   }
 
   closeDrop();

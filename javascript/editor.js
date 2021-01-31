@@ -18,23 +18,28 @@ function getAnnotations() {
     //         matrix[i][j] = ',';
     //     }
     // }
-     
+
     // create the array from category names and contents
-    var annotationsArray = [[],[]]
+    var annotationsArray = []
     for (let i = 1; i < numberOfCategories; i++) {
         getCategory = '.category-' + i;
         categoryName = $(getCategory).html();
         // populate the list from the transcript
         var items = document.getElementsByClassName('selected-' + i);
         // var items = document.getElementsByClassName(categoryName);
-        var array = [categoryName]
+        //var array = [categoryName]
         // put just the inner text in a new array
         for (let j = 0; j < items.length; j++) {
-            array[j+1] = items[j].innerText;   
+            time = 0;
+
+            if (items[j].parentElement && items[j].parentElement.attributes["data-time"]){
+            time = Math.round(items[j].parentElement.attributes["data-time"].value);
+            tc = items[j].parentElement.attributes["data-tc"].value;
+          }
+            annotationsArray.push([categoryName,time,tc, items[j].innerText]);
         }
-        annotationsArray[i-1] = array;
     }
-    
+
     return annotationsArray;
 }
 
@@ -63,12 +68,12 @@ function exportToCsv() {
         return finalVal + '\n';
     };
 
-    let csvFile = 'sep=,' + '\n';
+    let csvFile = 'Category,Time(sec),Time(mm:ss),Text' + '\n';
     for (var i = 0; i < rows.length; i++) {
         csvFile += processRow(rows[i]);
     }
-    
-    
+
+
     var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
     if (navigator.msSaveBlob) { // IE 10+
         navigator.msSaveBlob(blob, filename);
@@ -91,7 +96,7 @@ $(document).ready(function () {
 
     new GreenAudioPlayer('.gap-example');
 
-    // load audio 
+    // load audio
     var myAudio = document.getElementById("hyperplayer");
     var isPlaying = false;
     var playbackRate = 1.0;
@@ -113,7 +118,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
 
     // Add keybaord shortcuts
 
@@ -169,7 +174,7 @@ $(document).ready(function () {
         };
     });
 
-    
+
 
 });
 
@@ -192,7 +197,7 @@ $('#confidence').change(function () {
 // highlight low confidence words
 
 function displayConfidence() {
-    
+
     if (displayConfidenceToggle == false) {
         var userConfidence = $("#user-confidence").val()
         var userConfidence = 0.95;
@@ -204,22 +209,22 @@ function displayConfidence() {
     } else if (displayConfidenceToggle == true) {
         $(".low-confidence").removeClass("low-confidence");
         console.log('removed');
-        
+
         displayConfidenceToggle = false;
     }
-    
+
 }
 // display confidence by default for demo
 displayConfidence()
 
-// turn off the interactivity and return text color 
+// turn off the interactivity and return text color
 // TODO this is not a smart way of doing this!
 
 var autoscrollOffToggle = false;
 
 function autoscrollOff() {
 
-    
+
     if (autoscrollOffToggle == false) {
         // to beat the javascript altering the color each span had to be selected
         $("[data-m]").addClass("not-interactive")
@@ -229,8 +234,8 @@ function autoscrollOff() {
         hyper(false);
     } else if (autoscrollOffToggle == true) {
         $(".not-interactive").removeClass("not-interactive");
-        
+
         autoscrollOffToggle = false;
     }
-    
+
 }
