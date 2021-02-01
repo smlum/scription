@@ -129,9 +129,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Credits
 
-TODO
+Scription is built using [Bulma](https://bulma.io/) and [hyperaudio](https://github.com/hyperaudio)
 
-## Support/ feedback
+Thanks to [likeleto](https://github.com/likeleto) for adding Google and Yandex support.
+
+## Support
 
 TODO
 
