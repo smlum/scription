@@ -131,4 +131,4 @@ If you need some help to setup scription, want to ask a question or simply get i
 
 ## License
 
-scription was created by [Sam Lumley](https://samlumley.page) and is licensed under the [AGPLv3 license](https://github.com/smlum/scription/blob/master/LICENSE). If you're interested in using it in a proprietary application feel free to [get in touch](https://samlumley.page)!
+scription was created by [Sam Lumley](https://samlumley.page) and is licensed under the open source [AGPLv3 license](https://github.com/smlum/scription/blob/master/LICENSE). If you're interested in using it in a proprietary application feel free to [get in touch](https://samlumley.page)!
