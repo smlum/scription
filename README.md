@@ -1,10 +1,10 @@
 # Scription ✍️
 
-Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/), [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech) and [Google Speech-to-text](https://cloud.google.com/speech-to-text). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ 
+Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ 
 
-You can use Scription via the web app: [scription.app](https://scription.app/)
+Visit the [Scription web app](https://scription.app/)
 
-## What Scription can do
+## What Scription does
 
 * Highlight and scroll text as the audio plays 
 * Control audio playback by clicking words in the text
@@ -17,23 +17,21 @@ And some other useful stuff:
 * Highlight low confidence words (AWS)
 * Add punctuation (AWS)
 
-## How to use
+## Get started
 
 ### Basic usage
 
-1. Run a transcription job using AWS Transcribe or Mozilla DeepSpeech
+1. Run a transcription job using [Amazon Transcribe](https://aws.amazon.com/transcribe/) or [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech)
 2. Download the json output file
 3. Load the json file into [Scription](https://smlum.github.io/scription/)
-4. Load in your corresponding audio (see below for larger audio files)
+4. Load in your corresponding audio (see below for large audio files)
 5. You're good to go!
-
 
 ### Saving and loading a project 
 
 'Save project' creates a text file which you can load into Scription at a later time. It preserves any text edits and annotations.
 
-If you have 'Autosave' turned on it saves your edits every 5 seconds, so that if you refresh the page, they should still be there.
-
+If you have 'Autosave' turned on it saves your edits every 5 seconds using cookies. This is less secure, but if you refresh the page, they should still be there.
 
 ### Exporting 
 
@@ -43,20 +41,20 @@ If you have 'Autosave' turned on it saves your edits every 5 seconds, so that if
 
 ### Audio control shortcuts 
 
-Audio playback can be controlled by the following shortcuts:
+Audio playback can be controlled using keyboard shortcuts:
 
 * Go back 5s <kbd>Ctrl</kbd> + <kbd>,</kbd>
 * Skip 5s <kbd>Ctrl</kbd> + <kbd>.</kbd>
 * Slow down <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd>
 * Speed up <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
 
-### Uploading audio to Scription 
+### Uploading large audio files to Scription 
 
-Large audio files (above ~50mb) can cause playback issues. So can files with variable bitrates.
+Large audio files (above ~50mb) can cause playback issues. So can files with variable bitrates. Ideally you want the files to be less than 50mb.
 
-Even if you have large audio files (eg > 1 hour) you can compress these down to a small size. I recommend using a lossy file format (like mp3), switching to mono, reducing the bitrate and using a constant bitrate. 
+To get around this you can compress audio down to a small file size. I recommend using a lossy file format (like mp3). It also helps to format it to mono, use a constant bitrate and reduce the bitrate. 
 
-You can manually adjust these using something like [Audacity's](https://www.audacityteam.org/) export to mp3:
+You can manually adjust these using something like [Audacity's](https://www.audacityteam.org/) "export to mp3", for example:
 
 <img src="images/audacity.png">
 
@@ -66,7 +64,7 @@ This can be a pain for multiple files. I used the following [ffmpeg](https://ffm
 find ./ -name “*.mp3” -exec ffmpeg -i "{}" -codec:a libmp3lame -b:a 8k -ac 1 -ar 8000 '$(basename {} min)’.mp3 \;
 `
 
-## Using AWS Transcribe and Mozilla DeepSpeech
+## Comparing AWS Transcribe and Mozilla DeepSpeech
 
 Amazon and Mozilla both offer automated speech-to-text services. 
 
@@ -99,7 +97,7 @@ There are other big tech speech-to-text services from Google, IBM and Microsoft.
 
 ### Cleaning audio for transcription
 
-To use automated transcription services you may need to format audio in a particular way or clean it up (eg remove noise). I recommend [Audacity](https://www.audacityteam.org/) for manual audio editing/formatting or [ffmpeg](https://ffmpeg.org/) for automated formatting.
+To use automated transcription services you may need to format audio in a particular way or clean it up (eg remove noise). I recommend [Audacity](https://www.audacityteam.org/) for manual audio editing/formatting or [ffmpeg](https://ffmpeg.org/) for automated batch formatting.
 
 ## Run Scription locally
 
@@ -108,8 +106,6 @@ To use automated transcription services you may need to format audio in a partic
 git clone https://github.com/smlum/scription
 cd scription
 ```
-2. In the "json" folder save your downloaded json files 
-3. Add your audio files to the "audio" folder
 3. Launch the app in a browser, eg:
 ```
 http-server
@@ -117,15 +113,11 @@ http-server
 
 ## Privacy 
 
-The Scription web app uses your browser's local storage (ie nothing is being uploaded onto another server). 
-
-## Known issues/ workarounds
-
-TODO
+The Scription web app uses your browser's local storage, so nothing is being uploaded onto another server by using the app. 
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
 ## Credits
 
@@ -135,9 +127,8 @@ Thanks to [likeleto](https://github.com/likeleto) for adding Google and Yandex s
 
 ## Support
 
-TODO
+If you need some help to setup scription, want to ask a question or simply get involved in the community, feel free to [give me a shout](https://samlumley.page).
 
 ## License
 
-TODO
-
+scription was created by [Sam Lumley](https://samlumley.page) and is licensed under the [AGPLv3 license](https://github.com/smlum/scription/blob/master/LICENSE). If you're interested in using it in a proprietary application feel free to [get in touch](https://samlumley.page)!
