@@ -1,6 +1,6 @@
 # Scription ✍️
 
-Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ It's currently being developed bit by bit - if you have any feedback please feel free to send me a [message](smlumley@icloud.com).
+Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ It's currently being developed bit by bit - if you have any feedback please feel free to send me a [message](mailto:smlumley@icloud.com).
 
 Visit the [Scription web app](https://scription.app/).
 
