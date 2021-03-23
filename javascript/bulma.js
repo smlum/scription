@@ -1,11 +1,26 @@
 
+// accordian
+var acc = document.getElementsByClassName("accordion");
+var accDown = document.getElementsByClassName("accordion-down");
+var i;
+
+for (i = 0; i < accDown.length; i++) {
+    accDown[i].addEventListener("click", function () {
+        this.parentElement.classList.toggle("active-accordion");
+        var panel = this.parentElement.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+
 
 // function load() {
-//     const poop = "poop";
 //     const hi = "hi"
 
 //     const data = {
-//         poop,
 //         hi
 //     };
 //     const options = {
@@ -25,9 +40,6 @@
 // }
 
 
-
-
-
 // add back in if using modal button
 
 // document.querySelector('#modal-button').addEventListener('click', function (event) {
@@ -44,18 +56,3 @@
 //     });
 // });
 
-var acc = document.getElementsByClassName("accordion");
-var accDown = document.getElementsByClassName("accordion-down");
-var i;
-
-for (i = 0; i < accDown.length; i++) {
-    accDown[i].addEventListener("click", function () {
-        this.parentElement.classList.toggle("active-accordion");
-        var panel = this.parentElement.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}

@@ -106,9 +106,19 @@ To use automated transcription services you may need to format audio in a partic
 git clone https://github.com/smlum/scription
 cd scription
 ```
-3. Launch the app in a browser, eg:
+
+2. Install packages (requires [node](https://nodejs.org/en/download/))
 ```
-http-server
+npm run install
+```
+
+3. Run on a local server
+```
+npm run start
+```
+or for development (with browser sync)
+```
+npm run dev
 ```
 
 ## Privacy 

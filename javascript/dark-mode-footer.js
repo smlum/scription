@@ -1,5 +1,7 @@
+// can this be added to dark-mode.js
 
-//identify the toggle switch HTML element
+
+// identify the toggle switch HTML element
 // const toggleSwitch = document.querySelector('#dark-mode-switch input[type="checkbox"]');
 const toggleSwitch = document.getElementById('dark-mode-switch');
 

@@ -1,5 +1,4 @@
-// This script converts the json transcript file to html
-// so that hyperaudio-lite can interpret it
+// This script converts the json transcript file to html so that hyperaudio-lite can interpret it
 
 // function handleFileSelect(evt) {
 //     var files = evt.target.files; // FileList object
@@ -47,16 +46,18 @@ function fmtMSS(s) {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + Math.round(s)
 }
 
+// clear transcript text
+// TODO 1. add warning before clearing; 2. make it possible to undo
 function clearTranscript() {
     $('#content').html('')
     $('.annotation-content').html('');
 }
 
-// creates a new paragraph tag
+// create a new paragraph tag
 function CreateNewPara(timeOfFirstWord, speaker, paraId) {
     var formattedTime = fmtMSS(timeOfFirstWord)
     var paraTime = "<p class='content' id='" + paraId + "' data-time='" + timeOfFirstWord + "' data-tc='" + formattedTime + "'>";
-    // only give it span if a word?
+    // only give it span if it's a word?
     var paraSpeaker = "<span class='unread' data-m='" + timeOfFirstWord + "' data-d='0' class='speaker'>" + speaker + " </span>";
     var paraFormattedTime = "<span class ='timecode'>[" + formattedTime + "] </span>";
     var endPara = "</p>"
@@ -84,7 +85,7 @@ function handleFileSelect(evt) {
 
         // Only process audio files.
         if (!f.type.match('audio.*')) {
-            console.log('file not audio');
+            alert('file not audio');
             return;
         };
 
