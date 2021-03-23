@@ -116,14 +116,14 @@ npm run install
 ```
 npm run start
 ```
-or for development (with browser sync)
+or for development (with browser sync):
 ```
 npm run dev
 ```
 
 ## Privacy 
 
-The Scription web app uses your browser's local storage, so nothing is being uploaded onto another server by using the app. 
+The Scription web app uses your browser's local storage. Nothing is uploaded onto another server using the app. 
 
 ## Contributing
 
