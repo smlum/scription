@@ -106,7 +106,7 @@ function handleFileSelect(evt) {
                 // Render thumbnail.
 
                 document.getElementById("hyperplayer").src = e.target.result;
-                console.log(theFile.name);
+                console.log("loading audio: " + theFile.name);
                 document.getElementById("audio-name").innerHTML = theFile.name;
 
                 // var span = document.createElement('span');
@@ -252,10 +252,10 @@ document.getElementById('user-project-file').addEventListener('change', handlePr
 
 
 // activates interactive script after two seconds on page load. 
-// TODO Load script asynchronously without a timer
+// TODO Load script asynchronously without a the need for a dumb timer
 setTimeout(function(){
     hyper(true);
-    console.log('interactive script');
+    // console.log('interactive script');
 }, 2000);
 
 // for the audio control (possibly to be deleted eventually)
@@ -624,7 +624,7 @@ function displayTranscript(userJson) {
         // speakers are declared in new objects in monologues
         // start and end time are in seconds
 
-        console.log("length: " + data.monologues.length);
+        // console.log("length: " + data.monologues.length);
 
         var spearkerchanges = data.monologues.length;
 
@@ -661,10 +661,34 @@ function displayTranscript(userJson) {
 
         // loop through json to appeand words and data
 
+
+        para_start_time = results.elements[0].ts;
         new_speaker = results.speaker
-        console.log(new_speaker);
+        console.log("speaker: " + new_speaker + "  start time: " + para_start_time + "  paraId: " + paragraphCounter);
+        paragraphCounter++;
+
+         // add first paragraph when speaker changes
 
 
+
+            // find out and set the speaker counter for the first word
+
+            // // to check who the speaker is at the time of the first word
+            // while (Number(speaker_times[speaker_counter][1]) < Number(word_start_time)) {
+            //   speaker_counter++;
+            // };
+            // new_speaker = speaker_times[speaker_counter][0];
+
+            // add new para
+            // function takes: timeOfFirstWord, speaker, wordCount
+            paraId = "para-" + paragraphCounter;
+            newPara = CreateNewPara(para_start_time, new_speaker, paraId);
+            $('#content').append(newPara);
+            // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
+            // newPara);
+
+
+        // loop through all words for each speaker
         for (var i = 0; i < jsonLength; i++) {
             // define word data from JSON string
             word = results.elements[i].value;
@@ -701,27 +725,6 @@ function displayTranscript(userJson) {
             // } else if (type == "punctuation") {
             //     space = "";
             // };
-
-
-
-            // add first paragraph
-            if (i == 0 && j == 0) {
-                // find out and set the speaker counter for the first word
-
-                // // to check who the speaker is at the time of the first word
-                // while (Number(speaker_times[speaker_counter][1]) < Number(word_start_time)) {
-                //   speaker_counter++;
-                // };
-                // new_speaker = speaker_times[speaker_counter][0];
-
-                // add new para
-                // function takes: timeOfFirstWord, speaker, wordCount
-                paraId = "para-" + paragraphCounter;
-                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                $('#content').append(newPara);
-                // document.getElementById('speaker').insertAdjacentHTML('beforebegin',
-                // newPara);
-            };
 
             // ok this might need overhaul
             // want to detect if the speaker has changed
@@ -812,14 +815,14 @@ function displayTranscript(userJson) {
             // console.log(i + " : " + paragraphWordCounter);
 
             // start a new paragraph if text current length is over a max threshold and it reaches the end of a sentence
-            if (type == "punct" && (word == "." || word == "!" || word == "?") && paragraphWordCounter > max_para_length) {
+            if (type == "punct" && (word == "." || word == "!" || word == "?") && paragraphWordCounter > max_para_length && i < jsonLength - 2) {
                 // set data for new speaker
                 
                 paragraphCounter++;
                 paraId = "para-" + paragraphCounter;
 
                 // use next word start time as current one is punctuation
-                new_speaker = data.monologues[j + 1].speaker
+                // new_speaker = data.monologues[j + 1].speaker
                 newPara = CreateNewPara(next_word_start_time, new_speaker, paraId);
                 $('#content').append(newPara);
                 // reset the paragraph word counter
