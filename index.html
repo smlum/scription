@@ -6,35 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Primary Meta Tags -->
-  <title>Scription — Automate speech transcription  </title>
+  <title>Scription — Automate speech transcription </title>
   <meta name="title" content="Scription — Automate speech transcription">
-  <meta name="description" content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
+  <meta name="description"
+    content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scription.app/">
   <meta property="og:title" content="Scription — Automate speech transcription  ">
-  <meta property="og:description" content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
+  <meta property="og:description"
+    content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
   <meta property="og:image" content="https://scription.app/images/scription-screenshot.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://scription.app/">
   <meta property="twitter:title" content="Scription — Automate speech transcription  ">
-  <meta property="twitter:description" content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
+  <meta property="twitter:description"
+    content="Scription is an editor for automated speech-to-text transcription services like Amazon Transcribe and Mozilla Deepspeech.">
   <meta property="twitter:image" content="https://scription.app/images/scription-screenshot.png">
 
 
-  <link rel="icon" href="favicon.ico" type="image/gif"> 
+  <link rel="icon" href="favicon.ico" type="image/gif">
 
   <link rel="stylesheet" href="css/trint-player.css">
 
   <!-- <link rel="stylesheet" href="../../node_modules/tether-drop/dist/css/drop-theme-basic.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.0/css/drop-theme-basic.css">
 
-<!--  <link rel="stylesheet" type="text/css" href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css"> -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
-  
+  <!--  <link rel="stylesheet" type="text/css" href="../../node_modules/green-audio-player/dist/css/green-audio-player.min.css"> -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/styles-css.css">
 
@@ -43,7 +47,7 @@
 
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <!-- <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script> -->
-   
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
   <!-- <script src="../../node_modules/velocity-animate/velocity.min.js"></script> -->
 
@@ -54,9 +58,10 @@
   <!-- <script src="/jquery/jquery.js"></script> -->
 
   <script src="javascript/dark-mode.js"></script>
-  
-  <script async defer data-website-id="5023415c-1baf-4f95-8450-94899cdddcae" src="https://umami-s.herokuapp.com/umami.js"></script>
-  
+
+  <script async defer data-website-id="5023415c-1baf-4f95-8450-94899cdddcae"
+    src="https://umami-s.herokuapp.com/umami.js"></script>
+
 </head>
 
 <body>
@@ -90,39 +95,51 @@
 
             <!-- user audio input -->
 
-            <!-- for file api input  -->
-            <div class="file has-name is-small is-primary">
-              <label class="file-label">
-                <input id="user-audio-file" class="file-input" type="file" name="resume">
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                  <span>Load audio</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
-                  <span class="file-label">
-                    Load audio…
-                  </span>
-                </span>
-                <span id="audio-name" class="file-name">
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <!-- for file api input  -->
+                    <div class="file has-name is-small is-primary">
+                      <label class="file-label">
+                        <input id="user-audio-file" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Load audio…
+                          </span>
+                        </span>
+                        <span id="audio-name" class="file-name">
 
-                  demo_hi.mp3
+                          demo_hi.mp3
 
-                </span>
+                        </span>
 
-              </label>
-            </div>
- 
-          <!--
+                      </label>
+                    </div>
+
+                    <!--
             
               <div class="select is-small is-fullwidth"> -->
-            <!-- <div class="is-small"> -->
-            <!-- <select name="country" id="audioUrl">
+                    <!-- <div class="is-small"> -->
+                    <!-- <select name="country" id="audioUrl">
 
                 </select> -->
-            <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Audio url" value="audio.mp3">
+                    <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Audio url" value="audio.mp3">
 
                 
               </div> -->
-<!--             
+                    <!--             
               <div class="control">
                 <p class="control">
                <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
@@ -131,24 +148,43 @@
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
             </p> 
             </div> -->
+                  
+                <div class="dropdown-item">
+                  <div class="field has-addons navbar-item">
+                    <div class="control">
+                      <input class="input is-small" type="text" placeholder="Audio url" id="audioUrll">
+                      </input>
+                    </div>
+                    <p class="control">
+                      <button class="button is-small is-primary disabled" onclick="getAudioUrl()">Load</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
           </div>
         </div>
-        <div class="navbar-item">
-          <div class="field has-addons navbar-item">
-            <div class="control">
-              <input class="input is-small" type="text" placeholder="Audio url" id="audioUrll">
-              </input>
-            </div>
-            <p class="control">
-              <button class="button is-small is-primary disabled" onclick="getAudioUrl()">Load</button>
-            </p>
-          </div>
-      </div>
+
+
 
         <div class="navbar-item">
           <div class="field has-addons navbar-item">
 
-            <!-- for file api json input  -->
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                  <span>Load Transcript</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <!-- for file api json input  -->
             <div class="file has-name is-small is-primary">
               <label class="file-label">
                 <input id="user-json-file" class="file-input" type="file" name="resume">
@@ -165,6 +201,37 @@
                 </span>
               </label>
             </div>
+
+
+                  
+                <div class="dropdown-item">
+                  
+                  <!-- Load json from url  -->
+                    <div class="field has-addons navbar-item">
+                      <div class="control">
+                        <input class="input is-small" type="text" placeholder="Json url" id="jsonUrll">
+                        </input>
+                      </div>
+                      <p class="control">
+                        <button class="button is-small is-primary" onclick="getJSONFromUrl()">Load</button>
+                      </p>
+                  
+                    </div>
+
+
+                </div>
+                <div class="dropdown-item">
+
+                      <p>Supported json formats include AWS Transcribe, Mozilla DeepSpeech and Rev.ai.</p>
+                      <p>JSONs loaded from a url will not work unless Cross-Origin Resource Sharing (CORS) have been <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">configured</a>.</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+            
 
             <!-- <p class="control">
             <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
@@ -184,17 +251,7 @@
             </p>  -->
           </div>
         </div>
-        <div class="navbar-item">
-          <div class="field has-addons navbar-item">
-            <div class="control">
-              <input class="input is-small" type="text" placeholder="Json url" id="jsonUrll">
-              </input>
-            </div>
-            <p class="control">
-              <button class="button is-small is-primary" onclick="getJSONFromUrl()">Load</button>
-            </p>
-          </div>
-      </div>
+
         <div class="navbar-item">
           <div class="field">
             <button class="button is-small is-primary" onclick="clearTranscript()">Clear transcript</button>
@@ -313,7 +370,60 @@
                   class="textarea scroller has-fixed-size">
                   <article>
 
-                    <section id="content" contenteditable="true"><p class="content" id="para-0" data-time="0.34" data-tc="0:00"><span class="unread" data-m="0.34" data-d="0">spk_1 </span><span class="timecode">[0:00] </span> <span data-m="340" data-d="600" data-confidence="1.0" class="">transcription</span> <span data-m="940" data-d="210" data-confidence="0.933" class="low-confidence">body</span> <span data-m="1150" data-d="340" data-confidence="0.986" class="">combines</span> <span data-m="1490" data-d="80" data-confidence="0.819" class="low-confidence">the</span> <span data-m="1570" data-d="370" data-confidence="1.0" class="">brute</span> <span data-m="1940" data-d="330" data-confidence="1.0" class="">force</span> <span data-m="2270" data-d="200" data-confidence="1.0" class="">of</span> <span data-m="2470" data-d="580" data-confidence="1.0" class="">automated</span> <span data-m="3050" data-d="830" data-confidence="1.0" class="">transcription</span> <span data-m="3880" data-d="270" data-confidence="1.0" class="">with</span> <span data-m="4150" data-d="120" data-confidence="0.999">an</span> <span data-m="4270" data-d="640" data-confidence="1.0" class="">interactive</span> <span data-m="4910" data-d="1490" data-confidence="1.0" class="">editor</span>. <span data-m="6400" data-d="180" data-confidence="1.0" class="">It</span> <span data-m="6580" data-d="460" data-confidence="0.999" class="">links</span> <span data-m="7040" data-d="420" data-confidence="0.999" class="">text</span> <span data-m="7460" data-d="380" data-confidence="1.0" class="">audio</span> <span data-m="7840" data-d="940" data-confidence="1.0" class="">playback</span>, <span data-m="8780" data-d="290" data-confidence="1.0" class="">making</span> <span data-m="9070" data-d="100" data-confidence="1.0">it</span> <span data-m="9170" data-d="380" data-confidence="1.0" class="">easier</span> <span data-m="9550" data-d="140" data-confidence="1.0">to</span> <span data-m="9690" data-d="420" data-confidence="1.0" class="">scan</span> <span data-m="10110" data-d="150" data-confidence="0.99" class="">through</span> <span data-m="10260" data-d="60" data-confidence="0.995" class="">a</span> <span data-m="10320" data-d="790" data-confidence="1.0" class="">transcript</span> <span data-m="11110" data-d="140" data-confidence="1.0">to</span> <span data-m="11250" data-d="310" data-confidence="1.0" class="">fix</span> <span data-m="11560" data-d="180" data-confidence="1.0">any</span> <span data-m="11740" data-d="520" data-confidence="1.0" class="">errors</span> <span data-m="12260" data-d="120" data-confidence="0.998" class="">and</span> <span data-m="12380" data-d="460" data-confidence="1.0" class="">extract</span> <span data-m="12840" data-d="380" data-confidence="1.0" class="">useful</span> <span data-m="13220" data-d="1520" data-confidence="1.0" class="">information</span>. <br></p><p class="content" data-time="0.34" data-tc="0:00"><span data-m="14740" data-d="100" data-confidence="1.0" class="">spk_1 [0:14] The</span> <span data-m="14840" data-d="950" data-confidence="1.0" class="">objective</span> <span data-m="15790" data-d="150" data-confidence="1.0" class="">is</span> <span data-m="15940" data-d="80" data-confidence="1.0">to</span> <span data-m="16020" data-d="190" data-confidence="1.0" class="">make</span> <span data-m="16210" data-d="90" data-confidence="0.592" class="low-confidence">this</span> <span data-m="16300" data-d="380" data-confidence="1.0" class="">speech</span> <span data-m="16680" data-d="130" data-confidence="0.998">to</span> <span data-m="16810" data-d="360" data-confidence="0.997" class="">text</span> <span data-m="17170" data-d="410" data-confidence="1.0" class="">process</span> <span data-m="17580" data-d="840" data-confidence="1.0" class="">quicker</span>, <span data-m="18420" data-d="800" data-confidence="1.0" class="">cheaper</span>, <span data-m="19220" data-d="140" data-confidence="0.806" class="low-confidence">on</span> <span data-m="19360" data-d="50" data-confidence="0.999">a</span> <span data-m="19410" data-d="180" data-confidence="1.0" class="">bit</span> <span data-m="19590" data-d="200" data-confidence="1.0" class="">more</span> <span data-m="19790" data-d="200" data-confidence="1.0">enjoyable</span>.</p><p class="content" id="para-1" data-time="19.79" data-tc="0:20"><span class="unread" data-m="19.79" data-d="0">spk_1 </span><span class="timecode">[0:20] </span></p>
+                    <section id="content" contenteditable="true">
+                      <p class="content" id="para-0" data-time="0.34" data-tc="0:00"><span class="unread" data-m="0.34"
+                          data-d="0">spk_1 </span><span class="timecode">[0:00] </span> <span data-m="340" data-d="600"
+                          data-confidence="1.0" class="">transcription</span> <span data-m="940" data-d="210"
+                          data-confidence="0.933" class="low-confidence">body</span> <span data-m="1150" data-d="340"
+                          data-confidence="0.986" class="">combines</span> <span data-m="1490" data-d="80"
+                          data-confidence="0.819" class="low-confidence">the</span> <span data-m="1570" data-d="370"
+                          data-confidence="1.0" class="">brute</span> <span data-m="1940" data-d="330"
+                          data-confidence="1.0" class="">force</span> <span data-m="2270" data-d="200"
+                          data-confidence="1.0" class="">of</span> <span data-m="2470" data-d="580"
+                          data-confidence="1.0" class="">automated</span> <span data-m="3050" data-d="830"
+                          data-confidence="1.0" class="">transcription</span> <span data-m="3880" data-d="270"
+                          data-confidence="1.0" class="">with</span> <span data-m="4150" data-d="120"
+                          data-confidence="0.999">an</span> <span data-m="4270" data-d="640" data-confidence="1.0"
+                          class="">interactive</span> <span data-m="4910" data-d="1490" data-confidence="1.0"
+                          class="">editor</span>. <span data-m="6400" data-d="180" data-confidence="1.0"
+                          class="">It</span> <span data-m="6580" data-d="460" data-confidence="0.999"
+                          class="">links</span> <span data-m="7040" data-d="420" data-confidence="0.999"
+                          class="">text</span> <span data-m="7460" data-d="380" data-confidence="1.0"
+                          class="">audio</span> <span data-m="7840" data-d="940" data-confidence="1.0"
+                          class="">playback</span>, <span data-m="8780" data-d="290" data-confidence="1.0"
+                          class="">making</span> <span data-m="9070" data-d="100" data-confidence="1.0">it</span> <span
+                          data-m="9170" data-d="380" data-confidence="1.0" class="">easier</span> <span data-m="9550"
+                          data-d="140" data-confidence="1.0">to</span> <span data-m="9690" data-d="420"
+                          data-confidence="1.0" class="">scan</span> <span data-m="10110" data-d="150"
+                          data-confidence="0.99" class="">through</span> <span data-m="10260" data-d="60"
+                          data-confidence="0.995" class="">a</span> <span data-m="10320" data-d="790"
+                          data-confidence="1.0" class="">transcript</span> <span data-m="11110" data-d="140"
+                          data-confidence="1.0">to</span> <span data-m="11250" data-d="310" data-confidence="1.0"
+                          class="">fix</span> <span data-m="11560" data-d="180" data-confidence="1.0">any</span> <span
+                          data-m="11740" data-d="520" data-confidence="1.0" class="">errors</span> <span data-m="12260"
+                          data-d="120" data-confidence="0.998" class="">and</span> <span data-m="12380" data-d="460"
+                          data-confidence="1.0" class="">extract</span> <span data-m="12840" data-d="380"
+                          data-confidence="1.0" class="">useful</span> <span data-m="13220" data-d="1520"
+                          data-confidence="1.0" class="">information</span>. <br></p>
+                      <p class="content" data-time="0.34" data-tc="0:00"><span data-m="14740" data-d="100"
+                          data-confidence="1.0" class="">spk_1 [0:14] The</span> <span data-m="14840" data-d="950"
+                          data-confidence="1.0" class="">objective</span> <span data-m="15790" data-d="150"
+                          data-confidence="1.0" class="">is</span> <span data-m="15940" data-d="80"
+                          data-confidence="1.0">to</span> <span data-m="16020" data-d="190" data-confidence="1.0"
+                          class="">make</span> <span data-m="16210" data-d="90" data-confidence="0.592"
+                          class="low-confidence">this</span> <span data-m="16300" data-d="380" data-confidence="1.0"
+                          class="">speech</span> <span data-m="16680" data-d="130" data-confidence="0.998">to</span>
+                        <span data-m="16810" data-d="360" data-confidence="0.997" class="">text</span> <span
+                          data-m="17170" data-d="410" data-confidence="1.0" class="">process</span> <span data-m="17580"
+                          data-d="840" data-confidence="1.0" class="">quicker</span>, <span data-m="18420" data-d="800"
+                          data-confidence="1.0" class="">cheaper</span>, <span data-m="19220" data-d="140"
+                          data-confidence="0.806" class="low-confidence">on</span> <span data-m="19360" data-d="50"
+                          data-confidence="0.999">a</span> <span data-m="19410" data-d="180" data-confidence="1.0"
+                          class="">bit</span> <span data-m="19590" data-d="200" data-confidence="1.0"
+                          class="">more</span> <span data-m="19790" data-d="200" data-confidence="1.0">enjoyable</span>.
+                      </p>
+                      <p class="content" id="para-1" data-time="19.79" data-tc="0:20"><span class="unread"
+                          data-m="19.79" data-d="0">spk_1 </span><span class="timecode">[0:20] </span></p>
                     </section>
 
                   </article>
@@ -353,7 +463,8 @@
               </div>
               <div class="accordion">
                 <!-- <span class="single-line" contenteditable="true">Component</span> -->
-                <span class="tag is-medium single-line accordion-category category-2" contenteditable="true">Category 2</span>
+                <span class="tag is-medium single-line accordion-category category-2" contenteditable="true">Category
+                  2</span>
 
                 <a href="#" class="accordion-down" aria-label="more options">
                   <span class="icon is-medium">
@@ -498,8 +609,8 @@
     <div class="modal-background"></div>
     <div class="modal-content">
       <p>
-        File is ' + fileSize + 'mb. You may have playback issues above 50mb. See the 
-         <a href="https://github.com/smlum/scription#uploading-large-audio-files-to-scription">documentation</a> 
+        File is ' + fileSize + 'mb. You may have playback issues above 50mb. See the
+        <a href="https://github.com/smlum/scription#uploading-large-audio-files-to-scription">documentation</a>
         for tips on how to reduce file size.
       </p>
     </div>
