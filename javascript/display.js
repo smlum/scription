@@ -67,7 +67,10 @@ function CreateNewPara(timeOfFirstWord, speaker, paraId) {
 
 // load audio from file or url using the dropdown or text input
 function getAudioUrl() {
-    var audioUrl = "data/" + document.getElementById("audio-name").value;
+
+    // from file in data folder
+    // var audioUrl = "data/" + document.getElementById("audio-name").value;
+    var audioUrl = document.getElementById("audioUrll").value;
     document.getElementById("hyperplayer").src = audioUrl;
 }
 
@@ -145,6 +148,7 @@ document.getElementById('user-audio-file').addEventListener('change', handleFile
 
 
 
+
 // load json from user selected file
 function handleJsonFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -194,6 +198,7 @@ function handleJsonFileSelect(evt) {
 
 // Listen for user uploading a json
 document.getElementById('user-json-file').addEventListener('change', handleJsonFileSelect, false);
+
 
 // load project from user selected file
 function handleProjectFileSelect(evt) {
@@ -263,15 +268,47 @@ var speakerTimes = [];
 var transcriptObject = [];
 var word_start_time;
 
+
+
+// load json from url
+function getJSONFromUrl() {
+
+    var jsonUrl = document.getElementById("jsonUrll").value;
+    console.log("loading json: " + jsonUrl);
+    document.getElementById("json-name").innerHTML = jsonUrl;
+    // console.log(e);
+    // JsonObj = JSON.parse(jsonUrl);
+    // console.log(JsonObj);
+    displayTranscript(jsonUrl)
+    // $.getJSON(jsonUrl, function (data) {
+    //     displayTranscript(data);
+    //     console.log("???");
+    // });
+}
+
+
 // display transcript from json file
 function displayTranscript(userJson) {
+    console.log("yup");
     // get json transcript from user input (default transcript.json)
     // var json = "json/" + document.getElementById("user-filename").value;
     // console.log("loading: " + json);
 
+
+        console.log("poop: " + userJson);
+        $.getJSON(userJson, function (datadata) {
+            // displayTranscript(data);
+            console.log("???");
+            data = datadata
+            console.log(data);
+        });
+    
+
+    
+
     // $.getJSON(json, function (data) {
 
-    data = userJson
+    // data = userJson
 
     // assign variables for use in for loop below
 
@@ -829,7 +866,6 @@ function displayTranscript(userJson) {
                 paragraphWordCounter = 0;
                 // console.log(word);
                 // console.log('para too long');
-
             };
 
             //for (var i = 0; i < speaker_times.length; i++) {

@@ -109,31 +109,45 @@
                 </span>
               </label>
             </div>
-            <!-- <p class="control">
-            <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
-          </p>
-
+ 
+          <!--
             
-            <div class="control">
               <div class="select is-small is-fullwidth"> -->
             <!-- <div class="is-small"> -->
             <!-- <select name="country" id="audioUrl">
 
                 </select> -->
-            <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+            <!-- <input type="text" class="input is-small" id="audioUrl" placeholder="Audio url" value="audio.mp3">
 
                 
               </div> -->
-            <!-- </div>
+<!--             
+              <div class="control">
+                <p class="control">
+               <input type="text" class="input" id="audioUrl" placeholder="Enter audio filename" value="audio.mp3">
+             </p>
             <p class="control">
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
-            </p> -->
+            </p> 
+            </div> -->
           </div>
         </div>
         <div class="navbar-item">
           <div class="field has-addons navbar-item">
+            <div class="control">
+              <input class="input is-small" type="text" placeholder="Audio url" id="audioUrll">
+              </input>
+            </div>
+            <p class="control">
+              <button class="button is-small is-primary disabled" name="export-html" onclick="getAudioUrl()">Load</button>
+            </p>
+          </div>
+      </div>
 
-            <!-- for file api input  -->
+        <div class="navbar-item">
+          <div class="field has-addons navbar-item">
+
+            <!-- for file api json input  -->
             <div class="file has-name is-small is-primary">
               <label class="file-label">
                 <input id="user-json-file" class="file-input" type="file" name="resume">
@@ -169,6 +183,17 @@
             </p>  -->
           </div>
         </div>
+        <div class="navbar-item">
+          <div class="field has-addons navbar-item">
+            <div class="control">
+              <input class="input is-small" type="text" placeholder="Json url" id="jsonUrll">
+              </input>
+            </div>
+            <p class="control">
+              <button class="button is-small is-primary" onclick="getJSONFromUrl()">Load</button>
+            </p>
+          </div>
+      </div>
         <div class="navbar-item">
           <div class="field">
             <button class="button is-small is-primary" onclick="clearTranscript()">Clear transcript</button>
