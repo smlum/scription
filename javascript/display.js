@@ -279,36 +279,29 @@ function getJSONFromUrl() {
     // console.log(e);
     // JsonObj = JSON.parse(jsonUrl);
     // console.log(JsonObj);
-    displayTranscript(jsonUrl)
+    // displayTranscript(jsonUrl)
     // $.getJSON(jsonUrl, function (data) {
     //     displayTranscript(data);
     //     console.log("???");
     // });
+    // console.log("poop: " + userJson);
+        $.getJSON(jsonUrl, function (data) {
+            // displayTranscript(data);
+            displayTranscript(data)
+        });
 }
 
 
 // display transcript from json file
 function displayTranscript(userJson) {
-    console.log("yup");
     // get json transcript from user input (default transcript.json)
     // var json = "json/" + document.getElementById("user-filename").value;
     // console.log("loading: " + json);
-
-
-        console.log("poop: " + userJson);
-        $.getJSON(userJson, function (datadata) {
-            // displayTranscript(data);
-            console.log("???");
-            data = datadata
-            console.log(data);
-        });
-    
-
     
 
     // $.getJSON(json, function (data) {
 
-    // data = userJson
+    data = userJson
 
     // assign variables for use in for loop below
 
