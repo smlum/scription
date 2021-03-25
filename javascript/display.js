@@ -783,14 +783,12 @@ function displayTranscript(userJson) {
                     i++;
                 }
             } else {
-
                 // add data to each word: confidence, start time, duration, speaker
             spanStartTime = "<span data-m=" + word_start_time_ms + " data-d=" + duration_ms + " data-confidence=" + confidence + ">";
             // create html to be added
 
             // add words and punctuation
             if (type == "text") {
-
                 text = spanStartTime + word + "</span>";
                 paragraphWordCounter++;
             } else if (type == "punct") {
@@ -810,8 +808,6 @@ function displayTranscript(userJson) {
 
             // if it gets to a full stop and the current paragraph is too long, start a new paragraph
             // TODO let user set the paragraph amount
-            
-
 
             // console.log(i + " : " + paragraphWordCounter);
 
@@ -836,16 +832,9 @@ function displayTranscript(userJson) {
             //for (var i = 0; i < speaker_times.length; i++) {
             //console.log(speaker_times[i]);
             //}
-
             }
-
-            
-
         };
-
         }
-
-        
 
       } else if (data.response.chunks) {
         // Yandex formatted json
