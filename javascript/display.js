@@ -456,21 +456,32 @@ function displayTranscript(userJson) {
         // REPLY: yes, it is used to look up who the speaker is depending on the time
         // Note: in the json a speaker can speak multiple times in a row
         // we simplify this
-        var whoIsSpeaker
-        var speaker_times = [];
-        var segments = results.speaker_labels.segments;
-        for (var i = 1; i < segments.length; i++) {
-            // check if the speaker has changed
-            if (whoIsSpeaker != segments[i].speaker_label) {
-                // if so add to the array
-                whoIsSpeaker = segments[i].speaker_label
-                speaker = [];
-                speaker.push(segments[i].speaker_label);
-                speaker.push(Number(segments[i].start_time));
-                speaker_times.push(speaker);
-            }
 
+        if (results.speaker_labels) {
+            console.log('multiple speakers');
+            var whoIsSpeaker
+            var speaker_times = [];
+            var segments = results.speaker_labels.segments;
+            for (var i = 1; i < segments.length; i++) {
+                // check if the speaker has changed
+                if (whoIsSpeaker != segments[i].speaker_label) {
+                    // if so add to the array
+                    whoIsSpeaker = segments[i].speaker_label
+                    speaker = [];
+                    speaker.push(segments[i].speaker_label);
+                    speaker.push(Number(segments[i].start_time));
+                    speaker_times.push(speaker);
+                }
+
+            };
+        } else {
+            console.log('one speaker');
+            new_speaker = "speaker";
+            var speaker_times = [[]];
+            var speaker_counter = 0
+            speaker_times[speaker_counter][0] = new_speaker
         };
+        
 
         // saving global variables for use in audio-control.js (poss can delete)
         speakerTimes = speaker_times
@@ -522,7 +533,12 @@ function displayTranscript(userJson) {
                 // while (Number(speaker_times[speaker_counter][1]) < Number(word_start_time)) {
                 //   speaker_counter++;
                 // };
-                new_speaker = speaker_times[speaker_counter][0];
+
+                // TODO temporary if condition
+                if (results.speaker_labels) {
+                    new_speaker = speaker_times[speaker_counter][0];
+                }
+                
 
                 // add new para
                 // function takes: timeOfFirstWord, speaker, wordCount
@@ -542,48 +558,54 @@ function displayTranscript(userJson) {
 
             // add new para if speaker changes
             // checks if it's not the last speaker
-            if ((speaker_counter < speaker_times.length) && (i != 0)) {
+            
+            // TODO temporary if condition
+            if (results.speaker_labels) {
+                if ((speaker_counter < speaker_times.length) && (i != 0)) {
 
-                speakerStart = speaker_times[speaker_counter][1]
-                // checks if the time of the speaker is less than the current word
-                // ok to do this, we need to check for the next word, not this one
-                // also what if the next word is punctuation
-                if (speakerStart < next_word_start_time) {
-
-
-                    // checks if the amount of time the speaker spoke for is more than a second
-                    // might be able to remove this since it addressed a problems that's been solved elsewhere
-                    var min_time = 1;
-                    // if
-                    if (speaker_times[speaker_counter + 1] && (speaker_times[speaker_counter + 1][1] - speaker_times[speaker_counter][1] > min_time)) {
-                        speaker_counter++;
-                        // checks if the speaker has changed
-                        if (new_speaker != speaker_times[speaker_counter][0]) {
-                            // console.log(speaker_times);
-
-                            // console.log(word);
-                            // console.log(speaker_counter);
-
-
-                            // changes the speaker variable
-                            new_speaker = speaker_times[speaker_counter][0];
-
-                            // add a new para
-                            paragraphCounter++;
-                            paraId = "para-" + paragraphCounter;
-
-                            newPara = CreateNewPara(word_start_time, new_speaker, paraId);
-                            $('#content').append(newPara);
-                            // reset the paragraph word counter
-                            paragraphWordCounter = 0;
-
-
-
+                    speakerStart = speaker_times[speaker_counter][1]
+                    // checks if the time of the speaker is less than the current word
+                    // ok to do this, we need to check for the next word, not this one
+                    // also what if the next word is punctuation
+                    if (speakerStart < next_word_start_time) {
+    
+    
+                        // checks if the amount of time the speaker spoke for is more than a second
+                        // might be able to remove this since it addressed a problems that's been solved elsewhere
+                        var min_time = 1;
+                        // if
+                        if (speaker_times[speaker_counter + 1] && (speaker_times[speaker_counter + 1][1] - speaker_times[speaker_counter][1] > min_time)) {
+                            speaker_counter++;
+                            // checks if the speaker has changed
+                            if (new_speaker != speaker_times[speaker_counter][0]) {
+                                // console.log(speaker_times);
+    
+                                // console.log(word);
+                                // console.log(speaker_counter);
+    
+    
+                                // changes the speaker variable
+                                new_speaker = speaker_times[speaker_counter][0];
+    
+                                // add a new para
+                                paragraphCounter++;
+                                paraId = "para-" + paragraphCounter;
+    
+                                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                                $('#content').append(newPara);
+                                // reset the paragraph word counter
+                                paragraphWordCounter = 0;
+    
+    
+    
+                            };
                         };
+    
                     };
-
                 };
-            };
+            }
+            
+            
 
             // add data to each word: confidence, start time, duration, speaker
             spanStartTime = "<span data-m=" + word_start_time_ms + " data-d=" + duration_ms + " data-confidence=" + confidence + ">";
