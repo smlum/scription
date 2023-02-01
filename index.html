@@ -88,6 +88,66 @@
       </div>
 
       <div class="navbar-end">
+
+        <div class="navbar-item">
+
+          <div class="field has-addons">
+
+            <!-- user audio input -->
+
+            <div class="dropdown">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                  <span>Find and Replace</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <input class="input is-small" type="text" placeholder="Old text" id="searchTerm">
+                    </input>
+                  </div>
+
+                  <div class="dropdown-item">
+                    <input class="input is-small" type="text" placeholder="New text" id="replaceTerm">
+                    </input>
+                  </div>
+
+                  <div class="dropdown-item">
+                    <div>
+                      <div style="display: inline-block;">
+                        <div>
+                          <button class="button is-small is-primary" onclick="findText()">Find</button>
+                        </div>
+
+                        <div style="margin-top: 3px">
+                          <button class="button is-small is-primary" onclick="clearHighlight()">Clear</button>
+                        </div>
+                      </div>
+
+                      <div style="display: inline-block; text-align: right">
+                        <div>
+                          <button class="button is-small is-primary" onclick="findAndReplace()">Replace</button>
+                        </div>
+
+                        <div style="margin-top: 3px">
+                          <button class="button is-small is-primary" onclick="findAndReplace(true)">Replace All</button>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div class="navbar-item">
 
           <div class="field has-addons">

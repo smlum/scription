@@ -16,7 +16,7 @@ function highlight(element) {
 $(document).click(function(event) {
   $target = $(event.target);
   if(!$target.closest('#tweet-box').length &&
-  $('#tweet-box').is(":visible")) {
+    $('#tweet-box').is(":visible")) {
     // $('#menucontainer').hide();
     closeDrop();
   }
@@ -31,6 +31,63 @@ $('.category-1').blur(function () {
     contentss = $(this).html();
   }
 });
+
+function findText() {
+  var searchTerm = document.getElementById("searchTerm").value;
+  var textAreas = document.getElementsByClassName("content");
+
+  for (var i = 0; i < textAreas.length; i++) {
+    var para = textAreas[i];
+
+    for (var j = 0; j < para.children.length; j++) {
+      var word = para.children[j];
+      if (word.textContent == searchTerm) {
+        $(word).addClass("find");
+      }
+    }
+  }
+}
+
+function clearHighlight() {
+  var textAreas = document.getElementsByClassName("content");
+  for (var i = 0; i < textAreas.length; i++) {
+    var para = textAreas[i];
+    for (var j = 0; j < para.children.length; j++) {
+      $(para.children[j]).removeClass("find");
+    }
+  }
+}
+
+var button = document.querySelector('.dropdown-trigger button');
+
+// Add a click event listener to the button
+button.addEventListener('click', function () {
+  // Get the dropdown menu
+  var dropdown = document.querySelector('.dropdown');
+
+  // Toggle the "is-active" class on the dropdown
+  dropdown.classList.toggle('is-active');
+
+  // Remove all highlighted words from find when closing
+  if (!dropdown.classList.contains('is-active')) {
+    clearHighlight()
+  }
+});
+
+function findAndReplace(all = false) {
+  var searchTerm = document.getElementById("searchTerm").value;
+  var replaceTerm = document.getElementById("replaceTerm").value;
+
+  var textAreas = document.getElementsByClassName("content");
+
+  for (var i = 0; i < textAreas.length; i++) {
+    var para = textAreas[i];
+    var text = para.textContent;
+
+    if (all) { para.textContent = text.replaceAll(searchTerm, replaceTerm); }
+    else { para.textContent = text.replace(searchTerm, replaceTerm); }
+  }
+}
 
 // this function is activated on mouseup after user has highlighted text
 function addShareTool(a, previousSelection) {
