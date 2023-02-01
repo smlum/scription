@@ -178,11 +178,11 @@ $(document).ready(function () {
 
 });
 
-var displayConfidenceToggle = false
+var displayConfidenceToggle = true
 
 
 
-// $('#confidence').prop('checked', false);
+$('#confidence').prop('checked', false);
 
 $('#confidence').change(function () {
     // store the value of the checkbox when it's changed
