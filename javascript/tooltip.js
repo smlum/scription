@@ -4,7 +4,7 @@ var drop;
 var selectedText;
 
 function highlight(element) {
-  if(element) {
+  if (element) {
     $(element).addClass("highlightt");
     setTimeout(function () {
       $(element).removeClass('highlightt');
@@ -13,9 +13,9 @@ function highlight(element) {
 }
 
 
-$(document).click(function(event) {
+$(document).click(function (event) {
   $target = $(event.target);
-  if(!$target.closest('#tweet-box').length &&
+  if (!$target.closest('#tweet-box').length &&
     $('#tweet-box').is(":visible")) {
     // $('#menucontainer').hide();
     closeDrop();
