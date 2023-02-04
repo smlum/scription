@@ -108,7 +108,8 @@
               <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                 <div class="dropdown-content">
                   <div class="dropdown-item">
-                    <input class="input is-small" type="text" placeholder="Old text" id="searchTerm">
+                    <input class="input is-small" type="text" oninput="findText()" placeholder="Old text"
+                      id="searchTerm">
                     </input>
                   </div>
 
@@ -118,30 +119,15 @@
                   </div>
 
                   <div class="dropdown-item">
-                    <div>
-                      <div style="display: inline-block;">
-                        <div>
-                          <button class="button is-small is-primary" onclick="findText()">Find</button>
-                        </div>
-
-                        <div style="margin-top: 3px">
-                          <button class="button is-small is-primary" onclick="clearHighlight()">Clear</button>
-                        </div>
+                    <div style="display: flex;">
+                      <div style="margin: 5px;">
+                        <button class="button is-small is-primary" onclick="findAndReplace()">Replace</button>
                       </div>
 
-                      <div style="display: inline-block; text-align: right">
-                        <div>
-                          <button class="button is-small is-primary" onclick="findAndReplace()">Replace</button>
-                        </div>
-
-                        <div style="margin-top: 3px">
-                          <button class="button is-small is-primary" onclick="findAndReplace(true)">Replace All</button>
-                        </div>
+                      <div style="margin: 5px;">
+                        <button class="button is-small is-primary" onclick="findAndReplace(true)">Replace All</button>
                       </div>
-
-
                     </div>
-
                   </div>
                 </div>
               </div>

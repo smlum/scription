@@ -43,6 +43,8 @@ function findText() {
       var word = para.children[j];
       if (word.textContent == searchTerm) {
         $(word).addClass("find");
+      } else {
+        $(word).removeClass("find");
       }
     }
   }
