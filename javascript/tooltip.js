@@ -48,29 +48,30 @@ function findText() {
   }
 }
 
-function clearHighlight() {
-  var textAreas = document.getElementsByClassName("content");
-  for (var i = 0; i < textAreas.length; i++) {
-    var para = textAreas[i];
-    for (var j = 0; j < para.children.length; j++) {
-      $(para.children[j]).removeClass("find");
-    }
-  }
-}
-
 var button = document.querySelector('.dropdown-trigger button');
 
-// Add a click event listener to the button
-button.addEventListener('click', function () {
-  // Get the dropdown menu
+// Listen for click events on body
+document.body.addEventListener('click', function (event) {
   var dropdown = document.querySelector('.dropdown');
+  var dropdownMenu = document.querySelector('.dropdown-menu');
 
-  // Toggle the "is-active" class on the dropdown
-  dropdown.classList.toggle('is-active');
+  if (!dropdown.classList.contains('is-active') && button.contains(event.target)) {
+    dropdown.classList.toggle('is-active');
+  }
+  else if (dropdown.classList.contains('is-active') && !dropdownMenu.contains(event.target)) {
+    // Toggle the "is-active" class on the dropdown
+    dropdown.classList.toggle('is-active');
 
-  // Remove all highlighted words from find when closing
-  if (!dropdown.classList.contains('is-active')) {
-    clearHighlight()
+    // Remove all highlighted words from find when closing
+    if (!dropdown.classList.contains('is-active')) {
+      var textAreas = document.getElementsByClassName("content");
+      for (var i = 0; i < textAreas.length; i++) {
+        var para = textAreas[i];
+        for (var j = 0; j < para.children.length; j++) {
+          $(para.children[j]).removeClass("find");
+        }
+      }
+    }
   }
 });
 
@@ -82,10 +83,19 @@ function findAndReplace(all = false) {
 
   for (var i = 0; i < textAreas.length; i++) {
     var para = textAreas[i];
-    var text = para.textContent;
+    var found = false;
 
-    if (all) { para.textContent = text.replaceAll(searchTerm, replaceTerm); }
-    else { para.textContent = text.replace(searchTerm, replaceTerm); }
+    for (var j = 0; j < para.children.length; j++) {
+      var word = para.children[j];
+      if (word.textContent == searchTerm) {
+        word.textContent = replaceTerm;
+        found = true;
+      }
+      if (!all && found)
+        break
+    }
+    if (!all && found)
+      break
   }
 }
 
