@@ -32,11 +32,11 @@ function getAnnotations() {
         for (let j = 0; j < items.length; j++) {
             time = 0;
 
-            if (items[j].parentElement && items[j].parentElement.attributes["data-time"]){
-            time = Math.round(items[j].parentElement.attributes["data-time"].value);
-            tc = items[j].parentElement.attributes["data-tc"].value;
-          }
-            annotationsArray.push([categoryName,time,tc, items[j].innerText]);
+            if (items[j].parentElement && items[j].parentElement.attributes["data-time"]) {
+                time = Math.round(items[j].parentElement.attributes["data-time"].value);
+                tc = items[j].parentElement.attributes["data-tc"].value;
+            }
+            annotationsArray.push([categoryName, time, tc, items[j].innerText]);
         }
     }
 
@@ -190,7 +190,7 @@ $('#confidence').change(function () {
     window.localStorage.setItem("autoscroll-off", confidenceCheckbox);
     console.log("new confidence checkbox value:" + confidenceCheckbox);
     // if (confidenceCheckbox == true) {
-        displayConfidence()
+    displayConfidence()
     // }
 });
 
@@ -202,9 +202,9 @@ function displayConfidence() {
         var userConfidence = $("#user-confidence").val()
         var userConfidence = 0.95;
         console.log(userConfidence);
-        $("span").filter(function() {
+        $("span").filter(function () {
             return $(this).data("confidence") < userConfidence;
-            }).addClass("low-confidence")
+        }).addClass("low-confidence")
         displayConfidenceToggle = true
     } else if (displayConfidenceToggle == true) {
         $(".low-confidence").removeClass("low-confidence");
