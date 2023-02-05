@@ -98,7 +98,7 @@
 
             <div class="dropdown">
               <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                <button class="button" id="findAndReplace" aria-haspopup="true" aria-controls="dropdown-menu4">
                   <span>Find and Replace</span>
                   <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -337,15 +337,64 @@
             <div class="field is-horizontal">
 
 
-              <div class="gap-example field audio-container">
+              <!-- <div class="gap-example field audio-container">
                 <audio id="hyperplayer" style="z-index: 5000000; position:relative; height:calc(100% - 40px)">
 
                   <source src="data/demo_hi.mp3" type="audio/mpeg">
 
                 </audio>
+              </div> -->
+
+              <div style="width: 100%; display: flex;">
+                <audio id="hyperplayer" controls style="height: 100%; width: 100%; display: inline-block;">
+                  <source src="data/demo_hi.mp3" type="audio/mpeg">
+                </audio>
+
+                <div class="dropdown is-hoverable" style="margin: 2%;">
+                  <div class="dropdown-trigger" style="align-items: center; display: flex;">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu5"
+                      style="padding: 0; border: none; background: none;">
+                      <span><i class="fas fa-cog fa-lg" style="color: black;"></i></span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu5" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="0.25" name="speed">
+                        <label for="0.25x">0.25x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="0.5" name="speed">
+                        <label for="0.5x">0.5x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="0.75" name="speed">
+                        <label for="0.75x">0.75x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="1" name="speed" checked>
+                        <label for="1x">1x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="1.25" name="speed" checked>
+                        <label for="1.25x">1.25x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="1.5" name="speed" checked>
+                        <label for="1.5x">1.5x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="1.75" name="speed" checked>
+                        <label for="1.75x">1.75x</label>
+                      </div>
+                      <div class="dropdown-item">
+                        <input class="playback-rate" type="radio" value="2" name="speed">
+                        <label for="2x">2x</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-
               <!-- <p class="control">
                 <button name="confidence" onclick="displayConfidence()" class="button is-small is-primary">Display
                   Confidence</button>

@@ -94,7 +94,7 @@ function exportToCsv() {
 
 $(document).ready(function () {
 
-    new GreenAudioPlayer('.gap-example');
+    // new GreenAudioPlayer('.gap-example');
 
     // load audio
     var myAudio = document.getElementById("hyperplayer");
@@ -137,19 +137,21 @@ $(document).ready(function () {
         isPlaying = false;
     };
 
+    myAudio.controlsList = "nodownload noplaybackrate";
+
     document.addEventListener('keydown', function (e) {
         // play and pause audio
-        if (e.ctrlKey && e.keyCode == 32 && !(e.shiftKey)) {
+        if (e.ctrlKey && e.key == " " && !(e.shiftKey)) {
             togglePlay()
         };
-        // stop audio (ctrl + space)
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 32) {
-            myAudio.load();
-            isPlaying = false;
-        };
+        // // stop audio (ctrl + space)
+        // if (e.ctrlKey && e.shiftKey && e.keyCode == 32) {
+        //     myAudio.load();
+        //     isPlaying = false;
+        // };
         // speed up audio (ctrl + shift + >)
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 190) {
-            if (playbackRate < 3.0) {
+        if (e.ctrlKey && e.shiftKey && e.key == "ArrowRight") {
+            if (playbackRate < 2.0) {
                 playbackRate = playbackRate + 0.25;
             };
             myAudio.playbackRate = playbackRate;
@@ -157,7 +159,7 @@ $(document).ready(function () {
 
         };
         // slow down audio (ctrl + shift + <)
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 188) {
+        if (e.ctrlKey && e.shiftKey && e.key == "ArrowLeft") {
             if (playbackRate > 0.25) {
                 playbackRate = playbackRate - 0.25;
             };
@@ -165,15 +167,19 @@ $(document).ready(function () {
             console.log('playback rate: ' + playbackRate);
         };
         // skip forward 5 seconds (ctrl + >)
-        if (e.ctrlKey && e.keyCode == 190 && !(e.shiftKey)) {
+        if (e.ctrlKey && e.key == "ArrowRight" && !(e.shiftKey)) {
             myAudio.currentTime += 5.0;
         };
         // skip back 5 seconds (ctrl + <)
-        if (e.ctrlKey && e.keyCode == 188 && !(e.shiftKey)) {
+        if (e.ctrlKey && e.key == "ArrowLeft" && !(e.shiftKey)) {
             myAudio.currentTime -= 5.0;
         };
     });
 
+    $('.playback-rate').change(function (e) {
+        myAudio.playbackRate = e.target.defaultValue;
+        console.log('playback rate: ' + myAudio.playbackRate);
+    });
 
 
 });

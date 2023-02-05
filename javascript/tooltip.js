@@ -50,7 +50,7 @@ function findText() {
   }
 }
 
-var button = document.querySelector('.dropdown-trigger button');
+var button = document.querySelector('#findAndReplace');
 
 // Listen for click events on body
 document.body.addEventListener('click', function (event) {
