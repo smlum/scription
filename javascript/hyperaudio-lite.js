@@ -1,4 +1,4 @@
-var hyperaudiolite = (function() {
+var hyperaudiolite = (function () {
   var hal = {},
     transcript,
     words,
@@ -81,8 +81,8 @@ var hyperaudiolite = (function() {
         // TODO: look for a better way of doing this
         var strayActive = transcript.getElementsByClassName('active')[0];
         //fix undefined state error
-        if (strayActive){
-        strayActive.classList.remove('active');
+        if (strayActive) {
+          strayActive.classList.remove('active');
         }
 
         // word time is in the future - set the previous word as active.
@@ -113,12 +113,12 @@ var hyperaudiolite = (function() {
     }
   }
 
-  hal.init = function(transcriptId, mediaElementId) {
+  hal.init = function (transcriptId, mediaElementId) {
     transcript = document.getElementById(transcriptId);
     init(mediaElementId);
   };
 
-  hal.loadTranscript = function(url) {
+  hal.loadTranscript = function (url) {
     var xmlhttp;
 
     if (window.XMLHttpRequest) {
@@ -129,7 +129,7 @@ var hyperaudiolite = (function() {
       xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
     }
 
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4) {
         if (xmlhttp.status == 200) {
           transcript = document.getElementById('hypertranscript');

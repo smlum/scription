@@ -1,5 +1,6 @@
 :root {
     --primary: #21a094;
+    --selected-find: #ffe600;
     --selected-blue: #d2e4f9;
     --selected-red: #fecbcf;
     --selected-yellow: #fbeed1;
@@ -268,6 +269,10 @@ body, html {
 
 .selected {
     color: var(--tag-color);
+}
+
+.find {
+    background-color: var(--selected-find);
 }
 
 .selected-1 {
