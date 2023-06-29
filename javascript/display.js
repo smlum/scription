@@ -319,7 +319,7 @@ function displayTranscript(userJson) {
  // TODO allow user to set
  var max_para_length = 10;
 
- whisper = WhisperParser( )
+ let whisper = new WhisperParser( ) 
 
  // use the json structure to detect the format being used
  // eg AWS vs DeepSpeech

@@ -5,14 +5,14 @@ function WhisperParser() {
 
 WhisperParser.prototype.detect = function (jsonobj) {
     let retval =  (jsonobj.segments) ? true : false
-    if(retval) { console.log('Whisper formatted data detected') }
+    if(retval) { console.log('Whisper formatted data detected'); }
     return retval
 }
 
 /**
  * configure editor toggles given the transcript input
  */
-WhisperParser.prototype.config() = function () {
+WhisperParser.prototype.config = function () { 
     // turn off confidence toggle
     document.getElementById('confidence').removeAttribute('disabled');
 }
