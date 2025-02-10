@@ -139,8 +139,8 @@ Thanks to [likeleto](https://github.com/likeleto) for adding Google and Yandex s
 
 ## Support
 
-If you need some help to setup scription, want to ask a question or simply get involved in the community, feel free to [give me a shout](https://samlumley.page).
+If you need some help to setup scription or want to ask a question, feel free to reach out or create an issue :)
 
 ## License
 
-scription was created by [Sam Lumley](https://samlumley.page) and is licensed under the open source [AGPLv3 license](https://github.com/smlum/scription/blob/master/LICENSE). If you're interested in using it in a proprietary application feel free to [get in touch](https://samlumley.page)!
+scription was created by [Sam Lumley](https://samlumley.page) and is licensed under the open source [AGPLv3 license](https://github.com/smlum/scription/blob/master/LICENSE). If you're interested in using it in a proprietary application feel free to get in touch!
