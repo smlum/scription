@@ -323,8 +323,77 @@ function displayTranscript(userJson) {
     // use the json structure to detect the format being used
     // eg AWS vs DeepSpeech
 
+// Detect and parse the JSON format used by aTrain https://github.com/JuergenFleiss/aTrain
+    if (data.segments) {
+        console.log('Custom formatted data detected');
+
+        // Parse the custom formatted JSON
+        var results = data.segments;
+        var transcript_raw = JSON.stringify(results.map(segment => segment.text).join(" "));
+
+        // Create empty array to hold speaker names and start times
+        var speaker_times = [];
+        results.forEach(segment => {
+            if (speaker_times.length == 0 || speaker_times[speaker_times.length - 1][0] !== segment.speaker) {
+                speaker_times.push([segment.speaker, Number(segment.start)]);
+            }
+        });
+
+        // saving global variables for use in audio-control.js (poss can delete)
+        speakerTimes = speaker_times;
+        transcriptObject = results.map(segment => segment.words).flat();
+        jsonLength = transcriptObject.length;
+
+        for (var i = 0; i < jsonLength; i++) {
+            var wordData = transcriptObject[i];
+            var word = wordData.word;
+            var confidence = wordData.probability;
+            var word_start_time = wordData.start;
+            var word_start_time_ms = Math.round(word_start_time * 1000);
+            var duration_ms = Math.round((wordData.end - wordData.start) * 1000);
+            var type = "pronunciation";  // Custom format does not have type, assuming all are pronunciation
+
+            // Create space appropriately
+            var space = " ";
+            paragraphWordCounter++;
+
+            // Detect speaker change and create new paragraph
+            if (i == 0 || (speaker_counter < speaker_times.length && speaker_times[speaker_counter][1] <= word_start_time)) {
+                if (i != 0) {
+                    paragraphCounter++;
+                }
+                new_speaker = speaker_times[speaker_counter][0];
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                paragraphWordCounter = 0;
+                speaker_counter++;
+            }
+
+            // Add data to each word
+            var spanStartTime = "<span data-m=" + word_start_time_ms + " data-d=" + duration_ms + " data-confidence=" + confidence + ">";
+            var text = space + spanStartTime + word + "</span>";
+
+            // Append text to paragraph
+            var para = "#para-" + paragraphCounter;
+            $(para).append(text);
+
+            // Start new paragraph if too long
+            if (paragraphWordCounter > max_para_length) {
+                paragraphCounter++;
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(word_start_time, new_speaker, paraId);
+                $('#content').append(newPara);
+                paragraphWordCounter = 0;
+            }
+        }
+
+        var obj = JSON.stringify(results);
+        $('.raw').html(transcript_raw);
+        $('.whole').html(obj);
+
     // parse the DeepSPeech formatted json
-    if (data.words) {
+    } else if (data.words) {
         console.log('Mozilla formatted data detected');
 
         // turn off confidence toggle
