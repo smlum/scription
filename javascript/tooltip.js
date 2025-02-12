@@ -4,7 +4,7 @@ var drop;
 var selectedText;
 
 function highlight(element) {
-  if(element) {
+  if (element) {
     $(element).addClass("highlightt");
     setTimeout(function () {
       $(element).removeClass('highlightt');
@@ -13,10 +13,10 @@ function highlight(element) {
 }
 
 
-$(document).click(function(event) {
+$(document).click(function (event) {
   $target = $(event.target);
-  if(!$target.closest('#tweet-box').length &&
-  $('#tweet-box').is(":visible")) {
+  if (!$target.closest('#tweet-box').length &&
+    $('#tweet-box').is(":visible")) {
     // $('#menucontainer').hide();
     closeDrop();
   }
@@ -31,6 +31,83 @@ $('.category-1').blur(function () {
     contentss = $(this).html();
   }
 });
+
+function findText() {
+  var searchTerm = document.getElementById("searchTerm").value;
+  var textAreas = document.getElementsByClassName("content");
+
+  for (var i = 0; i < textAreas.length; i++) {
+    var para = textAreas[i];
+
+    for (var j = 0; j < para.children.length; j++) {
+      var word = para.children[j];
+      if (word.textContent == searchTerm) {
+        $(word).addClass("find");
+      } else {
+        $(word).removeClass("find");
+      }
+    }
+  }
+}
+
+var button = document.querySelector('.dropdown-trigger button');
+
+// Listen for click events on body
+document.body.addEventListener('click', function (event) {
+  var dropdown = document.querySelector('.dropdown');
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+
+  if (!dropdown.classList.contains('is-active') && button.contains(event.target)) {
+    dropdown.classList.toggle('is-active');
+  }
+  else if (dropdown.classList.contains('is-active') && !dropdownMenu.contains(event.target)) {
+    // Toggle the "is-active" class on the dropdown
+    dropdown.classList.toggle('is-active');
+
+    // Remove all highlighted words from find when closing
+    if (!dropdown.classList.contains('is-active')) {
+      var textAreas = document.getElementsByClassName("content");
+      for (var i = 0; i < textAreas.length; i++) {
+        var para = textAreas[i];
+        for (var j = 0; j < para.children.length; j++) {
+          $(para.children[j]).removeClass("find");
+        }
+      }
+    }
+  }
+});
+
+function findAndReplace(all = false) {
+  var searchTerm = document.getElementById("searchTerm").value;
+  var replaceTerm = document.getElementById("replaceTerm").value;
+
+  var textAreas = document.getElementsByClassName("content");
+
+  for (var i = 0; i < textAreas.length; i++) {
+    var para = textAreas[i];
+    var found = false;
+
+    for (var j = 0; j < para.children.length; j++) {
+      var word = para.children[j];
+      if (word.textContent == searchTerm) {
+        word.textContent = replaceTerm;
+        found = true;
+      }
+      if (!all && found)
+        break
+    }
+    if (!all && found)
+      break
+  }
+}
+
+document.getElementById("replaceTerm")
+  .addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      document.getElementById("replaceButton").click();
+    }
+  });
 
 // this function is activated on mouseup after user has highlighted text
 function addShareTool(a, previousSelection) {
